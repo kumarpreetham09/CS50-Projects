@@ -3,8 +3,8 @@
 
 int main(void)
 {
-    long x = get_long("x: ");
-    long y = get_long("y: ");
+    float x = get_float("x: ");
+    float y = get_float("y: ");
 
-    printf("%li\n", x + y);
+    printf("%f\n", x + y);
 }

@@ -7,4 +7,3 @@ int main(void)
         printf("meow\n");
     }
 }
-tell me why aint nothing but a gui lol 

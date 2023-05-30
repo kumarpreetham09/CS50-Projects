@@ -4,20 +4,19 @@
 int main(void)
 {
     // Get size of grid
-    int n;
+    int n = get_size();
+
+    //Prints grid of bricks
+    printgrid(n);
+}
+
+int get_size(void)
+{
+    int n
     do
     {
         n = get_int("Size: ");
     }
     while (n < 1);
-
-    //Prints grid of bricks
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            printf("#");
-        }
-        printf("\n");
-    }
+    return n;
 }

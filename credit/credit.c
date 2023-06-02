@@ -38,11 +38,10 @@ bool checksum(long number)
 {
     int sum;
     int i;
-    for (i = 0; number > 0; i++)
+    for (i = 0; number > 0; i++ & number /= 10)
     {
         if ( i % 2 == 0)
         {
-            number /= 10
             sum += number
         }
     }

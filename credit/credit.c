@@ -38,11 +38,13 @@ bool checksum(long number)
 {
     int sum;
     int i;
+    int digit;
     for (i = 0; number > 0; i++ && number /= 10)
     {
         if ( i % 2 == 0)
         {
-            sum += number
+            number % 10 = digit
+            sum += digit
         }
 
         if ( i % 2 == 1)

@@ -32,3 +32,9 @@ int find_length(long n)
     for (len = 0; n>0; n /= 10; len++);
     return len;
 }
+
+
+bool checksum(long number)
+{
+    
+}

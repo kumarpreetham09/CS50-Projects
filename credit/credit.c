@@ -18,5 +18,6 @@ void checksum(int number)
     while (number > 0) {
         int digit = number % 10;
         printf("%i\n", digit);
+        
     }
 }

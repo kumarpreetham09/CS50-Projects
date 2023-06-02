@@ -36,5 +36,7 @@ int find_length(long n)
 
 bool checksum(long number)
 {
-    
+    int sum;
+    int i;
+    for (i = 0; number > 0; number/=10; i++)
 }

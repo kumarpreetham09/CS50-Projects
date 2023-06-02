@@ -15,7 +15,7 @@ int main(void)
 
 void checksum(int number)
 {
-    for(int i = 0; i-) {
+    for(int i = 1; i%2==0; i++ ) {
 
     }
     while (number > 0) {

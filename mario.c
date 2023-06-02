@@ -13,26 +13,6 @@ int main(void)
     print_grid(n);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 int get_size(void)
 {
     int n;

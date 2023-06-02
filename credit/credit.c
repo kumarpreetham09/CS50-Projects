@@ -15,7 +15,9 @@ int main(void)
 
 void checksum(int number)
 {
-    for(int i =0;i)
+    for(int i = 0; i-) {
+
+    }
     while (number > 0) {
         int digit = number % 10;
         printf("%i\n", digit);

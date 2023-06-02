@@ -10,5 +10,7 @@ int main(void)
     }
     while (n <= 0);
 
+    if ()
+
     checksum(n);
-}
+

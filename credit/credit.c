@@ -10,7 +10,25 @@ int main(void)
     }
     while (n <= 0);
 
-    if ()
+    if (validity(n))
+    {
+        print_brand(n);
+    }
+    else
+    (
+        printf("INVALID\n")
+    )
 
-    checksum(n);
+bool validity(long number)
+{
+    int len = find_length(number)
 
+    return (len == 13 || len == 15 || len == 16) && checksum(number);
+}
+
+int find_length(long n)
+{
+    int len;
+    for (len = 0; n>0; n /= 10; len++);
+    return len;
+}

@@ -17,7 +17,7 @@ int main(void)
 
     if (validity(n))
     {
-        printf("Valid\n");
+        printf("Valid %lld\n", n);
         print_brand(n);
     }
     else
@@ -94,7 +94,6 @@ bool checksum(long number, int len)
 
 void print_brand(number)
 {
-    printf("called\n");
     if (find_length(number) == 15)
     {
         printf("AMEX\n");

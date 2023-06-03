@@ -88,6 +88,7 @@ bool checksum(long number, int len)
     return ((sum_odd + sum_even) % 10== 0);
 }
 
+
 void print_brand(number)
 {
     if (find_length(number) == 15)

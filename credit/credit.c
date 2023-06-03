@@ -22,7 +22,7 @@ int main(void)
     }
     else
     {
-        printf("INVALID\n")
+        printf("INVALID\n");
     }
 }
 

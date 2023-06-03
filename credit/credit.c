@@ -34,7 +34,10 @@ bool validity(long long number)
 
 int find_length(long long n)
 {
-    int len;
-    for (len = 0; n!=0; n /= 10 && len++);
+    int len = 0;
+    while(n != 0){
+        n /= 10;
+        len++;
+    }
     return len;
 }

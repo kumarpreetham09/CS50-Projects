@@ -88,7 +88,34 @@ bool checksum(long number, int len)
     return ((sum_odd + sum_even) % 10== 0);
 }
 
-print_brand(number)
+void print_brand(number)
 {
-    if ()
+    if (find_length(number) == 15)
+    {
+        printf("AMEX\n");
+    }
+    else if (find_length(number) == 13)
+    {
+        printf("VISA");
+    }
+    else if(find_length(number) == 16)
+    {
+        int i = 0;
+        int j = 0;
+        int x;
+        while (i < 14)
+        {
+            x = number % 10;
+            number /= 10;
+            i++;
+        }
+        if (x <= 49 && x >= 40)
+        {
+            printf("VISA");
+        }
+        else if (x >= 51 && x <= 55)
+        {
+            printf("MASTERCARD");
+        }
+}
 }

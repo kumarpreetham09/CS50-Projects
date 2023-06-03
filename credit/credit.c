@@ -58,7 +58,7 @@ bool checksum(number, len)
         if (i % 2 == 0)
         {
             sum_even += digit;
-            printf("even \n");
+            printf("even %i\n",digit);
         }
 
         else
@@ -66,7 +66,7 @@ bool checksum(number, len)
             num1 = (digit * 2) % 10;
             num2 = (digit * 2) / 10;
             sum_odd += num1 + num2;
-            printf("odd\n");
+            printf("odd %i\n",digit);
         }
         i++;
     }

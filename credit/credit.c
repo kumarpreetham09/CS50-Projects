@@ -44,6 +44,7 @@ bool checksum(long number)
     int num1;
     int num2;
     long total;
+
     for (i = 0; numb > 0; i++ && numb /= 10)
     {
         if ( i % 2 == 0)
@@ -66,6 +67,13 @@ bool checksum(long number)
 
         total = sum_even + sum_odd
     }
+    
+    if (total % 10 == 0){
+        return true
+    }
 
+    else {
+        return false
+    }
 
 }

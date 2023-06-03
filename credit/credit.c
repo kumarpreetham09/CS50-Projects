@@ -46,8 +46,8 @@ int find_length(long long n)
 
 bool checksum(number, len)
 {
-    int sum_even = 0;
-    int sum_odd = 0;
+    long sum_even = 0;
+    long sum_odd = 0;
     int num1;
     int num2;
     int i = 0;
@@ -58,6 +58,7 @@ bool checksum(number, len)
         if (i % 2 == 0)
         {
             sum_even += digit;
+            printf("even \n");
         }
 
         else
@@ -65,6 +66,7 @@ bool checksum(number, len)
             num1 = (digit * 2) % 10;
             num2 = (digit * 2) / 10;
             sum_odd += num1 + num2;
+            printf("odd\n");
         }
         i++;
     }

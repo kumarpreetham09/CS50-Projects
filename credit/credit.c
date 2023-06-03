@@ -92,6 +92,7 @@ bool checksum(long number, int len)
 
 void print_brand(number)
 {
+    printf("called\n");
     if (find_length(number) == 15)
     {
         printf("AMEX\n");

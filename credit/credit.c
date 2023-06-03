@@ -43,7 +43,7 @@ bool checksum(long number)
     long digit;
     int num1;
     int num2;
-    for (i = 0; number > 0; i++ && numb /= 10)
+    for (i = 0; numb > 0; i++ && numb /= 10)
     {
         if ( i % 2 == 0)
         {

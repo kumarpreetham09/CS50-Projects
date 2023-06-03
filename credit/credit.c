@@ -8,7 +8,7 @@ int find_length();
 
 int main(void)
 {
-    long n;
+    long long n;
     do{
     n = get_long("Number: ");
     }
@@ -34,7 +34,7 @@ bool validity(long long number)
 int find_length(long long n)
 {
     int len;
-    for (len = 0; n>0; n /= 10 && len++);
+    for (len = 0; n!=0; n /= 10 && len++);
     return len;
 }
 
@@ -50,11 +50,10 @@ bool checksum(long long number)
     int num2=0;
     long long total;
 
-    for (i = 0; numb > 0; i++ && (numb /= 10))
+    for (i = 0; numb != 0; i++ && (digit = numb % 10) &&(numb /= 10))
     {
         if ( i % 2 == 0)
         {
-            digit = numb % 10;
             long long digit_2 = digit * 2;
             if (digit_2 > 9){
 

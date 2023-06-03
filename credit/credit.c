@@ -71,11 +71,14 @@ bool checksum(long number, int len)
             {
                 num1 = digit_2 / 10;
                 num2 = digit_2 % 10;
+                digit = num1 + num2;
+                sum_odd += digit;
             }
             printf("odd  %i %ld %i %i\n",digit, number, num1, num2);
         }
 
         i++;
     }
+    printf("%ld %ld\n",sum_even,sum_odd);
     return true;
 }

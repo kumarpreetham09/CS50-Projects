@@ -47,7 +47,6 @@ int find_length(long long n)
         n /= 10;
         len++;
     }
-    printf("called2 %i\n", len);
     return len;
 }
 
@@ -93,14 +92,13 @@ bool checksum(long number, int len)
 
 void print_brand(long long number)
 {
-    printf("%lld",number);
     if (find_length(number) == 15)
     {
         printf("AMEX\n");
     }
     else if (find_length(number) == 13)
     {
-        printf("VISA");
+        printf("VISA\n");
     }
     else if(find_length(number) == 16)
     {
@@ -112,15 +110,14 @@ void print_brand(long long number)
             x = number % 10;
             number /= 10;
             i++;
-            printf("%i\n",x);
         }
-        if (x <= 49 && x >= 40)
+        if (x >= 40 && x <= 49)
         {
-            printf("VISA");
+            printf("VISA\n");
         }
         else if (x >= 51 && x <= 55)
         {
-            printf("MASTERCARD");
+            printf("MASTERCARD\n");
         }
     }
 }

@@ -22,7 +22,7 @@ int main(void)
         printf("INVALID\n")
     );
 
-bool validity(long number)
+validity(long number)
 {
     int len = find_length(number)
 

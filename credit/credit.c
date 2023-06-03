@@ -24,14 +24,14 @@ int main(void)
     );
 }
 
-bool validity(long number)
+bool validity(long long number)
 {
     int len = find_length(number);
 
     return (len == 13 || len == 15 || len == 16) && checksum(number);
 }
 
-int find_length(long n)
+int find_length(long long n)
 {
     int len;
     for (len = 0; n>0; n /= 10 && len++);
@@ -39,23 +39,23 @@ int find_length(long n)
 }
 
 
-bool checksum(long number)
+bool checksum(long long number)
 {
-    long numb = number;
-    long sum_even = 0;
-    long sum_odd = 0;
+    long long numb = number;
+    long long sum_even = 0;
+    long long sum_odd = 0;
     int i;
-    long digit;
+    long long digit;
     int num1;
     int num2=0;
-    long total;
+    long long total;
 
     for (i = 0; numb > 0; i++ && (numb /= 10))
     {
         if ( i % 2 == 0)
         {
             digit = numb % 10;
-            long digit_2 = digit * 2;
+            long long digit_2 = digit * 2;
             if (digit_2 > 9){
 
                 num1 = digit_2 % 10;

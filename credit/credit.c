@@ -94,19 +94,19 @@ void print_brand(long long number)
 {
     if (find_length(number) == 15)
     {
+        int i = 0;
         while (i < 13)
         {
-            x = number % 10;
             number /= 10;
             i++;
         }
-        if (x == 34 || x == 37)
+        if (number == 34 || number == 37)
         {
-            printf("AMEX\n")
+            printf("AMEX\n");
         }
         else
         {
-            printf("INVALID\n")
+            printf("INVALID\n");
         }
     }
     else if (find_length(number) == 13)
@@ -117,24 +117,22 @@ void print_brand(long long number)
     {
         int i = 0;
         int j = 0;
-        int x;
         while (i < 14)
         {
-            x = number % 10;
             number /= 10;
             i++;
         }
-        if (x >= 40 && x <= 49)
+        if (number >= 40 && number <= 49)
         {
             printf("VISA\n");
         }
-        else if (x >= 51 && x <= 55)
+        else if (number >= 51 && number <= 55)
         {
             printf("MASTERCARD\n");
         }
         else
         {
-            printf("INVALID\n")
+            printf("INVALID\n");
         }
     }
 }

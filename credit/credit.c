@@ -94,7 +94,20 @@ void print_brand(long long number)
 {
     if (find_length(number) == 15)
     {
-        printf("AMEX\n");
+        while (i < 13)
+        {
+            x = number % 10;
+            number /= 10;
+            i++;
+        }
+        if (x == 34 || x == 37)
+        {
+            printf("AMEX\n")
+        }
+        else
+        {
+            printf("INVALID\n")
+        }
     }
     else if (find_length(number) == 13)
     {
@@ -118,6 +131,10 @@ void print_brand(long long number)
         else if (x >= 51 && x <= 55)
         {
             printf("MASTERCARD\n");
+        }
+        else
+        {
+            printf("INVALID\n")
         }
     }
 }

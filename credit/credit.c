@@ -65,13 +65,16 @@ bool checksum(long number, int len)
         else
         {
             number /= 10;
-            sum_odd += digit;
             digit_2 = digit *2;
             if(digit_2>9)
             {
                 num1 = digit_2 / 10;
                 num2 = digit_2 % 10;
                 digit = num1 + num2;
+                sum_odd += digit;
+            }
+            else
+            {
                 sum_odd += digit;
             }
             printf("odd  %i %ld %i %i\n",digit, number, num1, num2);

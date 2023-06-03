@@ -43,18 +43,19 @@ bool checksum(long number)
     long digit;
     int num1;
     int num2;
+    long total;
     for (i = 0; numb > 0; i++ && numb /= 10)
     {
         if ( i % 2 == 0)
         {
-            numb % 10 = digit
-            long digit_2 = digit * 2
+            numb % 10 = digit;
+            long digit_2 = digit * 2;
             if (digit_2 > 9){
 
                 digit_2 % 10 = num1
                 digit_2 /=  num2
             }
-            sum_even += num1 + num2
+            sum_even += num1 + num2;
 
         }
 
@@ -62,6 +63,8 @@ bool checksum(long number)
         {
             sum_odd += digit
         }
+
+        total = sum_even + sum_odd
     }
 
 

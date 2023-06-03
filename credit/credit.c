@@ -1,9 +1,10 @@
 #include <cs50.h>
 #include <stdio.h>
 
-void checksum();
+bool checksum();
 void print_brand();
 bool validity();
+int find_length();
 
 int main(void)
 {
@@ -21,10 +22,11 @@ int main(void)
     (
         printf("INVALID\n")
     );
+}
 
 bool validity(long number)
 {
-    int len = find_length(number)
+    int len = find_length(number);
 
     return (len == 13 || len == 15 || len == 16) && checksum(number);
 }

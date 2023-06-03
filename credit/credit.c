@@ -48,28 +48,22 @@ bool checksum(number, len)
 {
     long sum_even = 0;
     long sum_odd = 0;
-    int num1;
-    int num2;
+    int num1 = 0;
+    int num2 = 0;
     int i = 0;
     while (i < len)
     {
-        int digit = number % 10;
+
 
         if (i % 2 == 0)
         {
+            int digit = number % 10;
+            number /= 10;
             sum_even += digit;
             printf("even %i\n",digit);
         }
 
-        else
-        {
-            num1 = (digit * 2) % 10;
-            num2 = (digit * 2) / 10;
-            sum_odd += num1 + num2;
-            printf("odd %i\n",digit);
-        }
         i++;
     }
-    printf("%i,%i\n",num1,num2);
     return true;
 }

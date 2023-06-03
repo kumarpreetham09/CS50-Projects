@@ -90,5 +90,5 @@ bool checksum(long number, int len)
 
 print_brand(number)
 {
-    
+    if ()
 }

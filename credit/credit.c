@@ -17,7 +17,6 @@ int main(void)
 
     if (validity(n))
     {
-        printf("Valid %lld\n", n);
         print_brand(n);
     }
     else
@@ -92,8 +91,9 @@ bool checksum(long number, int len)
 }
 
 
-void print_brand(number)
+void print_brand(long long number)
 {
+    printf("%lld",number);
     if (find_length(number) == 15)
     {
         printf("AMEX\n");
@@ -112,7 +112,7 @@ void print_brand(number)
             x = number % 10;
             number /= 10;
             i++;
-            printf("%i",x);
+            printf("%i\n",x);
         }
         if (x <= 49 && x >= 40)
         {

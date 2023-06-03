@@ -51,16 +51,27 @@ bool checksum(long number, int len)
     int num1 = 0;
     int num2 = 0;
     int i = 0;
+    int digit_2;
     while (i < len)
     {
-
-
+        int digit = number % 10;
         if (i % 2 == 0)
         {
-            int digit = -(number % 10);
             number /= 10;
             sum_even += digit;
             printf("even %i %ld\n",digit,number);
+        }
+
+        else
+        {
+            number /= 10;
+            sum_odd += digit;
+            digit_2 = digit *2;
+            if(digit_2>9)
+            {
+                digit /= 10;
+            }
+            printf("odd  %i %ld\n",digit,number);
         }
 
         i++;

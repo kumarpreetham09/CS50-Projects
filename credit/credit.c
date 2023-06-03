@@ -36,7 +36,8 @@ bool validity(long long number)
 int find_length(long long n)
 {
     int len = 0;
-    while(n != 0){
+    while(n != 0)
+    {
         n /= 10;
         len++;
     }
@@ -45,10 +46,26 @@ int find_length(long long n)
 
 bool checksum(number, len)
 {
+    int sum_even;
+    int sum_odd;
     int i = 0;
-    while (i < len){
-        int digit = number ;
+    while (i < len)
+    {
+        int digit = number % 10;
+
+        if (i % 2 == 0)
+        {
+            sum_even += digit;
+        }
+
+        else
+        {
+            int num1 = (digit * 2) % 10;
+            int num2 = (digit * 2) / 10;
+            sum_odd += num1 + num2;
+        }
         i++;
     }
+    printf("%i,%i"num1,num2);
     return true;
 }

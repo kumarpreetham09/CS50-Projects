@@ -5,6 +5,7 @@
 bool validity();
 int find_length();
 bool checksum();
+void print_brand();
 
 int main(void)
 {
@@ -16,13 +17,17 @@ int main(void)
 
     if (validity(n))
     {
-        printf("Brand\n");
+        print_brand(n);
     }
     else
     (
         printf("INVALID\n")
     );
 }
+
+
+
+
 
 bool validity(long long number)
 {
@@ -81,4 +86,9 @@ bool checksum(long number, int len)
         i++;
     }
     return ((sum_odd + sum_even) % 10== 0);
+}
+
+print_brand(number)
+{
+    
 }

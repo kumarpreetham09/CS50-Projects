@@ -17,6 +17,7 @@ int main(void)
 
     if (validity(n))
     {
+        printf("Valid");
         print_brand(n);
     }
     else
@@ -85,7 +86,7 @@ bool checksum(long number, int len)
 
         i++;
     }
-    return ((sum_odd + sum_even) % 10== 0);
+    return ((sum_odd + sum_even) % 10 == 0);
 }
 
 
@@ -109,6 +110,7 @@ void print_brand(number)
             x = number % 10;
             number /= 10;
             i++;
+            printf("%i",x);
         }
         if (x <= 49 && x >= 40)
         {

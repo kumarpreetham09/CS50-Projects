@@ -34,7 +34,7 @@ bool validity(long number)
 int find_length(long n)
 {
     int len;
-    for (len = 0; n>0; n /= 10; len++);
+    for (len = 0; n>0; n /= 10 && len++);
     return len;
 }
 
@@ -50,7 +50,7 @@ bool checksum(long number)
     int num2;
     long total;
 
-    for (i = 0; numb > 0; i++ && numb /= 10)
+    for (i = 0; numb > 0; i++ && (numb /= 10))
     {
         if ( i % 2 == 0)
         {

@@ -10,8 +10,9 @@ void print_brand();
 int main(void)
 {
     long long n;
-    do{
-    n = get_long("Number: ");
+    do
+    {
+        n = get_long("Number: ");
     }
     while (n <= 0);
 
@@ -20,9 +21,9 @@ int main(void)
         print_brand(n);
     }
     else
-    (
+    {
         printf("INVALID\n")
-    );
+    }
 }
 
 
@@ -42,7 +43,7 @@ int find_length(long long n)
 {
 
     int len = 0;
-    while(n != 0)
+    while (n != 0)
     {
         n /= 10;
         len++;
@@ -70,8 +71,8 @@ bool checksum(long number, int len)
         else
         {
             number /= 10;
-            digit_2 = digit *2;
-            if(digit_2>9)
+            digit_2 = digit * 2;
+            if (digit_2 > 9)
             {
                 num1 = digit_2 / 10;
                 num2 = digit_2 % 10;
@@ -113,7 +114,7 @@ void print_brand(long long number)
     {
         printf("VISA\n");
     }
-    else if(find_length(number) == 16)
+    else if (find_length(number) == 16)
     {
         int i = 0;
         int j = 0;

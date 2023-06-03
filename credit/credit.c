@@ -37,20 +37,28 @@ int find_length(long n)
 bool checksum(long number)
 {
     long numb = number;
-    int sum;
+    long sum_even;
+    long sum_odd;
     int i;
-    int digit;
+    long digit;
     for (i = 0; number > 0; i++ && numb /= 10)
     {
         if ( i % 2 == 0)
         {
             numb % 10 = digit
-            sum += digit
+            long digit_2 = digit * 2
+            if (digit_2 > 9){
+                
+            }
+            sum_even += digit_2
+
         }
 
-        if ( i % 2 == 1)
+        else
         {
-            sum += numb
+            sum_odd += digit
         }
     }
+
+
 }

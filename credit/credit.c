@@ -42,24 +42,24 @@ int find_length(long n)
 bool checksum(long number)
 {
     long numb = number;
-    long sum_even;
-    long sum_odd;
+    long sum_even = 0;
+    long sum_odd = 0;
     int i;
     long digit;
     int num1;
-    int num2;
+    int num2=0;
     long total;
 
     for (i = 0; numb > 0; i++ && (numb /= 10))
     {
         if ( i % 2 == 0)
         {
-            numb % 10 = digit;
+            digit = numb % 10;
             long digit_2 = digit * 2;
             if (digit_2 > 9){
 
-                digit_2 % 10 = num1
-                digit_2 /=  num2
+                num1 = digit_2 % 10;
+                num2 /= digit_2;
             }
             sum_even += num1 + num2;
 
@@ -67,28 +67,28 @@ bool checksum(long number)
 
         else
         {
-            sum_odd += digit
+            sum_odd += digit;
         }
 
-        total = sum_even + sum_odd
+        total = sum_even + sum_odd;
     }
 
     if (total % 10 == 0){
-        return true
+        return true;
     }
 
     else {
-        return false
+        return false;
     }
 
 }
 
-print_brand(n)
+void print_brand(n)
 {
     if (n > 0){
-        printf("Hello")
+        printf("Hello");
     }
     else {
-        print("Bye")
+        printf("Bye");
     }
 }

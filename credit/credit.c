@@ -2,6 +2,9 @@
 #include <stdio.h>
 
 void checksum();
+void print_brand();
+bool validity();
+
 int main(void)
 {
     long n;
@@ -17,7 +20,7 @@ int main(void)
     else
     (
         printf("INVALID\n")
-    )
+    );
 
 bool validity(long number)
 {
@@ -67,7 +70,7 @@ bool checksum(long number)
 
         total = sum_even + sum_odd
     }
-    
+
     if (total % 10 == 0){
         return true
     }
@@ -76,4 +79,14 @@ bool checksum(long number)
         return false
     }
 
+}
+
+print_brand(n)
+{
+    if (n > 0){
+        printf("Hello")
+    }
+    else {
+        print("Bye")
+    }
 }

@@ -36,20 +36,21 @@ int find_length(long n)
 
 bool checksum(long number)
 {
+    long numb = number;
     int sum;
     int i;
     int digit;
-    for (i = 0; number > 0; i++ && number /= 10)
+    for (i = 0; number > 0; i++ && numb /= 10)
     {
         if ( i % 2 == 0)
         {
-            number % 10 = digit
+            numb % 10 = digit
             sum += digit
         }
 
         if ( i % 2 == 1)
         {
-            sum += number
+            sum += numb
         }
     }
 }

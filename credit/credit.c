@@ -17,7 +17,7 @@ int main(void)
 
     if (validity(n))
     {
-        printf("Valid");
+        printf("Valid\n");
         print_brand(n);
     }
     else

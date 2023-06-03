@@ -15,7 +15,7 @@ int main(void)
 
     if (validity(n))
     {
-        printf("Brand");
+        printf("Brand\n");
     }
     else
     (

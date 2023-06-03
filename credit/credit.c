@@ -59,7 +59,6 @@ bool checksum(long number, int len)
         {
             number /= 10;
             sum_even += digit;
-            printf("even %i %ld\n",digit,number);
         }
 
         else
@@ -75,13 +74,11 @@ bool checksum(long number, int len)
             }
             else
             {
-                sum_odd += digit;
+                sum_odd += digit_2;
             }
-            printf("odd  %i %ld %i %i\n",digit, number, num1, num2);
         }
 
         i++;
     }
-    printf("%ld %ld\n",sum_even,sum_odd);
-    return true;
+    return ((sum_odd + sum_even) % 10== 0);
 }

@@ -41,12 +41,14 @@ bool validity(long long number)
 
 int find_length(long long n)
 {
+
     int len = 0;
     while(n != 0)
     {
         n /= 10;
         len++;
     }
+    printf("called2 %i\n", len);
     return len;
 }
 
@@ -121,5 +123,5 @@ void print_brand(number)
         {
             printf("MASTERCARD");
         }
-}
+    }
 }

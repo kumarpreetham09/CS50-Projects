@@ -28,7 +28,7 @@ bool validity(long long number)
 {
     int len = find_length(number);
 
-    return (len == 13 || len == 15 || len == 16) && checksum(number;len);
+    return (len == 13 || len == 15 || len == 16) && checksum(number, len);
 }
 
 
@@ -43,7 +43,12 @@ int find_length(long long n)
     return len;
 }
 
-bool checksum(number)
+bool checksum(number, len)
 {
-
+    int i = 0;
+    while (i < len){
+        int digit = number ;
+        i++;
+    }
+    return true;
 }

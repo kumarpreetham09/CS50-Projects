@@ -13,7 +13,7 @@ int main(int argc, string argv[])
     if (validity(key, length) == 0)
     {
         string plain_text = get_string("plaintext: ");
-        encrypt(plain_text, key, length);
+        encrypt(plain_text, key);
     }
 
 
@@ -22,13 +22,15 @@ int main(int argc, string argv[])
 
 
 
-void encrypt(string text, string key, int length)
+void encrypt(string text, string key)
 {
     int i;
     char k;
-    for (i = 0; i < length; i++)
+    int text_length = strlen(text);
+    for (i = 0; i < text_length; i++)
     {
         int j = text[i];
+        printf("%i",j);
         if (j >= 65 && j <= 90)
         {
             j -= 65;

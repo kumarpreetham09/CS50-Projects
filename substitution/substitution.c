@@ -42,6 +42,7 @@ void encrypt(string text, string key, int length)
         }
         printf("%c", k);
     }
+    printf("\n");
 }
 
 

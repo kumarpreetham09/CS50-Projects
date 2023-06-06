@@ -63,7 +63,7 @@ void encrypt(string text, string key)
 
 void across_texts(char k)
 {
-
+    if 
 }
 
 

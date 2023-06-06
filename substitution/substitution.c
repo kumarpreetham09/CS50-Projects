@@ -13,6 +13,11 @@ int main(int argc, string argv[])
         printf("Success\n");
     }
 
+    else
+    {
+        return 1;
+    }
+
 
 }
 
@@ -60,7 +65,6 @@ int validity(string key)
     else
     {
         printf("Key Error\n");
-        return 1;
     }
 
 }

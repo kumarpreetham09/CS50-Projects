@@ -30,7 +30,6 @@ void encrypt(string text, string key)
     for (i = 0; i < text_length; i++)
     {
         int j = text[i];
-        printf("%i",j);
         if (j >= 65 && j <= 90)
         {
             j -= 65;

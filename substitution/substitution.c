@@ -24,7 +24,9 @@ int validity(string key)
     for (int i = 0; i < length; i++)
     {
         if ((key[i] >= 65 && key[i] <= 90) || (key[i] >= 97 && key[i] <= 122))
-        j++;
+        {
+            j++;
+        }
     }
 
     if (length == 26 && j == length)

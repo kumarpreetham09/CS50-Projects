@@ -17,14 +17,19 @@ int main(int argc, string argv[])
         {
             string plain_text = get_string("plaintext:  ");
             encrypt(plain_text, key);
+            return 0;
         }
-        return 0;
+        
+        else
+        {
+            return 1;
+        }
     }
 
     else
     {
         printf("Usage: ./substitution key\n");
-        return validity();
+        return 1;
     }
 }
 

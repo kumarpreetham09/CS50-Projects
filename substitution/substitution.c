@@ -12,7 +12,7 @@ int main(int argc, string argv[])
 
     if (validity(key, length) == 0)
     {
-        string plain_text = get_string("plaintext: ");
+        string plain_text = get_string("plaintext:  ");
         encrypt(plain_text, key);
     }
 
@@ -27,6 +27,7 @@ void encrypt(string text, string key)
     int i;
     char k;
     int text_length = strlen(text);
+    printf("ciphertext: ");
     for (i = 0; i < text_length; i++)
     {
         int j = text[i];

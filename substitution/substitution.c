@@ -7,7 +7,7 @@ void encrypt();
 
 int main(int argc, string argv[])
 {
-    if (argv[1])
+    if (sizeof(argv) == 2)
     {
         string key = argv[1];
         int length = strlen(key);
@@ -21,7 +21,7 @@ int main(int argc, string argv[])
 
     else
     {
-        print()
+        print("Usage: ./substitution key");
     }
 }
 

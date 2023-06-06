@@ -1,24 +1,41 @@
 #include <cs50.h>
 #include <stdio.h>
+#include <string.h>
 
-bool validity();
+int validity();
 
 int main(int argc, string argv[])
 {
     string key = argv[1];
-    if validity(key);
+
+    if (validity(key) == 0)
+    {
+        printf("Success\n");
+    }
 
 
 }
 
 
-bool validity(string key)
+int validity(string key)
 {
-    int length = strlen(key)
-    for (i = 0, i < length, i++)
+    int j = 0;
+    int length = strlen(key);
+    for (int i = 0; i < length; i++)
     {
-        if (key[i] >= 65 && key[i] <= 90) || (key[i] >= 97 && key[i] <= 122)
+        if ((key[i] >= 65 && key[i] <= 90) || (key[i] >= 97 && key[i] <= 122))
+        j++;
     }
-    if (length == 26)
+
+    if (length == 26 && j == length)
+    {
+        return 0;
+    }
+
+    else
+    {
+        printf("Key Error\n");
+        return 1;
+    }
 
 }

@@ -40,13 +40,13 @@ void encrypt(string text, string key)
         if (isupper(j))
         {
             j -= 65;
-            k = key[j];
+            k = toupper(key[j]);
         }
 
         else if (islower(j))
         {
             j -= 97;
-            k = key[j];
+            k = tolower(key[j]);
         }
 
         else
@@ -59,12 +59,6 @@ void encrypt(string text, string key)
 }
 
 
-
-
-void across_texts(char k)
-{
-    if 
-}
 
 
 

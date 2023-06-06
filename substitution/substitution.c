@@ -7,17 +7,22 @@ void encrypt();
 
 int main(int argc, string argv[])
 {
-    string key = argv[1];
-    int length = strlen(key);
-
-    if (validity(key, length) == 0)
+    if (argv[1])
     {
-        string plain_text = get_string("plaintext:  ");
-        encrypt(plain_text, key);
+        string key = argv[1];
+        int length = strlen(key);
+
+        if (validity(key, length) == 0)
+        {
+            string plain_text = get_string("plaintext:  ");
+            encrypt(plain_text, key);
+        }
     }
 
-
-
+    else
+    {
+        print()
+    }
 }
 
 

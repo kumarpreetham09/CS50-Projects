@@ -39,14 +39,14 @@ int validity(string key)
 
     }
 
-    if (length == 26 && j == length == n)
+    if (length == 26 && j == length && n == length)
     {
         return 0;
     }
 
     else
     {
-        printf("%i",n);
+        printf("%i %i %i\n", j, length, n);
         printf("Key Error\n");
         return 1;
     }

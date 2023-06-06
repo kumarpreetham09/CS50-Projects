@@ -37,13 +37,13 @@ void encrypt(string text, string key)
     for (i = 0; i < text_length; i++)
     {
         int j = text[i];
-        if (islower(j))
+        if (isupper(j))
         {
             j -= 65;
             k = key[j];
         }
 
-        else if (isupper(j))
+        else if (islower(j))
         {
             j -= 97;
             k = key[j];
@@ -61,7 +61,10 @@ void encrypt(string text, string key)
 
 
 
+void across_texts(char k)
+{
 
+}
 
 
 

@@ -17,6 +17,19 @@ int main(int argc, string argv[])
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 int validity(string key)
 {
     int j = 0;
@@ -26,15 +39,15 @@ int validity(string key)
     {
         if ((key[i] >= 65 && key[i] <= 90) || (key[i] >= 97 && key[i] <= 122))
         {
-            if (key[i] == key[k])
-            {
-                n++;
-            }j++;
+            j++;
         }
 
         for (int k = 0; k < length; k++)
         {
-
+            if (key[i] == key[k])
+            {
+                n++;
+            }
         }
 
     }
@@ -46,7 +59,6 @@ int validity(string key)
 
     else
     {
-        printf("%i %i %i\n", j, length, n);
         printf("Key Error\n");
         return 1;
     }

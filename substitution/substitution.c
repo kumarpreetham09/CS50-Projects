@@ -1,6 +1,7 @@
 #include <cs50.h>
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 int validity();
 void encrypt();
@@ -35,7 +36,7 @@ void encrypt(string text, string key)
     printf("ciphertext: ");
     for (i = 0; i < text_length; i++)
     {
-        char j = text[i];
+        int j = text[i];
         if (islower(j))
         {
             j -= 65;

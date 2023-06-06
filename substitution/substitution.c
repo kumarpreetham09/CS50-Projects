@@ -35,14 +35,14 @@ void encrypt(string text, string key)
     printf("ciphertext: ");
     for (i = 0; i < text_length; i++)
     {
-        int j = text[i];
-        if (j >= 65 && j <= 90)
+        char j = text[i];
+        if (islower(j))
         {
             j -= 65;
             k = key[j];
         }
 
-        else if (j >= 97 && j <= 122)
+        else if (isupper(j))
         {
             j -= 97;
             k = key[j];

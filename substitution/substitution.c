@@ -7,7 +7,7 @@ void encrypt();
 
 int main(int argc, string argv[])
 {
-    if (sizeof(argv[1]))
+    if (argc == 2)
     {
         string key = argv[1];
         int length = strlen(key);
@@ -21,7 +21,7 @@ int main(int argc, string argv[])
 
     else
     {
-        printf("Usage: ./substitution key");
+        printf("Usage: ./substitution key\n");
     }
 }
 
@@ -46,6 +46,12 @@ void encrypt(string text, string key)
         {
             j -= 97;
             k = key[j];
+        }
+
+        else
+        {
+            k = text[i];
+            printf("%c\n",k);
         }
         printf("%c", k);
     }

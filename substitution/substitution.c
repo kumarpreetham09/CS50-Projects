@@ -27,6 +27,12 @@ int validity(string key)
         {
             j++;
         }
+
+        for (int k = 0; k < length; k++)
+        {
+            if (key[i] == key[k])
+        }
+
     }
 
     if (length == 26 && j == length)

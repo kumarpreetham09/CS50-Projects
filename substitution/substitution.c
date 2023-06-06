@@ -24,7 +24,7 @@ int main(int argc, string argv[])
     else
     {
         printf("Usage: ./substitution key\n");
-        return 1;
+        return validity();
     }
 }
 
@@ -74,7 +74,7 @@ int validity(string key, int length)
     int n = 0;
     for (int i = 0; i < length; i++)
     {
-        if ((key[i] >= 65 && key[i] <= 90) || (key[i] >= 97 && key[i] <= 122))
+        if (isupper(key[i]) || islower(key[i]))
         {
             j++;
         }

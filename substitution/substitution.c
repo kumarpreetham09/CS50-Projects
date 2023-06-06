@@ -3,22 +3,32 @@
 #include <string.h>
 
 int validity();
+void encrypt();
 
 int main(int argc, string argv[])
 {
     string key = argv[1];
+    int length = strlen(key)
 
-    if (validity(key) == 0)
+    if (validity(key, length) == 0)
     {
-        printf("Success\n");
-    }
-
-    else
-    {
-        return 1;
+        string plain_text = get_string("plaintext: ")
+        encrypt(plain_text, key, length)
     }
 
 
+
+}
+
+
+
+void encrypt(string text, string key, int length)
+{
+    int i;
+    for (i = 0; i < length; i++)
+    {
+        index = text[i] - 65
+    }
 }
 
 
@@ -32,14 +42,10 @@ int main(int argc, string argv[])
 
 
 
-
-
-
-int validity(string key)
+int validity(string key, int length)
 {
     int j = 0;
     int n = 0;
-    int length = strlen(key);
     for (int i = 0; i < length; i++)
     {
         if ((key[i] >= 65 && key[i] <= 90) || (key[i] >= 97 && key[i] <= 122))
@@ -65,6 +71,7 @@ int validity(string key)
     else
     {
         printf("Key Error\n");
+        return 1;
     }
 
 }

@@ -51,7 +51,6 @@ void encrypt(string text, string key)
         else
         {
             k = text[i];
-            printf("%c\n",k);
         }
         printf("%c", k);
     }

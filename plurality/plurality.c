@@ -103,10 +103,19 @@ void print_winner(void)
 
         else if (candidates[i].votes == candidates[j].votes)
         {
-            k = i
+            k = i;
         }
     }
 
-    printf("%s\n", candidates[j].name);
+    if (candidates[k].votes == candidates[j].votes)
+    {
+          printf("%s\n%s\n", candidates[j].name, candidates[k].name);
+    }
+    else
+    {
+        printf("%s\n", candidates[j].name);
+    }
+
+
     return;
 }

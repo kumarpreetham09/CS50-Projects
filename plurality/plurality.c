@@ -78,6 +78,7 @@ bool vote(string name)
             return true;
         }
     }
+    voter_count++;
     return false;
 }
 

@@ -1,6 +1,6 @@
 sort1 uses: bubble sort
 
-How do you know?: TODO
+How do you know?: It takes the longest to complete for all unsorted
 
 sort2 uses: selection sort
 

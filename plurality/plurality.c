@@ -71,18 +71,19 @@ bool vote(string name)
     {
 
         printf("test: %s %i\n", candidates[j].name, candidates[j].votes);
-        printf("name  = %s\n",name);
+        printf("name = %s\n",name);
         printf("candidates[j].name = %s\n",candidates[j].name);
 
-        if (name == candidates[j].name)
+        if strcmp(name, candidates[j].name)
         {
+            printf("vote added");
             candidates[j].votes++;
             printf("vote added");
 
-            return false;
+            return true;
         }
     }
-    return true;
+    return false;
 }
 
 // Print the winner (or winners) of the election

@@ -69,12 +69,15 @@ bool vote(string name)
     // TODO
     for (int j = 0; j < candidate_count; j++)
     {
-        printf("test: %i\n", candidates[j].votes);
-        printf("test: %s\n", candidates[j].name);
+
+        printf("test: %s %i\n", candidates[j].name, candidates[j].votes);
+        printf("name  = %s\n",name);
+        printf("candidates[j].name = %s\n",candidates[j].name);
 
         if (name == candidates[j].name)
         {
             candidates[j].votes++;
+            printf("vote added");
 
             return false;
         }

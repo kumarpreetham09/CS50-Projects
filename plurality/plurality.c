@@ -93,7 +93,6 @@ void print_winner(void)
 {
     int j = 0;
     int k;
-    int m;
     // TODO
     for (int i = 0; i < candidate_count; i++)
     {

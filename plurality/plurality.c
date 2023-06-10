@@ -72,6 +72,7 @@ bool vote(string name)
         if (name == candidates[j].name)
         {
             candidates[j].votes++;
+            printf("test: %i\n", candidates[j].votes);
             return false;
         }
     }

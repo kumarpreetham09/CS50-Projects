@@ -85,7 +85,7 @@ void print_winner(void)
 {
     string winner;
     // TODO
-    for (int n = 0; n < candidate_count - 1; n++)
+    for (int n = 0; n < candidate_count; n++)
     {
         if (candidates[n].votes > candidates[n+1].votes)
         {

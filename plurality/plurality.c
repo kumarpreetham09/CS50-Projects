@@ -46,8 +46,6 @@ int main(int argc, string argv[])
     }
 
     int voter_count = get_int("Number of voters: ");
-    printf("%s ",candidates[0].name);
-    printf("%s\n",candidates[1].name);
     // Loop over all voters
     for (int i = 0; i < voter_count; i++)
     {
@@ -70,18 +68,10 @@ bool vote(string name)
     // TODO
     for (int j = 0; j < candidate_count; j++)
     {
-        printf("name = %s\n", name);
-        printf("candidates[j].name = %s\n", candidates[j].name);
 
         if (!strcmp(name, candidates[j].name))
         {
             candidates[j].votes++;
-            for (int m = 0; m < candidate_count; m++)
-            {
-                printf("test: %s %i\n", candidates[m].name, candidates[m].votes);
-            }
-            printf("\n");
-
             return true;
         }
     }
@@ -109,7 +99,15 @@ void print_winner(void)
 
     if ((candidates[k].votes == candidates[j].votes) && (strcmp(candidates[k].name, candidates[j].name)))
     {
-          printf("%s\n%s\n", candidates[j].name, candidates[k].name);
+        if ((candidates[0].votes == candidates[1].votes) && (candidates[0].votes == candidates[2].votes))
+        {
+            printf("%s\n%s\n%s\n", candidates[0].name, candidates[1].name, candidates[2].name);
+        }
+        else
+        {
+            printf("%s\n%s\n", candidates[j].name, candidates[k].name);
+        }
+
     }
     else
     {

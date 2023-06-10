@@ -74,7 +74,7 @@ bool vote(string name)
 
         if (strcmp(name, candidates[j].name))
         {
-            candidates[j + 1].votes++;
+            candidates[j].votes++;
             for (int m = 0; m < candidate_count; m++)
             {
                 printf("test: %s %i\n", candidates[m].name, candidates[m].votes);

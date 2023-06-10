@@ -106,6 +106,7 @@ void print_winner(void)
         else
         {
             printf("%s\n%s", candidates[n].name, candidates[n+1].name);
+            return;
         }
     }
     printf("%s\n", winner);

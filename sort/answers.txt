@@ -1,0 +1,40 @@
+sort1 uses: bubble sort
+
+How do you know?: TODO
+
+sort2 uses: selection sort
+
+How do you know?: TODO
+
+sort3 uses: merge sort
+
+How do you know?: TODO
+
+
+random5000.txt
+sort1 - 0.101
+sort2 - 0.061
+sort3 - 0.047
+
+
+random50000.txt
+sort1 - 7.382
+sort2 - 0.522
+sort3 - 3.023
+
+
+reversed5000.txt
+sort1 - 0.157
+sort2 - 0.027
+sort3 - 0.063
+
+reversed50000.txt
+sort1 - 5.56
+sort2 - 0.442
+sort3 - 3.121
+
+
+sorted50000.txt
+sort1 - 0.473
+sort2 - 0.417
+sort3 - 3.254

@@ -107,7 +107,7 @@ void print_winner(void)
         }
     }
 
-    if (candidates[k].votes == candidates[j].votes)
+    if ((candidates[k].votes == candidates[j].votes) && (strcmp(candidates[k].name, candidates[j].name)))
     {
           printf("%s\n%s\n", candidates[j].name, candidates[k].name);
     }

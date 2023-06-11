@@ -145,12 +145,11 @@ bool vote(int voter, int rank, string name)
 void tabulate(void)
 {
     // TODO
-    int buffer;
     for(int i = 0; i < voter_count; i++)
     {
         for (int j = 0; j<candidate_count; j++)
         {
-            buffer = preferences[i][j];
+            int buffer = preferences[i][j];
             if(!candidates[buffer].eliminated)
             {
                 candidates[buffer].votes++;
@@ -164,6 +163,16 @@ void tabulate(void)
 bool print_winner(void)
 {
     // TODO
+    int i = voter_count/2;
+    for (int k = 0, k < voter_count; j++)
+    {
+        if (candidate[k].votes >= i)
+        {
+            printf("%s",candidate[k].name);
+            return true;
+        }
+    }
+
     return false;
 }
 

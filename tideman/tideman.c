@@ -78,7 +78,7 @@ int main(int argc, string argv[])
         {
             string name = get_string("Rank %i: ", j + 1);
 
-            if (!vote(j, name, ranks, i))
+            if (!vote(j, name, ranks,))
             {
                 printf("Invalid vote.\n");
                 return 3;
@@ -98,7 +98,7 @@ int main(int argc, string argv[])
 }
 
 // Update ranks given a new vote
-bool vote(int rank, string name, int ranks[], int k)
+bool vote(int rank, string name, int ranks[])
 {
     // TODO
     for(int i = 0; i < candidate_count; i++)

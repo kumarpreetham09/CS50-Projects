@@ -181,14 +181,16 @@ bool print_winner(void)
 int find_min(void)
 {
     // TODO
+    int minimum = MAX_VOTERS;
     for (int i = 0; i < candidate_count; i++)
     {
-        if(candidates[i].votes < MAX_VOTERS && !candidates[i].eliminated)
+        if(candidates[i].votes < minimum && !candidates[i].eliminated)
         {
+            minimum = candidates[i].votes;
             printf("%s\n", candidates[i].name);
         }
     }
-    return 0;
+    return ;
 }
 
 // Return true if the election is tied between all candidates, false otherwise

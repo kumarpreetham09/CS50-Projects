@@ -164,11 +164,11 @@ bool print_winner(void)
 {
     // TODO
     int i = voter_count/2;
-    for (int k = 0, k < voter_count; j++)
+    for (int j = 0; j < voter_count; j++)
     {
-        if (candidate[k].votes >= i)
+        if (candidates[j].votes >= i)
         {
-            printf("%s",candidate[k].name);
+            printf("%s",candidates[j].name);
             return true;
         }
     }

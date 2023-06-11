@@ -66,12 +66,12 @@ int main(int argc, string argv[])
 
     pair_count = 0;
     int voter_count = get_int("Number of voters: ");
-  int ranks[candidate_count];
+
     // Query for votes
     for (int i = 0; i < voter_count; i++)
     {
         // ranks[i] is voter's ith preference
-
+        int ranks[candidate_count];
 
         // Query for each rank
         for (int j = 0; j < candidate_count; j++)
@@ -89,7 +89,6 @@ int main(int argc, string argv[])
 
         printf("\n");
     }
-
 
     add_pairs();
     sort_pairs();
@@ -118,6 +117,11 @@ bool vote(int rank, string name, int ranks[])
 void record_preferences(int ranks[])
 {
     // TODO
+    for (int i = 0; i < candidate_count; i++)
+    {
+        printf("%i",ranks[i]);
+    }
+
     return;
 }
 

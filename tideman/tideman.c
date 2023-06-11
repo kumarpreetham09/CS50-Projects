@@ -78,7 +78,7 @@ int main(int argc, string argv[])
         {
             string name = get_string("Rank %i: ", j + 1);
 
-            if (!vote(j, name, ranks,))
+            if (!vote(j, name, ranks))
             {
                 printf("Invalid vote.\n");
                 return 3;
@@ -105,7 +105,7 @@ bool vote(int rank, string name, int ranks[])
     {
         if (!strcmp(name, candidates[i]))
         {
-            ranks[k] = rank;
+            ranks[rank] = rank;
             return true;
         }
     }

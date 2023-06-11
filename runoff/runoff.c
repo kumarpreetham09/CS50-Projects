@@ -190,7 +190,7 @@ int find_min(void)
             printf("%s\n", candidates[i].name);
         }
     }
-    return ;
+    return minimum;
 }
 
 // Return true if the election is tied between all candidates, false otherwise

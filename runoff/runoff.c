@@ -132,10 +132,14 @@ bool vote(int voter, int rank, string name)
     for(int i = 0; i< candidate_count; i++)
     {
 
-
     if (!strcmp(name,candidates[i].name))
     {
-        preferences[]
+        for (int j = 0; j < candidate_count; j++)
+        {
+            preferences[i][j]++;
+            
+        }
+        return true;
     }
     return false;
     }

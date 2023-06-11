@@ -136,7 +136,7 @@ bool vote(int voter, int rank, string name)
     {
         for (int j = 0; j < candidate_count; j++)
         {
-            preferences[i][j]++;
+            preferences[voter][rank]++;
 
         }
         return true;

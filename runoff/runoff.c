@@ -137,12 +137,12 @@ bool vote(int voter, int rank, string name)
         for (int j = 0; j < candidate_count; j++)
         {
             preferences[i][j]++;
-            
+
         }
         return true;
     }
-    return false;
-    }
+
+    }return false;
 }
 
 // Tabulate votes for non-eliminated candidates

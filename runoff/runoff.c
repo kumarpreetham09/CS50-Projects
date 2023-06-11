@@ -169,7 +169,7 @@ bool print_winner(void)
     {
         if (candidates[j].votes > i)
         {
-            printf("%s",candidates[j].name);
+            printf("%s\n",candidates[j].name);
             return true;
         }
     }
@@ -181,6 +181,13 @@ bool print_winner(void)
 int find_min(void)
 {
     // TODO
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if(candidates[i].votes < MAX_VOTERS && !candidates[i].eliminated)
+        {
+            printf("%s\n", candidates[i].name);
+        }
+    }
     return 0;
 }
 

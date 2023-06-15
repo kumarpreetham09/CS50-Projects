@@ -41,10 +41,17 @@ int main(int argc, char *argv[])
             fwrite(header, 1, HEADER_SIZE, output);
     }
 
-    int16_t buffer;
+// TODO: Read samples from input file and write updated data to output file
+
+    int16_t buffer[HEADER_SIZE];
+
+    while (fread(&buffer, 1, HEADER_SIZE, input))
+    {
+        fwrite(&buffer, factor, HEADER_SIZE, output);
+    }
 
 
-    // TODO: Read samples from input file and write updated data to output file
+
 
     // Close files
     fclose(input);

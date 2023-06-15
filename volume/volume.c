@@ -38,10 +38,9 @@ int main(int argc, char *argv[])
     fread(header, 1, HEADER_SIZE, input);
     for (int i = 0; i < HEADER_SIZE; i++)
     {
-            printf("%i\n",header[i]);
+            fwrite(header, 1, HEADER_SIZE, output);
     }
 
-    printf("\n");
     int16_t buffer;
 
 

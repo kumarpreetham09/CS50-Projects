@@ -1,5 +1,6 @@
 #include "helpers.h"
 
+
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
 {
@@ -34,8 +35,10 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 
         }
     }
+
     k/=height;
-    printf("%i",k);
+
+    printf("%i\n",k);
     return;
 }
 

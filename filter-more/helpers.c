@@ -26,15 +26,14 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < width; j++)
         {
-            int *red_[i][j] = malloc(sizeof(int));
-            *red_[i][j] = image[i][j].rgbtRed;
+            int *red[i][j] = malloc(sizeof(int));
+            *red[i][j] = image[i][j].rgbtRed;
 
-            int *green_[i][j] = malloc(sizeof(int));
-            *green_[i][j] = image[i][j].rgbtGreen;
+            int *green[i][j] = malloc(sizeof(int));
+            *green[i][j] = image[i][j].rgbtGreen;
 
-            int *blue_[i][j] = malloc(sizeof(int));
-            *blue_[i][j] = image[i][j].rgbtBlue;
-
+            int *blue[i][j] = malloc(sizeof(int));
+            *blue[i][j] = image[i][j].rgbtBlue;
         }
     }
 

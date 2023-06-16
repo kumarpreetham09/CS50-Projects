@@ -67,11 +67,13 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     else if (!(j == 0 || j == width) && (i == 0 || i == height))
                     {
                         k++;
+                        continue;
                     }
 
                     else if ((j == 0 || j == width) && !(i == 0 || i == height))
                     {
                         m++;
+                        continue;
                     }
 
                     red += image[i + k][j + m].rgbtRed;

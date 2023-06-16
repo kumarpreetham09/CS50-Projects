@@ -57,6 +57,10 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 
             for (int k = -1; k < 2; k++)
             {
+                if (i == 0)
+                {
+                    
+                }
                 for (int m = -1; m < 2; m++)
                 {
                     red += image[i + k][j + m].rgbtRed;

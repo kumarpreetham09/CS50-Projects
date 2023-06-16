@@ -46,7 +46,18 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
     RGBTRIPLE buffer[height][width];
-    
+
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            buffer[i][j] = image[i][j]
+        }
+
+    }
+
+
+
             float counter = 0;
             float red = 0, green = 0, blue = 0;
     for (int i = 0; i < height; i++)

@@ -55,9 +55,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 
             for (int k = -1; k < 2; k++)
             {
-
                 for (int m = -1; m < 2; m++)
                 {
+                    if ()
 
                     total += buffer[i + k][j + m]
                 }

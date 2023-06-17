@@ -143,7 +143,6 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
     //for every pixel, multiply surrounding wrt to Gx matrix
 
-    float counter = 0;
     int redx = 0;
     int redy = 0;
     int greenx = 0;

@@ -144,7 +144,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     //for every pixel, multiply surrounding wrt to Gx matrix
 
     float counter = 0;
-    float red = 0, green = 0, blue = 0;
+    float redx = 0;
 
     for (int i = 0; i < height; i++)
     {
@@ -154,7 +154,15 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             {
                 for (int col = j - 1; col <= j + 1; col++)
                 {
-                     buffer[row][col].rgbtRed * Gx[][]
+                    for (int n = 0; n < 3; n++)
+                    {
+                        for (int m = 0; m < 3; m++)
+                        {
+                             buffer[row][col].rgbtRed * Gx[n][m]
+                        }
+
+                    }
+
 
                 }
             }

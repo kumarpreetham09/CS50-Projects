@@ -163,7 +163,8 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
                 }
             }
-            int Gxred = sqrt((redx) * (redx) + (redy))
+            int Gred = sqrt(((redx) * (redx)) + ((redy) * (redy)));
+            image[i][j].rgbtRed = Gred;
         }
     }
     //for every pixel, multiply surrounding wrt to Gy matrix

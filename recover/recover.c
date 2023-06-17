@@ -19,6 +19,13 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    FILE *output = fopen(argv[1], "w");
+    if (output == NULL)
+    {
+        printf("Could not open file.\n");
+        return 1;
+    }
+
     typedef uint8_t BYTE;
     uint8_t buffer[BLOCK_SIZE];
     int counter = 0;

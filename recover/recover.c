@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-
+    typedef uint8_t BYTE;
     uint8_t buffer[BLOCK_SIZE];
     int counter = 0;
 
@@ -27,7 +27,6 @@ int main(int argc, char *argv[])
     {
         if ((buffer[0] == 0xff) && (buffer[1] == 0xd8) && (buffer[2] == 0xff) && ((buffer[3] & 0xf0) == 0xe0) )
         {
-            uint8_t x='\0';
             char output[8];
             sprintf(output, "%03i.jpg", counter);
             FILE *img = fopen(output, "w");
@@ -36,7 +35,7 @@ int main(int argc, char *argv[])
         }
 
     }
-    
+
 printf("%i\n",counter);
 fclose(file);
 }

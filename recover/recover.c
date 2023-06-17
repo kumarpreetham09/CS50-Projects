@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
     }
 
     typedef uint8_t BYTE;
+    size_t bytes_read;
     uint8_t buffer[BLOCK_SIZE];
     int counter = 0;
 
@@ -31,7 +32,7 @@ int main(int argc, char *argv[])
             char output[8];
             sprintf(output, "%03i.jpg", counter);
             FILE *img = fopen(output, "w");
-            fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, img);
+            fwrite(buffer, sizeof(BYTE), bytes_read, img);
             counter++;
             fclose(img);
 

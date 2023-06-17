@@ -32,6 +32,7 @@ int main(int argc, char *argv[])
             FILE *img = fopen(output, "w");
             fwrite(buffer, BYTE, BLOCK_SIZE, img);
             counter++;
+            fclose(img)
         }
 
     }

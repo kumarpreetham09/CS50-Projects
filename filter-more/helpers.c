@@ -143,13 +143,9 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
     //for every pixel, multiply surrounding wrt to Gx matrix
 
-    int redx = 0;
-    int redy = 0;
-    int greenx = 0;
-    int greeny = 0;
-    int bluex = 0;
-    int bluey = 0;
-
+    int redx, redy, greenx, greeny, bluex, bluey;
+    redx = redy = greenx = greeny = bluex = bluey = 0;
+    
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
@@ -170,7 +166,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
                 }
             }
-            float Gred = sqrt(((redx) * (redx)) + ((redy) * (redy)));
+            int Gred = round(sqrt(((redx) * (redx)) + ((redy) * (redy))));
             if (Gred > 255)
             {
                 Gred = 255;
@@ -179,7 +175,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                 image[i][j].rgbtRed = Gred;
 
 
-            float Ggreen = sqrt(((greenx) * (greenx)) + ((greeny) * (greeny)));
+            int Ggreen = round(sqrt(((greenx) * (greenx)) + ((greeny) * (greeny))));
             if (Ggreen > 255)
             {
                 Ggreen = 255;
@@ -188,7 +184,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                 image[i][j].rgbtGreen = Ggreen;
 
 
-            float Gblue = sqrt(((bluex) * (bluex)) + ((bluey) * (bluey)));
+            int Gblue = round(sqrt(((bluex) * (bluex)) + ((bluey) * (bluey))));
             if (Gblue > 255)
             {
                 Gblue = 255;

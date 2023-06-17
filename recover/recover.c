@@ -22,17 +22,22 @@ int main(int argc, char *argv[])
     typedef uint8_t BYTE;
     uint8_t buffer[BLOCK_SIZE];
     int counter = 0;
+    bool writing = true;
 
     while (fread(buffer, 1, BLOCK_SIZE, file) == BLOCK_SIZE)
     {
         if ((buffer[0] == 0xff) && (buffer[1] == 0xd8) && (buffer[2] == 0xff) && ((buffer[3] & 0xf0) == 0xe0) )
         {
+            if writing;
+            {
             char output[8];
             sprintf(output, "%03i.jpg", counter);
             FILE *img = fopen(output, "w");
             fwrite(buffer, BYTE, BLOCK_SIZE, img);
             counter++;
             fclose(img)
+            }
+
         }
 
     }

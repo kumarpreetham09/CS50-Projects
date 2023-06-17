@@ -13,7 +13,8 @@ int main(int argc, char *argv[])
 
     FILE *file = fopen(argv[1], "r");
 
-    int buffer;
+    uint8_t header[BLOCK_SIZE];
+
     while (fread(header, 1, BLOCK_SIZE, file) == BLOCK_SIZE)
     {
         printf("%i\n",buffer);

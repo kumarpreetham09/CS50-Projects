@@ -96,13 +96,35 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
     for (int i = 0; i < 3; i++)
     {
-        for (int j = -1; j < 2; j++)
+        for (int j = 0; j < 3; j++)
         {
             if (i == 1)
             {
-                Gx[i][j] = 2 * j;
+                Gx[i][j] = 2 * (j-1);
             }
-            Gx[i][j] = j;
+            else
+            {
+               Gx[i][j] = j - 1;
+            }
+
+        }
+    }
+
+    //create Gy matrix
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (j == 1)
+            {
+                Gy[j][i] = 2 * (j-1);
+            }
+            else
+            {
+               Gy[j][i] = j-1;
+            }
+
         }
     }
 
@@ -110,14 +132,10 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < 3; j++)
         {
-            printf("%i,",Gx[i][j]);
+            printf("%i,",Gy[i][j]);
         }
         printf("\n");
     }
-
-
-
-    //create Gy matrix
 
     //copy infile
 

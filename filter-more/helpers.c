@@ -62,15 +62,15 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < width; j++)
         {
-            for (int row = i - 1; row <= i + 1; row++)
+            for (int row = 0; row <= 2; row++)
             {
-                for (int col = j - 1; col <= j + 1; col++)
+                for (int col = 0; col <= 2; col++)
                 {
                     if (col < width && row < height && col >= 0 && row >= 0)
                     {
-                        red += buffer[row][col].rgbtRed;
-                        green += buffer[row][col].rgbtGreen;
-                        blue += buffer[row][col].rgbtBlue;
+                        red += buffer[row-1][col-1].rgbtRed;
+                        green += buffer[row-1][col-1].rgbtGreen;
+                        blue += buffer[row-1][col-1].rgbtBlue;
                         counter++;
                     }
                 }
@@ -144,7 +144,6 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     //for every pixel, multiply surrounding wrt to Gx matrix
 
     float counter = 0;
-    int redx = 0;
 
     for (int i = 0; i < height; i++)
     {
@@ -158,7 +157,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                     {
                         for (int m = 0; m < 3; m++)
                         {
-                             redx += buffer[row][col].rgbtRed * Gx[n][m];
+                        continue;
                         }
 
                     }

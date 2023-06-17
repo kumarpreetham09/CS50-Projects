@@ -14,13 +14,20 @@ int main(int argc, char *argv[])
 
     FILE *file = fopen(argv[1], "r");
 
+    typedef uint8_t BYTE;
     uint8_t buffer[BLOCK_SIZE];
     int counter = 0;
 
     while (fread(buffer, 1, BLOCK_SIZE, file) == BLOCK_SIZE)
     {
-        if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && buffer[3] ==)
-        counter++;
+        if ((buffer[0] == 0xff) && (buffer[1] == 0xd8) && (buffer[2] == 0xff) && ((buffer[3] & 0xf0) == 0xe0) )
+        {
+            counter++;
+            sprintf(filename, "%03i.jpg", counter);
+            FILE *img = fopen(filename. "w")
+            fwrite(buffer, BYTE, BLOCK_SIZE, filename);
+        }
+
     }
 printf("%i\n",counter);
 }

@@ -144,7 +144,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     //for every pixel, multiply surrounding wrt to Gx matrix
 
     float counter = 0;
-    long long redx = 0;
+    int redx = 0;
 
     for (int i = 0; i < height; i++)
     {
@@ -159,7 +159,6 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             }
         }
     }
-    printf("%lli\n",redx);
     //for every pixel, multiply surrounding wrt to Gy matrix
 
     //calculate pythagoras and input

@@ -130,7 +130,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
 
     //copy infile
-    
+
     RGBTRIPLE buffer[height][width];
 
     for (int i = 0; i < height; i++)
@@ -142,6 +142,23 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     }
 
     //for every pixel, multiply surrounding wrt to Gx matrix
+
+    float counter = 0;
+    float red = 0, green = 0, blue = 0;
+
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            for (int row = i - 1; row <= i + 1; row++)
+            {
+                for (int col = j - 1; col <= j + 1; col++)
+                {
+
+                }
+            }
+        }
+    }
 
     //for every pixel, multiply surrounding wrt to Gy matrix
 

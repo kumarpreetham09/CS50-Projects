@@ -14,10 +14,10 @@ int main(int argc, char *argv[])
 
     FILE *file = fopen(argv[1], "r");
 
-    uint8_t header[BLOCK_SIZE];
+    uint8_t buffer[BLOCK_SIZE];
     int counter = 0;
 
-    while (fread(header, 1, BLOCK_SIZE, file) == BLOCK_SIZE)
+    while (fread(buffer, 1, BLOCK_SIZE, file) == BLOCK_SIZE)
     {
         if ()
         counter++;

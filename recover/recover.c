@@ -13,9 +13,11 @@ int main(int argc, char *argv[])
 
     FILE *file = fopen(argv[1], "r");
 
+    typedef int16_t buffer;
+
     while (fread(buffer, 1, BLOCK_SIZE, raw_file) == BLOCK_SIZE)
     {
-        printf("test\n")
+        printf("%i\n",buffer);
     }
 
 }

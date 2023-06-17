@@ -170,7 +170,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
                 }
             }
-            int Gred = sqrt(((redx) * (redx)) + ((redy) * (redy)));
+            float Gred = sqrt(((redx) * (redx)) + ((redy) * (redy)));
             if (Gred > 255)
             {
                 Gred = 255;
@@ -179,7 +179,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                 image[i][j].rgbtRed = Gred;
 
 
-            int Ggreen = sqrt(((greenx) * (greenx)) + ((greeny) * (greeny)));
+            float Ggreen = sqrt(((greenx) * (greenx)) + ((greeny) * (greeny)));
             if (Ggreen > 255)
             {
                 Ggreen = 255;
@@ -188,7 +188,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                 image[i][j].rgbtGreen = Ggreen;
 
 
-            int Gblue = sqrt(((bluex) * (bluex)) + ((bluey) * (bluey)));
+            float Gblue = sqrt(((bluex) * (bluex)) + ((bluey) * (bluey)));
             if (Gblue > 255)
             {
                 Gblue = 255;

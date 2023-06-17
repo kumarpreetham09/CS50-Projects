@@ -158,7 +158,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                     {
                         for (int m = 0; m < 3; m++)
                         {
-                             buffer[row][col].rgbtRed * Gx[n][m]
+                             redx += buffer[row][col].rgbtRed * Gx[n][m];
                         }
 
                     }

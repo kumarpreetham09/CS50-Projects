@@ -161,12 +161,12 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                 {
                     if (col < width && row < height && col >= 0 && row >= 0)
                     {
-                        redx += buffer[row][col].rgbtRed * Gx[][];
-                        redy += buffer[row][col].rgbtRed * Gy[][];
-                        greenx += buffer[row][col].rgbtGreen * Gx[][];
-                        greeny += buffer[row][col].rgbtGreen * Gy[][];
-                        bluex += buffer[row][col].rgbtBlue * Gx[row + 1][];
-                        bluey += buffer[row][col].rgbtBlue * Gy[][];
+                        redx += buffer[row][col].rgbtRed * Gx[row - i + 1][col - j + 1];
+                        redy += buffer[row][col].rgbtRed * Gy[row - i + 1][col - j + 1];
+                        greenx += buffer[row][col].rgbtGreen * Gx[row - i + 1][col - j + 1];
+                        greeny += buffer[row][col].rgbtGreen * Gy[row - i + 1][col - j + 1];
+                        bluex += buffer[row][col].rgbtBlue * Gx[row - i + 1][col - j + 1];
+                        bluey += buffer[row][col].rgbtBlue * Gy[row - i + 1][col - j + 1];
                     }
 
                 }
@@ -203,6 +203,16 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             {
                 image[i][j].rgbtBlue = Gblue;
             }
+
+            redx = 0;
+            redy = 0;
+            greenx = 0;
+            greeny = 0;
+            bluex = 0;
+            bluey = 0;
+            Gred = 0;
+            Ggreen = 0;
+            Gblue = 0;
 
 
         }

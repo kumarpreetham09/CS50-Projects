@@ -110,8 +110,9 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < 3; j++)
         {
-            printf("%i",Gx[i][j]);
+            printf("%i,",Gx[i][j]);
         }
+        printf("\n");
     }
 
 

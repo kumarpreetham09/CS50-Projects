@@ -13,6 +13,11 @@ int main(int argc, char *argv[])
     }
 
     FILE *file = fopen(argv[1], "r");
+    if (file == NULL)
+    {
+        printf("Could not open file.\n");
+        return 1;
+    }
 
     typedef uint8_t BYTE;
     uint8_t buffer[BLOCK_SIZE];
@@ -23,12 +28,13 @@ int main(int argc, char *argv[])
         if ((buffer[0] == 0xff) && (buffer[1] == 0xd8) && (buffer[2] == 0xff) && ((buffer[3] & 0xf0) == 0xe0) )
         {
 
-            sprintf(file, "%03i.jpg", counter);
+            sprintf(output, "%03i.jpg", counter);
             FILE *img = fopen(filename. "w")
-            fwrite(buffer, BYTE, BLOCK_SIZE, file);
+            fwrite(buffer, BYTE, BLOCK_SIZE, output);
             counter++;
         }
 
     }
 printf("%i\n",counter);
+fclose(file);
 }

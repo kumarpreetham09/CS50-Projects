@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
         printf("Could not open file.\n");
         return 1;
     }
-
+printf("%s\n",output);
     float factor = atof(argv[3]);
 
     // TODO: Copy header from input file to output file

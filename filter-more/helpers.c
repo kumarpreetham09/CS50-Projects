@@ -91,14 +91,30 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
     //create Gx matrix
-    
+    int Gx[3][3];
+    int Gy[3][3];
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = -1; j < 2; j++)
+        {
+            if (i == 1)
+            {
+                Gx[i][j] = 2 * j;
+            }
+            Gx[i][j] = j;
+        }
+    }
+
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
         {
-
+            printf("%i",Gx[i][j]);
         }
     }
+
+
 
     //create Gy matrix
 

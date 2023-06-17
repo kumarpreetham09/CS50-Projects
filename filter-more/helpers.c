@@ -154,6 +154,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             {
                 for (int col = j - 1; col <= j + 1; col++)
                 {
+                     buffer[row][col].rgbtRed * Gx[][]
 
                 }
             }

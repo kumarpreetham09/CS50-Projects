@@ -90,5 +90,24 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 // Detect edges
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
+    //create Gx matrix
+    
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+
+        }
+    }
+
+    //create Gy matrix
+
+    //copy infile
+
+    //for every pixel, multiply surrounding wrt to Gx matrix
+
+    //for every pixel, multiply surrounding wrt to Gy matrix
+
+    //calculate pythagoras and input
     return;
 }

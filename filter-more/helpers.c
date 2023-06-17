@@ -116,7 +116,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < 3; j++)
         {
-            if (j == 1)
+            if (i == 1)
             {
                 Gy[j][i] = 2 * (j-1);
             }
@@ -128,16 +128,18 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
         }
     }
 
-    for (int i = 0; i < 3; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            printf("%i,",Gy[i][j]);
-        }
-        printf("\n");
-    }
 
     //copy infile
+    
+    RGBTRIPLE buffer[height][width];
+
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            buffer[i][j] = image[i][j];
+        }
+    }
 
     //for every pixel, multiply surrounding wrt to Gx matrix
 

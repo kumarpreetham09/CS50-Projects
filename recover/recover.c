@@ -27,11 +27,11 @@ int main(int argc, char *argv[])
     {
         if ((buffer[0] == 0xff) && (buffer[1] == 0xd8) && (buffer[2] == 0xff) && ((buffer[3] & 0xf0) == 0xe0) )
         {
-            typedef uint8_t BYTE;
+            uint8_t x='\0';
             char output[8];
             sprintf(output, "%03i.jpg", counter);
             FILE *img = fopen(output, "w");
-            fwrite(buffer, byte, BLOCK_SIZE, img);
+            fwrite(buffer, x, BLOCK_SIZE, img);
             counter++;
         }
 

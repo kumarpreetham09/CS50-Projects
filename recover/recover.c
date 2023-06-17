@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 {
     if (argc != 2)
     {
-        printf("Usage: ./recover.c IMAGE\n");
+        printf("Usage: ./recover IMAGE\n");
         return 1;
     }
 
@@ -15,8 +15,7 @@ int main(int argc, char *argv[])
 
     while (fread(buffer, 1, BLOCK_SIZE, raw_file) == BLOCK_SIZE)
     {
-        
-
+        printf("test\n")
     }
 
 }

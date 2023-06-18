@@ -44,7 +44,6 @@ int main(int argc, char *argv[])
             else
             {
                 fclose(img);
-                found_img = false;
             }
 
             sprintf(output, "%03i.jpg", counter);

@@ -44,11 +44,12 @@ int main(int argc, char *argv[])
             else
             {
                 fclose(img);
-                sprintf(output, "%03i.jpg", counter);
-                img = fopen(output, "w");
-                fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, img);
-                counter++;
             }
+            
+            sprintf(output, "%03i.jpg", counter);
+            img = fopen(output, "w");
+            fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, img);
+            counter++;
         }
     }
 

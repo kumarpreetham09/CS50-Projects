@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <stdbool.h>
 
 const int BLOCK_SIZE = 512;
 
@@ -25,6 +26,7 @@ int main(int argc, char *argv[])
     int counter = 0;
     bool first_img = false;
     FILE *img;
+    char output[10];
 
     while (fread(buffer, sizeof(BYTE), BLOCK_SIZE, file) == BLOCK_SIZE)
     {
@@ -33,7 +35,6 @@ int main(int argc, char *argv[])
             if (counter == 0)
             {
                 first_img = true;
-                char output[8];
                 sprintf(output, "%03i.jpg", counter);
                 img = fopen(output, "w");
                 fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, img);
@@ -42,8 +43,7 @@ int main(int argc, char *argv[])
 
             else
             {
-                fclose(img)
-                char output[8];
+                fclose(img);
                 sprintf(output, "%03i.jpg", counter);
                 img = fopen(output, "w");
                 fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, img);

@@ -1,7 +1,7 @@
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
-#include <stdbool.h>
 
 const int BLOCK_SIZE = 512;
 
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 
     while (fread(buffer, 1, BLOCK_SIZE, file) == BLOCK_SIZE)
     {
-        if ((buffer[0] == 0xff) && (buffer[1] == 0xd8) && (buffer[2] == 0xff) && ((buffer[3] & 0xf0) == 0xe0) )
+        if ((buffer[0] == 0xff) && (buffer[1] == 0xd8) && (buffer[2] == 0xff) && ((buffer[3] & 0xf0) == 0xe0))
         {
             found_img = true;
             if (counter != 0)
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
         }
     }
 
-printf("%i\n",counter);
-fclose(file);
-fclose(img);
+    printf("%i\n", counter);
+    fclose(file);
+    fclose(img);
 }

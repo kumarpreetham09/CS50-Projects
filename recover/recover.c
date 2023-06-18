@@ -26,11 +26,13 @@ int main(int argc, char *argv[])
     int counter = 0;
     FILE *img;
     char output[10];
+    bool found_img = false;
 
-    while (fread(buffer, sizeof(BYTE), BLOCK_SIZE, file) == BLOCK_SIZE)
+    while (true)
     {
         if ((buffer[0] == 0xff) && (buffer[1] == 0xd8) && (buffer[2] == 0xff) && ((buffer[3] & 0xf0) == 0xe0) )
         {
+            found_img = true;
             if (counter == 0)
             {
                 sprintf(output, "%03i.jpg", counter);
@@ -42,6 +44,7 @@ int main(int argc, char *argv[])
             else
             {
                 fclose(img);
+                found_img = false;
             }
 
             sprintf(output, "%03i.jpg", counter);
@@ -50,7 +53,7 @@ int main(int argc, char *argv[])
             counter++;
         }
 
-        else
+        else if (found_img)
         {
             fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, img);
         }

@@ -36,7 +36,6 @@ int main(int argc, char *argv[])
             fwrite(buffer, sizeof(BYTE), bytes_read, img);
             counter++;
             fclose(img);
-
         }
 
     }

@@ -49,7 +49,11 @@ int main(int argc, char *argv[])
             fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, img);
             counter++;
         }
-        
+
+        else
+        {
+            fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, img);
+        }
     }
 
 printf("%i\n",counter);

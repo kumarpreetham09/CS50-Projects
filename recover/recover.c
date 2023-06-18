@@ -24,7 +24,6 @@ int main(int argc, char *argv[])
     uint8_t buffer[BLOCK_SIZE];
     int counter = 0;
 
-    bytes_read = fread(buffer, sizeof(BYTE), BLOCK_SIZE, file);
     while (fread(buffer, sizeof(BYTE), BLOCK_SIZE, file) == BLOCK_SIZE)
     {
         if ((buffer[0] == 0xff) && (buffer[1] == 0xd8) && (buffer[2] == 0xff) && ((buffer[3] & 0xf0) == 0xe0) )
@@ -33,7 +32,7 @@ int main(int argc, char *argv[])
             char output[8];
             sprintf(output, "%03i.jpg", counter);
             FILE *img = fopen(output, "w");
-            fwrite(buffer, sizeof(BYTE), bytes_read, img);
+            fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, img);
             counter++;
             fclose(img);
         }

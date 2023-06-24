@@ -1,7 +1,7 @@
 // Implements a dictionary's functionality
-#include <stdio.h>
 #include <ctype.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 #include "dictionary.h"
 
@@ -10,8 +10,7 @@ typedef struct node
 {
     char word[LENGTH + 1];
     struct node *next;
-}
-node;
+} node;
 
 // TODO: Choose number of buckets in hash table
 const unsigned int N = 26;
@@ -44,17 +43,15 @@ bool load(const char *dictionary)
         return false;
     }
 
-    bool still_scanning = true
-
-    while still_scanning
+    do
     {
         char word;
-        fscanf(file,"%s", word);
+        fscanf(file, "%s", word);
+        
     }
+    while (word != EOF)
 
-
-
-    return false;
+        return true;
 }
 
 // Returns number of words in dictionary if loaded, else 0 if not yet loaded

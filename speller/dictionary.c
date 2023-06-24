@@ -58,6 +58,7 @@ bool load(const char *dictionary)
         }
         strcpy(str->word, n);
         str->next = NULL;
+        free(str);
 
     }
     while (*n != EOF);

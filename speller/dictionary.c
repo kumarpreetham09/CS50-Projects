@@ -59,10 +59,11 @@ bool load(const char *dictionary)
         }
         strcpy(str->word, n);
         str->next = NULL;
+        unsigned int hash(const char *str);
     }
     while (fscanf(file, "%s", n) != EOF);
     fclose(file);
-    has
+
     return true;
 }
 

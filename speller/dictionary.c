@@ -47,12 +47,10 @@ bool load(const char *dictionary)
         printf("Could not open %s.\n", dictionary);
         return false;
     }
-
+    node *str = malloc(sizeof(node));
     char *n = NULL;
-    do
+    while (fscanf(file, "%s", n) != EOF)
     {
-        fscanf(file, "%s", n);
-        node *str = malloc(sizeof(node));
 
         if (str == NULL)
         {
@@ -62,10 +60,9 @@ bool load(const char *dictionary)
         strcpy(str->word, n);
         str->next = NULL;
 
-    }
-    while (&n != EOF);
     fclose(file);
     return true;
+
 }
 
 // Returns number of words in dictionary if loaded, else 0 if not yet loaded

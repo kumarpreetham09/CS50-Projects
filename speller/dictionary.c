@@ -46,8 +46,13 @@ bool load(const char *dictionary)
     do
     {
         char word;
-        int *ptr;
         fscanf(file, "%s", word);
+        node *str = malloc(sizeof(node));
+        if (file == NULL)
+        {
+            printf("Could not allocate memory for each word");
+            return false;
+        }
 
     }
     while (word != EOF)

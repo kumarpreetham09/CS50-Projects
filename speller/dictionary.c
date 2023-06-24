@@ -7,6 +7,7 @@
 
 #include "dictionary.h"
 
+
 // Represents a node in a hash table
 typedef struct node
 {
@@ -46,11 +47,9 @@ bool load(const char *dictionary)
     }
 
     char *n = NULL;
-    char ch=0;
     do
     {
         fscanf(file, "%s", n);
-        fscanf(file, "%s", ch);
         node *str = malloc(sizeof(node));
         if (str == NULL)
         {
@@ -62,7 +61,7 @@ bool load(const char *dictionary)
         free(str);
 
     }
-    while (ch != EOF);
+    while (*n != EOF);
     fclose(file);
 
         return true;

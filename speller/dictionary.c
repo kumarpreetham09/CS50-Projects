@@ -2,6 +2,7 @@
 #include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "dictionary.h"
 
@@ -45,7 +46,7 @@ bool load(const char *dictionary)
 
     do
     {
-        char n;
+        char *n;
         fscanf(file, "%s", n);
         node *str = malloc(sizeof(node));
         if (str == NULL)
@@ -53,7 +54,7 @@ bool load(const char *dictionary)
             printf("Could not allocate memory for each word");
             return false;
         }
-        strcpy(str->word, n)
+        strcpy(str->word, n);
         str->next = NULL;
 
     }

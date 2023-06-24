@@ -38,13 +38,14 @@ bool load(const char *dictionary)
 {
     // TODO
     FILE *file = fopen(dictionary, "r");
-    char ch;
-    do
+    if (file == NULL)
     {
-        ch = fgetc(file);
-        printf("%c", ch);
+        printf("Could not open %s.\n", text);
+        return false;
     }
-    while (ch != EOF);
+    char word;
+    fscanf(file,"%s", word);
+
 
     return false;
 }

@@ -59,7 +59,7 @@ bool load(const char *dictionary)
         str->next = NULL;
 
     }
-    while (n != EOF);
+    while (*n != EOF);
 
         return true;
 }

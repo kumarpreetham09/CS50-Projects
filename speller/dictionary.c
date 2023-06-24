@@ -38,7 +38,14 @@ bool load(const char *dictionary)
 {
     // TODO
     FILE *file = fopen(dictionary, "r");
-    printf("%s", file);
+    char ch;
+        do {
+        ch = fgetc(file);
+        printf("%c", ch);
+
+        // Checking if character is not EOF.
+        // If it is EOF stop reading.
+    } while (ch != EOF);
 
     return true;
 }

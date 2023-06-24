@@ -37,6 +37,7 @@ unsigned int hash(const char *word)
 bool load(const char *dictionary)
 {
     // TODO
+    FILE *file = fopen(dictionary, "r");
     node *n = malloc(sizeof(node))
     strcpy(n -> word;"Hello");
     n -> next = NULL

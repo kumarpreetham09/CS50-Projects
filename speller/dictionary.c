@@ -2,11 +2,10 @@
 #include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "dictionary.h"
-
 
 // Represents a node in a hash table
 typedef struct node
@@ -41,7 +40,6 @@ bool load(const char *dictionary)
     // TODO
     FILE *file = fopen(dictionary, "r");
 
-
     if (file == NULL)
     {
         printf("Could not open %s.\n", dictionary);
@@ -61,10 +59,10 @@ bool load(const char *dictionary)
         }
         strcpy(str->word, n);
         str->next = NULL;
-
     }
     while (fscanf(file, "%s", n) != EOF);
     fclose(file);
+    has
     return true;
 }
 

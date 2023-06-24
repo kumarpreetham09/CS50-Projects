@@ -49,10 +49,9 @@ bool load(const char *dictionary)
     }
     char c;
 
-    char *n = NULL;
+    char n[LENGTH + 1];
     do
     {
-        c = fscanf(file, "%s", n);
         node *str = malloc(sizeof(node));
 
         if (str == NULL)
@@ -62,9 +61,10 @@ bool load(const char *dictionary)
         }
         strcpy(str->word, n);
         str->next = NULL;
+        free(str);
 
     }
-    while (c != EOF);
+    while (fscanf(file, "%s", n) != EOF);
     fclose(file);
     return true;
 }

@@ -60,6 +60,7 @@ bool load(const char *dictionary)
 
     }
     while (*n != EOF);
+    fclose(file);
 
         return true;
 }

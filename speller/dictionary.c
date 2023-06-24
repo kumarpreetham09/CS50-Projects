@@ -47,7 +47,7 @@ bool load(const char *dictionary)
         // If it is EOF stop reading.
     } while (ch != EOF);
 
-    return true;
+    return false;
 }
 
 // Returns number of words in dictionary if loaded, else 0 if not yet loaded

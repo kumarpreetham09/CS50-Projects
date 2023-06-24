@@ -1,5 +1,5 @@
 // Implements a dictionary's functionality
-
+#include <stdio.h>
 #include <ctype.h>
 #include <stdbool.h>
 
@@ -38,10 +38,9 @@ bool load(const char *dictionary)
 {
     // TODO
     FILE *file = fopen(dictionary, "r");
-    node *n = malloc(sizeof(node));
-    strcpy(n -> word;"Hello");
-    n -> next = NULL;
-    return false;
+    printf("%s", file);
+
+    return true;
 }
 
 // Returns number of words in dictionary if loaded, else 0 if not yet loaded

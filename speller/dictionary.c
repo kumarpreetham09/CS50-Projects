@@ -57,6 +57,7 @@ bool load(const char *dictionary)
         }
         strcpy(str->word, n);
         str->next = NULL;
+        hash(char *n);
 
     }
     while (*n != EOF);

@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "dictionary.h"
 
@@ -40,13 +41,13 @@ bool load(const char *dictionary)
     FILE *file = fopen(dictionary, "r");
     if (file == NULL)
     {
-        printf("Could not open %s.\n", text);
+        printf("Could not open %s.\n", dictionary);
         return false;
     }
 
+    char n = 0;
     do
     {
-        char *n;
         fscanf(file, "%s", n);
         node *str = malloc(sizeof(node));
         if (str == NULL)
@@ -54,11 +55,11 @@ bool load(const char *dictionary)
             printf("Could not allocate memory for each word");
             return false;
         }
-        strcpy(str->word, n);
+        strcpy(str->word, &n);
         str->next = NULL;
 
     }
-    while (word != EOF);
+    while (n != EOF);
 
         return true;
 }

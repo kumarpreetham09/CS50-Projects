@@ -40,7 +40,7 @@ bool load(const char *dictionary)
 {
     // TODO
     FILE *file = fopen(dictionary, "r");
-    fclose(file);
+
 
     if (file == NULL)
     {
@@ -63,7 +63,8 @@ bool load(const char *dictionary)
         str->next = NULL;
 
     }
-    while (*n != EOF);
+    while (&n != EOF);
+    fclose(file);
     return true;
 }
 

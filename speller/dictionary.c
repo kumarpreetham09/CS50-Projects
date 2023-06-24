@@ -40,6 +40,7 @@ bool load(const char *dictionary)
 {
     // TODO
     FILE *file = fopen(dictionary, "r");
+    fclose(file);
 
     if (file == NULL)
     {

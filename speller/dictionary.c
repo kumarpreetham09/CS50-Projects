@@ -40,6 +40,7 @@ bool load(const char *dictionary)
 {
     // TODO
     FILE *file = fopen(dictionary, "r");
+
     if (file == NULL)
     {
         printf("Could not open %s.\n", dictionary);
@@ -59,12 +60,10 @@ bool load(const char *dictionary)
         }
         strcpy(str->word, n);
         str->next = NULL;
-        free(str);
 
     }
     while (*n != EOF);
-
-        return true;
+    return true;
 }
 
 // Returns number of words in dictionary if loaded, else 0 if not yet loaded

@@ -43,6 +43,8 @@ bool load(const char *dictionary)
         printf("Could not open %s.\n", text);
         return false;
     }
+    
+    while
     char word;
     fscanf(file,"%s", word);
 

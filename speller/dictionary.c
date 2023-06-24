@@ -38,9 +38,9 @@ bool load(const char *dictionary)
 {
     // TODO
     FILE *file = fopen(dictionary, "r");
-    node *n = malloc(sizeof(node))
+    node *n = malloc(sizeof(node));
     strcpy(n -> word;"Hello");
-    n -> next = NULL
+    n -> next = NULL;
     return false;
 }
 

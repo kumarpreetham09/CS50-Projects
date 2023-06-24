@@ -36,7 +36,6 @@ unsigned int hash(const char *word)
 bool load(const char *dictionary)
 {
     // TODO
-    node *str;
     FILE *file = fopen(dictionary, "r");
     if (file == NULL)
     {
@@ -46,15 +45,15 @@ bool load(const char *dictionary)
 
     do
     {
-        char *n;
+        char n;
         fscanf(file, "%s", n);
-        *str = malloc(sizeof(node));
+        node *str = malloc(sizeof(node));
         if (str == NULL)
         {
             printf("Could not allocate memory for each word");
             return false;
         }
-        strcpy(str->word, n);
+        strcpy(str->word, n)
         str->next = NULL;
 
     }

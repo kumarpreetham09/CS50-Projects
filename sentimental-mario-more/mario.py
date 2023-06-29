@@ -8,4 +8,4 @@ while True:
 
 
 for i in range(n+1):
-    print(" "*(n-i) + "#"*i + " " + "#"*i )
+    print(" "*(n-i) + "#"*i + " " + "#"*i)

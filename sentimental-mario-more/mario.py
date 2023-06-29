@@ -3,7 +3,7 @@ from cs50 import get_int
 
 while True:
     n = get_int("Enter height: ")
-    if n > 0:
+    if n > 0 && n <= 8:
         break
 
 

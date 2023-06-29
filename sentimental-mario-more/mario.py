@@ -1,4 +1,11 @@
 # TODO
+from cs50 import get_int
 
-for i in range(n):
-    for i in range(m)
+while True:
+    n = get_int("Enter height: ")
+    if n > 0:
+        break
+
+
+for i in range(n+1):
+    print(" "*(n-i) + "#"*i + " " + "#"*i )

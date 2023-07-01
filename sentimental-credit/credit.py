@@ -7,10 +7,10 @@ def main():
     length = len(num)
     if length == 13 or length == 15 or length == 16:
         if algo(num) == 0:
-            print("VALID")
+            return num
         else:
             print("INVALID")
-        return num
+
     else:
         print("INVALID")
 
@@ -47,7 +47,6 @@ def print_func(num):
             print("AMEX")
         else:
             print("INVALID")
-
     elif num[0] == 4 and length == 13 or length == 16:
         print("VISA")
     else:

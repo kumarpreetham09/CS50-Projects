@@ -5,7 +5,7 @@ from cs50 import get_string, get_int
 is_valid = True
 
 while not is_valid:
-    input = str(get_int("Number: "))
+    input = str(get_string("Number: "))
     if len(input) == 13 or len(input) == 15 or len(input) == 16 and algo(input):
         is_valid = True
     else:

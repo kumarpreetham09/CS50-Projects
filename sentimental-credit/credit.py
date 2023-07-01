@@ -2,26 +2,28 @@
 from cs50 import get_string, get_int
 
 
-is_valid = True
 
-while not is_valid:
-    input = str(get_string("Number: "))
-    if len(input) == 13 or len(input) == 15 or len(input) == 16 and algo(input):
-        is_valid = True
-        print("AMEX")
-    else:
-        print("INVALID")
-
-print(input)
-
-# if input[0] == 3 and len(input) == 15:
-#     if input[1] == 4 or input[1] == 7:
-#         print("AMEX")
-# elif input[0] == 4 and len(input) == 13 or len(length) == 15:
-#     print("VISA")
+def main():
+    is_valid = True
+    while is_valid:
+        input = get_string("Number: ")
+        if len(str(input)) == 13 or len(str(input)) == 15 or len(str(input)) == 16:
+            if algo(input) == True:
+                is_valid = False
+                print("AMEX")
+            else:
+                print("INVALID")
 
 
-def algo(input):
+    if input[0] == 3 and len(input) == 15:
+        if input[1] == 4 or input[1] == 7:
+            print("AMEX")
+    elif input[0] == 4 and len(input) == 13 or len(length) == 15:
+        print("VISA")
+
+
+def algo(i):
+    input = i.split(", ")
     odd = 0
     even = 0
     length = len(input)
@@ -31,13 +33,14 @@ def algo(input):
             input[pos] += odd
         else:
             buffer = input[pos] * 2
-            if buffer >= 10:
-                buffer_sum = buffer[0] + buffer[1]
+            print(buffer)
+            # if int(buffer) > 10:
+            #     buffer_sum = buffer[0] + buffer[1]
 
-                buffer_sum += even
+            #     buffer_sum += even
 
-            else:
-                input[pos] += even
+            # else:
+            #     input[pos] += even
     sum = odd + even
     sum_length = len(sum)
     if sum[sum_length - 1] == 0:
@@ -45,3 +48,5 @@ def algo(input):
     else:
         return False
 
+
+main()

@@ -39,15 +39,12 @@ def algo(num):
 
 def print_func(num):
     length = len(num)
-    print(num[0])
-    print(length)
-    if (num[0] == 3) and (length == 15):
-        print("hello")
-        if (num[1] == 4) or (num[1] == 7):
+    if (int(num[0]) == 3) and (length == 15):
+        if (int(num[1]) == 4) or (int(num[1]) == 7):
             print("AMEX")
         else:
             print("INVALID")
-    elif num[0] == 4 and (length == 13 or length == 16):
+    elif (int(num[0]) == 4) and (length == 13 or length == 16):
         print("VISA")
     else:
         print("MASTERCARD")

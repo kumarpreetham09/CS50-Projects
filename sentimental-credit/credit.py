@@ -5,11 +5,16 @@ from cs50 import get_string, get_int
 is_valid = True
 
 while not is_valid:
-    input = get_int("Number: ")
-    if len(input) == 13 or len(input) == 16 and algo(input):
+    input = get_string("Number: ")
+    if len(input) == 13 or len(input) == 15 or len(input) == 16 and algo(input):
         is_valid = True
     else:
         print("INVALID")
+
+
+if input[0] == 3:
+    if input[1] == 4 or input[1] == 7:
+        print("")
 
 
 def algo(input):
@@ -28,4 +33,8 @@ def algo(input):
                 input[pos] += even
     sum = odd + even
     sum_length = len(sum)
+    if sum[sum_length - 1] == 0:
+        return True
+    else:
+        return False
 

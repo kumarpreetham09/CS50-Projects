@@ -15,4 +15,7 @@ while not is_valid:
 def algo(input):
     odd = 0
     even = 0
-    for i in input:
+    length = len(input)
+    for i in range(length):
+        
+        if i % 2 == 0

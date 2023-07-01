@@ -17,9 +17,9 @@ def algo(input):
     even = 0
     length = len(input)
     for i in range(length):
-        i += 1
-        if i % 2 == 0:
-            input[i-1] += even
+        pos = (length - (i+1))
+        if pos%2 == 0:
+            input[pos] += odd
         else:
-            input[i-1] * 2
+            input[pos] += even
 

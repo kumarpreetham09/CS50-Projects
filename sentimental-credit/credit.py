@@ -52,6 +52,8 @@ def print_func(num):
     elif (int(num[0]) == 5) and (length == 16):
         if 1 <= int(num[1]) <= 5:
             print("MASTERCARD")
+    else:
+        print("INVALID")
 
 
 print_func(main())

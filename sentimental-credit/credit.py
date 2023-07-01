@@ -13,10 +13,10 @@ while not is_valid:
 
 
 if input[0] == 3 and len(input) == 15:
-    if input[1] == 4 or input[1] = 7:
+    if input[1] == 4 or input[1] == 7:
         print("AMEX")
 elif input[0] == 4 and len(input) == 13 or len(length) == 15:
-    print("VISA)
+    print("VISA")
 
 
 def algo(input):
@@ -30,7 +30,10 @@ def algo(input):
         else:
             buffer = input[pos] * 2
             if buffer >= 10:
-                buffer[0] + buffer[1] + even = even
+                buffer_sum = buffer[0] + buffer[1]
+
+                buffer_sum += even
+
             else:
                 input[pos] += even
     sum = odd + even

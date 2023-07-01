@@ -12,7 +12,7 @@ while not is_valid:
         print("INVALID")
 
 
-
 def algo(input):
+    odd = 0
+    even = 0
     for i in input:
-        

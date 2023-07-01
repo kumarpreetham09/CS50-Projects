@@ -3,7 +3,7 @@ from cs50 import get_string, get_int
 
 
 def main():
-    num = input("Type:")
+    num = input("Type: ")
     length = len(num)
     if length == 13 or length == 15 or length == 16:
         if algo(num) == 0:
@@ -17,14 +17,15 @@ def main():
 
 def algo(num):
     def digits_of(n):
-        return[int(d) for d in str(n)]
+        return [int(d) for d in str(n)]
+
     digits = digits_of(num)
     odd = 0
     even = 0
     pos = 1
     for i in digits[-1::-1]:
         pos += 1
-        if pos%2 == 0:
+        if pos % 2 == 0:
             even += i
         else:
             buffer = i * 2
@@ -32,10 +33,11 @@ def algo(num):
             for j in digits2:
                 odd += j
     sum = odd + even
-    if sum%10 == 0:
+    if sum % 10 == 0:
         return 0
     else:
         return 1
+
 
 def print_func(num):
     length = len(num)
@@ -46,7 +48,10 @@ def print_func(num):
             print("INVALID")
     elif (int(num[0]) == 4) and (length == 13 or length == 16):
         print("VISA")
-    else:
-        print("MASTERCARD")
+
+    elif (int(num[0]) == 5) and (length == 16):
+        if 1 <= int(num[1]) <= 5:
+            print("MASTERCARD")
+
 
 print_func(main())

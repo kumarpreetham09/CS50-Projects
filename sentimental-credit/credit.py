@@ -21,5 +21,11 @@ def algo(input):
         if pos%2 == 0:
             input[pos] += odd
         else:
-            input[pos] += even
+            buffer = input[pos] * 2
+            if buffer >= 10:
+                buffer[0] + buffer[1] + even = even
+            else:
+                input[pos] += even
+    sum = odd + even
+    sum_length = len(sum)
 

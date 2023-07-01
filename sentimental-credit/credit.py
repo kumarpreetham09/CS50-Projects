@@ -15,4 +15,4 @@ while not is_valid:
 
 def algo(input):
     for i in input:
-        i
+        

@@ -6,13 +6,17 @@ is_valid = True
 
 while not is_valid:
     input = get_string("Number: ")
-    if len(input) == 13 or len(input) == 15 or len(input) == 16 and if algo(input):
+    if len(input) == 13 or len(input) == 15 or len(input) == 16 and algo(input):
         is_valid = True
     else:
         print("INVALID")
 
 
-if input[0] == 3 and
+if input[0] == 3 and len(input) == 15:
+    if input[1] == 4 or input[1] = 7:
+        print("AMEX")
+elif input[0] == 4 and len(input) == 13 or len(length) == 15:
+    print("VISA)
 
 
 def algo(input):

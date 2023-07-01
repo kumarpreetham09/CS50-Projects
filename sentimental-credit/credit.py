@@ -5,7 +5,7 @@ from cs50 import get_string, get_int
 is_valid = True
 
 while not is_valid:
-    input = get_string("Number: ")
+    input = str(get_int("Number: "))
     if len(input) == 13 or len(input) == 15 or len(input) == 16 and algo(input):
         is_valid = True
     else:
@@ -13,11 +13,11 @@ while not is_valid:
 
 print(input)
 
-if input[0] == 3 and len(input) == 15:
-    if input[1] == 4 or input[1] == 7:
-        print("AMEX")
-elif input[0] == 4 and len(input) == 13 or len(length) == 15:
-    print("VISA")
+# if input[0] == 3 and len(input) == 15:
+#     if input[1] == 4 or input[1] == 7:
+#         print("AMEX")
+# elif input[0] == 4 and len(input) == 13 or len(length) == 15:
+#     print("VISA")
 
 
 def algo(input):

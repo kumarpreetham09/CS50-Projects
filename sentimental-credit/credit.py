@@ -11,6 +11,7 @@ while not is_valid:
     else:
         print("INVALID")
 
+print(input)
 
 if input[0] == 3 and len(input) == 15:
     if input[1] == 4 or input[1] == 7:

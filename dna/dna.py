@@ -25,11 +25,10 @@ def main():
             for row in reader:
                 names.append(row['name'])
                 for key in row:
-                    if i == 8:
+                    if i == 9:
                         keys.append(buffer)
-                        print(buffer)
-                        buffer.clear()
                         i = 0
+                        buffer.clear()
 
                     else:
                         buffer.append(row[f'{key}'])

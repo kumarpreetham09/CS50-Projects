@@ -43,15 +43,10 @@ def main():
         with open(database, 'r') as data_file:
 
             reader = csv.DictReader(data_file)
-            for i in range(len(result)):
-                for row in reader:
-                    if int(result[i]) != int(row[f'{keys[i]}']):
-                        name = row['name']
-                        print(f'{int(row[f"{keys[i]}"])} : {int(result[i])}')
-                        names.remove(name)
-
-                    else:
-                        print(True)
+            for row in reader:
+                print(f'{row[f"{keys[0]}"]} : {result[0]}')
+                names
+            print(names)
 
             # if len(names) == 1:
             #     print(names)

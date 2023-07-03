@@ -22,7 +22,8 @@ def main():
             for row in reader:
                 names.append(row['name'])
                 for key in row:
-                    keys.append(row[f'{key}'])
+                    for i in range(len(row)):
+                        keys.append(row[f'{key}'])
 
             print(keys)
 

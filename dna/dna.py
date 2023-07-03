@@ -16,11 +16,17 @@ def main():
         result = []
         with open(database, 'r') as data_file:
             reader = csv.DictReader(data_file)
+            strings_aquired = False
+            strings = []
             buffer = []
             keys = []
             i = 0
             for row in reader:
                 for key in row:
+                    if not strings_aquired:
+                        strings.append(key)
+                        strings_aquired = True
+
                     if i == len(row) - 1:
                         buffer.append(row[f'{key}'])
                         keys.append(buffer)
@@ -30,6 +36,7 @@ def main():
                     else:
                         buffer.append(row[f'{key}'])
                         i += 1
+
 
         # TODO: Read DNA sequence file into a variable
         with open(text , 'r') as text_file:
@@ -43,14 +50,13 @@ def main():
             result.append(integer)
 
         # TODO: Check database for matching profiles
+        print(result)
+        print(strings)
 
-            for i in range(len(keys)):
-                for j in range(len(keys[i])):
-                    print()
-                    if keys[i][j+1] != result[j]:
-                        keys.remove(keys[i])
-            print(keys)
-
+        # for i in range(len(keys)):
+        #     for j in range(len(keys[i]) - 1):
+        #         if keys[i][j+1] != result:
+        #             keys.remove(keys[i])
 
 
             # if len(names) == 1:

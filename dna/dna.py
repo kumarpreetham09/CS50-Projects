@@ -54,12 +54,11 @@ def main():
             result.append(integer)
 
         # TODO: Check database for matching profiles
-        print(result)
-        print(strings)
 
+        print(len(keys))
         # for i in range(len(keys)):
         #     for j in range(len(keys[i]) - 1):
-        #         if keys[i][j+1] != result:
+        #         if keys[i][j+1] != result[j]:
         #             keys.remove(keys[i])
 
 

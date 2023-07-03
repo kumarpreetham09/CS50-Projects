@@ -55,7 +55,8 @@ def main():
 
         # TODO: Check database for matching profiles
 
-        print(len(keys))
+        print(keys)
+        print(result)
         for j in range(24):
             for i in range(9):
                 print(f"{keys[i-1][j + 1]} : {result[j]}")

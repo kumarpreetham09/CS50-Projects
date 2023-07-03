@@ -1,6 +1,5 @@
 import csv
 import sys
-import numpy as np
 
 
 def main():
@@ -31,7 +30,6 @@ def main():
                     else:
                         buffer.append(row[f'{key}'])
                         i += 1
-            print(keys)
 
         # TODO: Read DNA sequence file into a variable
         with open(text , 'r') as text_file:
@@ -39,13 +37,21 @@ def main():
 
 
         # TODO: Find longest match of each STR in DNA sequence
-            for i in len(keys)
 
         for sub in keys:
             integer = longest_match(sequence, sub)
             result.append(integer)
 
         # TODO: Check database for matching profiles
+
+            for i in range(len(keys)):
+                for j in range(len(keys[i])):
+                    print()
+                    if keys[i][j+1] != result[j]:
+                        keys.remove(keys[i])
+            print(keys)
+
+
 
             # if len(names) == 1:
             #     print(names)

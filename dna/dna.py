@@ -44,6 +44,7 @@ def main():
 
             reader = csv.DictReader(data_file)
             for i in range(len(result)):
+                print("test")
                 for row in reader:
                     if int(row[f"{keys[i]}"]) == int(result[i]):
                         print(f'{row[f"{keys[i]}"]} : {result[i]} : True')

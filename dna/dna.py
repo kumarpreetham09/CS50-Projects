@@ -25,7 +25,7 @@ def main():
             for row in reader:
                 names.append(row['name'])
                 for key in row:
-                    if i == 9:
+                    if i == 8:
                         keys.append(buffer)
                         i = 0
                         buffer.clear()

@@ -28,7 +28,7 @@ def main():
                     if i == 8:
                         keys.append(buffer)
                         i = 0
-                        buffer.clear()
+                        buffer = []
 
                     else:
                         buffer.append(row[f'{key}'])

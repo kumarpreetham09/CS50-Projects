@@ -56,12 +56,8 @@ def simulate_round(teams):
 
 def simulate_tournament(teams):
     """Simulate a tournament. Return name of winning team."""
-    l = []
-    for i in range(len(teams)):
-        key = list(teams[i].keys())
-        l.append(key[0])
-    print(l)
-    print(simulate_round(l))
+
+    print(simulate_round(teams))
 
     # TODO
 

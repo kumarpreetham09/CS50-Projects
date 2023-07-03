@@ -57,9 +57,11 @@ def main():
 
         print(keys)
         print(result)
-        for j in range(9):
+        for j in range(8):
             for i in range(23):
-                print(f"{keys[i][j + 1]} : {result[j]}")
+                if int(keys[i][j + 1]) != int(result[j]):
+                    print(f"{keys[i][j + 1]} : {result[j]}")
+        print(keys)
 
 
 

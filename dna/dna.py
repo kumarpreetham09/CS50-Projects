@@ -39,6 +39,8 @@ def main():
                         buffer.append(row[f'{key}'])
                         i += 1
 
+            strings.remove(strings[0])
+
 
         # TODO: Read DNA sequence file into a variable
         with open(text , 'r') as text_file:
@@ -47,7 +49,7 @@ def main():
 
         # TODO: Find longest match of each STR in DNA sequence
 
-        for sub in :
+        for sub in strings:
             integer = longest_match(sequence, sub)
             result.append(integer)
 

@@ -61,7 +61,7 @@ def simulate_tournament(teams):
         key = list(teams[i].keys())
         l.append(key[0])
     print(l)
-    simulate_round(l)
+    print(simulate_round(l))
 
     # TODO
 

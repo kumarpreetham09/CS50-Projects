@@ -19,11 +19,19 @@ def main():
         with open(database, 'r') as data_file:
             reader = csv.DictReader(data_file)
             aquired_keys = False
+            buffer = []
             keys = []
+            i = 0
             for row in reader:
                 names.append(row['name'])
                 for key in row:
-                    keys.append(row[f'{key}'])
+                    if i == len(row) - 1:
+                        keys.append(buffer)
+                        buffer.clear()
+                        i += 1
+                    else:
+                        buffer.append(row[f'{key}'])
+                        i += 1
             print(keys)
 
         # TODO: Read DNA sequence file into a variable

@@ -9,7 +9,6 @@ N = 1000
 
 
 def main():
-
     # Ensure correct usage
     if len(sys.argv) != 2:
         sys.exit("Usage: python tournament.py FILENAME")
@@ -17,7 +16,7 @@ def main():
     teams = []
     # TODO: Read teams into memory from file
     filename = sys.argv[1]
-    with open(filename, 'r') as f:
+    with open(filename, "r") as f:
         reader = csv.DictReader(f)
         for row in reader:
             row["rating"] = int(row["rating"])
@@ -63,7 +62,7 @@ def simulate_tournament(teams):
     """Simulate a tournament. Return name of winning team."""
     while len(teams) > 1:
         teams = simulate_round(teams)
-    return teams[0]['team']
+    return teams[0]["team"]
 
     # TODO
 

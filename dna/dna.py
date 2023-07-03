@@ -23,10 +23,10 @@ def main():
                 names.append(row['name'])
                 if not aquired_keys:
                     for key in row:
-                        keys.append(key)
-                        aquired_keys = True
+                        keys.append(row[f'{key}'])
+                    aquired_keys = True
 
-            keys.remove(keys[0])
+            print(keys)
 
         # TODO: Read DNA sequence file into a variable
         with open(text , 'r') as text_file:
@@ -40,14 +40,6 @@ def main():
             result.append(integer)
 
         # TODO: Check database for matching profiles
-        with open(database, 'r') as data_file:
-
-            reader = csv.DictReader(data_file)
-            for 
-
-
-            print(len(result))
-            print(names)
 
             # if len(names) == 1:
             #     print(names)

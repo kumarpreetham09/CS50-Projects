@@ -16,7 +16,6 @@ def main():
         result = []
         with open(database, 'r') as data_file:
             reader = csv.DictReader(data_file)
-            strings_aquired = False
             strings = []
             buffer = []
             keys = []
@@ -55,29 +54,19 @@ def main():
 
         # TODO: Check database for matching profiles
 
-        print(keys)
-        print(result)
-        for j in range(8):
-            for i in range(23):
+        index = list(range(len(keys)))
+        for j in range(len(keys[i]) - 1):
+            for i in range(len(keys)):
                 if int(keys[i][j + 1]) != int(result[j]):
-                    print(f"{keys[i][j + 1]} : {result[j]}")
-        print(keys)
+                    if int(i) in index:
+                        index.remove(i)
 
 
 
-            # if len(names) == 1:
-            #     print(names)
-            #     print(result)
-
-            # elif len(names) == 0:
-            #     print("No match")
-
-            # else:
-            #     print("error")
-            #     print(names)
-            #     print(result)
-
-
+        if len(index) == 1:
+            print(keys[index[0]][0])
+        elif len(index) == 0:
+            print("No match")
         return
 
 

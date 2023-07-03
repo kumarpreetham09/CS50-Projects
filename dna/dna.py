@@ -21,11 +21,13 @@ def main():
             buffer = []
             keys = []
             i = 0
+            j = 0
             for row in reader:
                 for key in row:
-                    if not strings_aquired:
+                    if j != len(row):
                         strings.append(key)
-                        strings_aquired = True
+                        j+=1
+
 
                     if i == len(row) - 1:
                         buffer.append(row[f'{key}'])
@@ -45,7 +47,7 @@ def main():
 
         # TODO: Find longest match of each STR in DNA sequence
 
-        for sub in keys:
+        for sub in :
             integer = longest_match(sequence, sub)
             result.append(integer)
 

@@ -21,10 +21,8 @@ def main():
             keys = []
             for row in reader:
                 names.append(row['name'])
-                if not aquired_keys:
-                    for key in row:
-                        keys.append(row[f'{key}'])
-                    aquired_keys = True
+                for key in row:
+                    keys.append(row[f'{key}'])
 
             print(keys)
 

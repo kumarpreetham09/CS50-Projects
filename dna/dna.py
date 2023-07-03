@@ -27,7 +27,7 @@ def main():
                 for key in row:
                     if i == 8:
                         keys.append(buffer)
-                        i = 0
+                        i = -1
                         buffer = []
 
                     else:

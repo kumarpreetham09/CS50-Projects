@@ -1,5 +1,6 @@
 import csv
 import sys
+import numpy as np
 
 
 def main():
@@ -23,7 +24,6 @@ def main():
                 names.append(row['name'])
                 for key in row:
                     keys.append(row[f'{key}'])
-
             print(keys)
 
         # TODO: Read DNA sequence file into a variable

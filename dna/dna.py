@@ -56,10 +56,10 @@ def main():
         # TODO: Check database for matching profiles
 
         print(len(keys))
-        for i in range(len(keys) - 1):
+        for i in range(len(keys)):
             for j in range(len(keys[i])):
-                if keys[i][j] != result[j]:
-                    keys.remove(keys[i])
+                print(keys[i][j])
+
 
 
             # if len(names) == 1:

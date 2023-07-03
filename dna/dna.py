@@ -57,9 +57,9 @@ def main():
 
         print(keys)
         print(result)
-        for j in range(24):
+        for j in range(23):
             for i in range(9):
-                print(f"{keys[i-1][j + 1]} : {result[j]}")
+                print(f"{keys[i][j + 1]} : {result[j]}")
 
 
 

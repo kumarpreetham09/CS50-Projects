@@ -25,11 +25,15 @@ bool check(const char *word)
 {
     // TODO
     int index = hash(word);
-    for (int i = 0; i<index; i++)
+    node *cursor = table[index];
+    while (cursor != NULL)
     {
-
+        if (strcamp(cursor->word, word) == 0)
+        {
+            return true;
+        }
+        cursor = cursor->next;
     }
-
 
     return false;
 }

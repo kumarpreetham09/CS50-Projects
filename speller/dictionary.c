@@ -72,13 +72,13 @@ bool load(const char *dictionary)
         int index = hash(str->word);
         if (table[index] == NULL)
         {
-            table[index]->next = str->word;
+            table[index] = str;
         }
-        temp->next = str->word;
-        str->next = table[index]->next;
-
-        temp->next = NULL;
-        printf("%i", index);
+        else
+        {
+            str->next = table[index];
+            table[index] = str;
+        }
 
     }
     while (fscanf(file, "%s", n) != EOF);

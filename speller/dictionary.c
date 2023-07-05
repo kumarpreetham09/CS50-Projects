@@ -71,7 +71,6 @@ bool load(const char *dictionary)
             return false;
         }
         fscanf(file, "%s", n);
-        printf("%s\n",n);
         strcpy(str->word, n);
         str->next = NULL;
         int index = hash(str->word);
@@ -120,5 +119,5 @@ bool unload(void)
             tmp = cursor;
         }
     }
-    return false;
+    return true;
 }

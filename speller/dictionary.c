@@ -24,6 +24,8 @@ node *table[N];
 bool check(const char *word)
 {
     // TODO
+
+
     return false;
 }
 
@@ -59,7 +61,8 @@ bool load(const char *dictionary)
         }
         strcpy(str->word, n);
         str->next = NULL;
-        unsigned int hash(const char *str);
+        printf(hash(const char *str));
+
     }
     while (fscanf(file, "%s", n) != EOF);
     fclose(file);

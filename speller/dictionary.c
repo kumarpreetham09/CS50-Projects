@@ -63,7 +63,9 @@ bool load(const char *dictionary)
         printf("%s\n",n);
         strcpy(str->word, n);
         str->next = NULL;
-        int index = hash(const char *word)
+        int index = hash(str->word);
+        str->next = 
+        printf("%i", index);
 
     }
     while (fscanf(file, "%s", n) != EOF);

@@ -33,6 +33,7 @@ bool check(const char *word)
 unsigned int hash(const char *word)
 {
     // TODO: Improve this hash function
+    size()
     return toupper(word[0]) - 'A';
 }
 
@@ -64,7 +65,7 @@ bool load(const char *dictionary)
         strcpy(str->word, n);
         str->next = NULL;
         int index = hash(str->word);
-        str->next = 
+        str->next =
         printf("%i", index);
 
     }
@@ -80,6 +81,7 @@ bool load(const char *dictionary)
 unsigned int size(void)
 {
     // TODO
+    for (int i; )
     return 0;
 }
 

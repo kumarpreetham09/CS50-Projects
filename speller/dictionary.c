@@ -28,7 +28,7 @@ bool check(const char *word)
     node *cursor = table[index];
     while (cursor != NULL)
     {
-        if (strcamp(cursor->word, word) == 0)
+        if (strcasecmp(cursor->word, word) == 0)
         {
             return true;
         }
@@ -106,5 +106,18 @@ unsigned int size(void)
 bool unload(void)
 {
     // TODO
+    for(int i = 0; i < N; i++)
+    {
+        node *head = table[i];
+        node *cursor = head;
+        node *tmp = head;
+
+        while(cursor != NULL)
+        {
+            cursor = cursor->next;
+            free(tmp);
+            tmp = cursor;
+        }
+    }
     return false;
 }

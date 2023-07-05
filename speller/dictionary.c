@@ -33,7 +33,7 @@ bool check(const char *word)
 unsigned int hash(const char *word)
 {
     // TODO: Improve this hash function
-    size()
+    size();
     return toupper(word[0]) - 'A';
 }
 
@@ -81,8 +81,9 @@ bool load(const char *dictionary)
 unsigned int size(void)
 {
     // TODO
-    for (int i; )
-    return 0;
+    int i = 0
+    i++;
+    return i;
 }
 
 // Unloads dictionary from memory, returning true if successful, else false

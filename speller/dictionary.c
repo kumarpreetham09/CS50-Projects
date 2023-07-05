@@ -61,11 +61,13 @@ bool load(const char *dictionary)
         }
         strcpy(str->word, n);
         str->next = NULL;
-        
+        printf("%s",str->word);
 
     }
     while (fscanf(file, "%s", n) != EOF);
-    fclose(file);
+
+        fclose(file);
+
 
     return true;
 }

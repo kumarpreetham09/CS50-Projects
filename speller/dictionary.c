@@ -86,8 +86,7 @@ bool load(const char *dictionary)
 
     }
     while (fscanf(file, "%s", n) != EOF);
-
-        fclose(file);
+    fclose(file);
 
 
     return true;

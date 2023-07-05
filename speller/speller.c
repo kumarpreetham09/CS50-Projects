@@ -117,11 +117,11 @@ int main(int argc, char *argv[])
             time_check += calculate(&before, &after);
 
             // Print word if misspelled
-            // if (misspelled)
-            // {
-            //     printf("%s\n", word);
-            //     misspellings++;
-            // }
+            if (misspelled)
+            {
+                printf("%s\n", word);
+                misspellings++;
+            }
 
             // Prepare for next word
             index = 0;

@@ -70,9 +70,13 @@ bool load(const char *dictionary)
         strcpy(str->word, n);
         str->next = NULL;
         int index = hash(str->word);
+        if (table[index] == NULL)
+        {
+            table[index]->next = str->word;
+        }
         temp->next = str->word;
         str->next = table[index]->next;
-        table[index]->next = str->word;
+
         temp->next = NULL;
         printf("%i", index);
 

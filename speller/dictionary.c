@@ -25,6 +25,10 @@ bool check(const char *word)
 {
     // TODO
     int index = hash(word)
+    for (int i = 0; i<index; i++;)
+    {
+
+    }
 
 
     return false;
@@ -66,7 +70,7 @@ bool load(const char *dictionary)
         strcpy(str->word, n);
         str->next = NULL;
         int index = hash(str->word);
-        str->next =
+        str->next = table[index]->next
         printf("%i", index);
 
     }

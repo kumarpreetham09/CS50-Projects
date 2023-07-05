@@ -59,6 +59,8 @@ bool load(const char *dictionary)
             printf("Could not allocate memory for each word");
             return false;
         }
+        fscanf(file, "%s", n);
+        printf("%s\n",n);
         strcpy(str->word, n);
         str->next = NULL;
 

@@ -24,8 +24,8 @@ node *table[N];
 bool check(const char *word)
 {
     // TODO
-    int index = hash(word)
-    for (int i = 0; i<index; i++;)
+    int index = hash(word);
+    for (int i = 0; i<index; i++)
     {
 
     }
@@ -54,7 +54,7 @@ bool load(const char *dictionary)
         return false;
     }
     char c;
-
+    node *temp = NULL;
     char n[LENGTH + 1];
     do
     {
@@ -70,7 +70,10 @@ bool load(const char *dictionary)
         strcpy(str->word, n);
         str->next = NULL;
         int index = hash(str->word);
-        str->next = table[index]->next
+        temp->next = str->word;
+        str->next = table[index]->next;
+        table[index]->next = str->word;
+        temp->next = NULL;
         printf("%i", index);
 
     }
@@ -86,7 +89,7 @@ bool load(const char *dictionary)
 unsigned int size(void)
 {
     // TODO
-    int i = 0
+    int i = 0;
     i++;
     return i;
 }

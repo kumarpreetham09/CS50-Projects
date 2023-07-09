@@ -13,7 +13,7 @@ EVIDENCE
 2.
     Ruth - Check parking lot footage
     Eugene - Recognised the thief. Morning was withdrawing money from ATM
-    Raymond - Thief called someone to purchase earliest plane ticket out of Fiftyville at 10:16
+    Raymond - Thief called someone less than a minute to purchase earliest plane ticket out of Fiftyville at 10:16
 
 3. license_plate
     +----------+---------------+

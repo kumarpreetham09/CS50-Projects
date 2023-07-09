@@ -4,13 +4,13 @@ The ACCOMPLICE is:
 
 EVIDENCE
 1.
-crime_scene_reports
-    id : 295
-    day/month/year : 28/07/2021
-    street : Humphrey Street
-    description : THest of the CS50 duck took place at 10:15am at the Humphrey Street bakery. Interviews were conducted today with three witnesses who were present at the time - each of their interview transcripts mentions the bakery.
+    crime_scene_reports
+        id : 295
+        day/month/year : 28/07/2021
+        street : Humphrey Street
+        description : THest of the CS50 duck took place at 10:15am at the Humphrey Street bakery. Interviews were conducted today with three witnesses who were present at the time - each of their interview transcripts mentions the bakery.
 
 2.
-Ruth - Check parking lot footage
-Eugene - Recognised the thief. Morning was withdrawing money from ATM
-Raymond - Thief called someone 
+    Ruth - Check parking lot footage
+    Eugene - Recognised the thief. Morning was withdrawing money from ATM
+    Raymond - Thief called someone to purchase earliest plane ticket out of Fiftyville at 10:16

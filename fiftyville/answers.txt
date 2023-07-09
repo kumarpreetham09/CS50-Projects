@@ -98,7 +98,7 @@ EVIDENCE
     +---------+----------------+---------------+
 
 
-9.
+9. People who made a call and exited the parking lot
     +--------+---------------+
     |  name  | license_plate |
     +--------+---------------+

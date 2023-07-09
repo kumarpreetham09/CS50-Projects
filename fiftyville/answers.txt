@@ -11,3 +11,6 @@ crime_scene_reports
     description : THest of the CS50 duck took place at 10:15am at the Humphrey Street bakery. Interviews were conducted today with three witnesses who were present at the time - each of their interview transcripts mentions the bakery.
 
 2.
+Ruth - Check parking lot footage
+Eugene - Recognised the thief. Morning was withdrawing money from ATM
+Raymond - Thief called someone 

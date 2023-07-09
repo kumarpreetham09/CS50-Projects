@@ -14,3 +14,17 @@ EVIDENCE
     Ruth - Check parking lot footage
     Eugene - Recognised the thief. Morning was withdrawing money from ATM
     Raymond - Thief called someone to purchase earliest plane ticket out of Fiftyville at 10:16
+
+3. license_plate
+    +----------+---------------+
+    | activity | license_plate |
+    +----------+---------------+
+    | exit     | 5P2BI95       |
+    | exit     | 94KL13X       |
+    | exit     | 6P58WS2       |
+    | exit     | 4328GD8       |
+    | exit     | G412CB7       |
+    | exit     | L93JTIZ       |
+    | exit     | 322W7JE       |
+    | exit     | 0NTHK55       |
+    +----------+---------------+

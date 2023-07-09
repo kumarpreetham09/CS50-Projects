@@ -7,3 +7,4 @@
 5. SELECT id, caller, receiver FROM phone_calls WHERE day = 28 AND month = 7 AND year = 2021 AND duration < 60;
 6. SELECT flight_id, destination_airport_id, hour, minute FROM flights WHERE origin_airport_id = 8 AND day = 28;
 7. SELECT passport_number, seat FROM passengers WHERE flight_id = 6;
+8. SELECT name, phone_number, license_plate FROM people WHERE passport_number IN (SELECT passport_number FROM passengers WHERE flight_id = 6);

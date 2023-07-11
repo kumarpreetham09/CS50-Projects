@@ -7,19 +7,18 @@
         <title>Trivia!</title>
         <script>
             // TODO: Add code to check answers to questions
-                document.querySelector('button').addEventListener('click', funtion() {
+            function greet() {
+
                     let answer = document.querySelector('#red');
                     let response = document.querySelector('p')
 
                     if (answer.value) != 139 {
-                        response.innerHTML = `Incorrect`;
-                        answer.style.backgroundColor = 'red';
+                        alert('incorrect')
                     }
                     else {
-                        response.innerHTML = `Incorrect`;
-                        answer.style.backgroundColor = 'green';
+                        alert('incorrect')
                     }
-                });
+                }
 
         </script>
     </head>
@@ -37,7 +36,7 @@
                 <p></p>
                 <tr>
                     <form>
-                        <button type="submit">102</button>
+                        <button onsubmit="check()"; id="red">102</button>
                         <button onsubmit="check">139</button>
                         <button onsubmit="check">165</button>
                         <button onsubmit="check">125</button>

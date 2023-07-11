@@ -9,14 +9,14 @@
             // TODO: Add code to check answers to questions
             function greet() {
 
-                    let answer = document.querySelector('#red');
-                    let response = document.querySelector('p')
+                    let answer = document.querySelector('#red').value;
+                    let response = document.querySelector('p');
 
-                    if (answer.value) != 139 {
-                        alert('incorrect')
+                    if (answer) != 139 {
+                        alert('incorrect');
                     }
                     else {
-                        alert('incorrect')
+                        alert('incorrect');
                     }
                 }
 
@@ -36,11 +36,11 @@
                 <p></p>
                 <tr>
                     <form>
-                        <button onsubmit="check()"; id="red">102</button>
-                        <button onsubmit="check">139</button>
-                        <button onsubmit="check">165</button>
-                        <button onsubmit="check">125</button>
-                        <button onsubmit="check">157</button>
+                        <button onclick="check()"; id="red">102</button>
+                        <button onsubmit="check()">139</button>
+                        <button onsubmit="check()">165</button>
+                        <button onsubmit="check()">125</button>
+                        <button onsubmit="check()">157</button>
                     </form>
                 </tr>
             </div>

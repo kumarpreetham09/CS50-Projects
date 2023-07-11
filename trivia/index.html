@@ -7,26 +7,13 @@
         <title>Trivia!</title>
         <script>
             // TODO: Add code to check answers to questions
-
-            document.querySelector('form').addEventListener('submit', function(event)) {
-                let input = document.querySelector('#input').value;
-                if 
-            }
-
-
-
-            function greet() {
-
-                    let answer = document.querySelector('#button1').value;
-                    let response = document.querySelector('p');
-
-                    if (answer) != 139 {
-                        alert('incorrect');
-                    }
-                    else {
-                        alert('incorrect');
-                    }
-                }
+            document.addEventListener('DOMContentLoaded', funtion() {
+                document.querySelector('form').addEventListener('submit', function(event) {
+                    let input = document.querySelector('#input').value;
+                    alert('hello' + input);
+                    event.preventDefault();
+                });
+        });
 
         </script>
     </head>
@@ -44,7 +31,7 @@
                 <p></p>
                 <tr>
                     <form>
-                        <button"; id="button1">102</button>
+                        <button id="input">102</button>
                     </form>
                 </tr>
             </div>

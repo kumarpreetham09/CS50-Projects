@@ -7,7 +7,13 @@
         <title>Trivia!</title>
         <script>
             // TODO: Add code to check answers to questions
-            document.querySelector('button').addEventListener('click')
+
+                document.querySelector('button').addEventListener('click', funtion() {
+                    let answer = document.querySelector('#answer').value;
+                    if (answer) != 139 {
+                        
+                    }
+                });
 
         </script>
     </head>
@@ -23,11 +29,11 @@
                 <!-- TODO: Add multiple choice question here -->
                 <h3>What is the sum of 93 + 46?</h3>
                 <tr>
-                    <button>102</button>
-                    <button>139</button>
-                    <button>165</button>
-                    <button>125</button>
-                    <button>157</button>
+                    <button onsubmit="check">102</button>
+                    <button onsubmit="check">139</button>
+                    <button onsubmit="check">165</button>
+                    <button onsubmit="check">125</button>
+                    <button onsubmit="check">157</button>
                 </tr>
             </div>
 

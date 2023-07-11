@@ -10,8 +10,11 @@
 
                 document.querySelector('button').addEventListener('click', funtion() {
                     let answer = document.querySelector('#answer').value;
+                    let response = document.querySelector('p')
+
                     if (answer) != 139 {
-                        
+                        response.innerHTML = `Incorrect`
+                        answer
                     }
                 });
 
@@ -28,6 +31,7 @@
                 <hr>
                 <!-- TODO: Add multiple choice question here -->
                 <h3>What is the sum of 93 + 46?</h3>
+                <p></p>
                 <tr>
                     <button onsubmit="check">102</button>
                     <button onsubmit="check">139</button>

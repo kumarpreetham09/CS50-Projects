@@ -8,10 +8,13 @@
         <script>
             // TODO: Add code to check answers to questions
             document.addEventListener('DOMContentLoaded', funtion() {
-                document.querySelector('form').addEventListener('submit', function(event) {
-                    let input = document.querySelector('#input').value;
-                    alert('hello' + input);
-                    event.preventDefault();
+                document.querySelector('form').addEventListener('submit', function() {
+
+                    let input = document.querySelector('.correct');
+                    correct.addEventListenee('click', function() {
+                        correct.stylebacgroundColour = "green";
+                        documment.querySelector(#)
+                    }
                 });
         });
 
@@ -28,8 +31,8 @@
                 <hr>
                 <!-- TODO: Add multiple choice question here -->
                 <h3>What is the sum of 93 + 46?</h3>
-                <button class="incorrect" type ="text">102</button>
-                <p id ="answer1"></p>
+                <button class="correct" type ="text">139</button>
+                <p id ="mcq_answer"></p>
             </div>
 
             <div class="section">

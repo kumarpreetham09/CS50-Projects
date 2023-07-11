@@ -9,12 +9,12 @@
             // TODO: Add code to check answers to questions
 
                 document.querySelector('button').addEventListener('click', funtion() {
-                    let answer = document.querySelector('#answer').value;
+                    let answer = document.querySelector('#answer');
                     let response = document.querySelector('p')
 
-                    if (answer) != 139 {
+                    if (answer.value) != 139 {
                         response.innerHTML = `Incorrect`
-                        answer
+                        answer.style.backgroundColor
                     }
                 });
 

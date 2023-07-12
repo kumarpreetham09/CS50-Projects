@@ -42,6 +42,8 @@ div {
 }
 
 .middle-container{
+    text-align : center;
+    padding-top: 50px;
     margin: -10px;
 }
 .bottom-container{

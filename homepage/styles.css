@@ -75,7 +75,12 @@ h5 {
     padding:20px;
 }
 
-.images{
-    width: 50%;
-    height: 50%;
+.random-swimmer{
+    width: 30%;
+    height: 30%;
+}
+
+.guitar{
+    width: 20%;
+    height: 20%;
 }

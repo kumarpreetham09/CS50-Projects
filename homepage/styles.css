@@ -1,14 +1,13 @@
 body {
     background-color:rgb(187, 206, 224);
-    text-align : center;
+
     font-family: 'Merriweather', serif;
 }
 
-h1 {
-    text-align : centre;
+h2 {
     margin-top: 50px auto 0 auto;
     font-family: 'Montserrat', sans-serif;
-    font-size: 5.625rem;
+    font-size: 4.625rem;
     line-height: 0.7;
     color:rgb(18, 34, 29)
 }
@@ -30,6 +29,7 @@ div {
 }
 
 .top-container{
+    text-align : center;
     background-color: beige;
     padding-top: 100px;
     margin: -10px;

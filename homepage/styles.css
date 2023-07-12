@@ -1,6 +1,6 @@
 body {
+    text-align : center;
     background-color:rgb(187, 206, 224);
-
     font-family: 'Merriweather', serif;
 }
 
@@ -37,7 +37,7 @@ div {
 .top-container{
     text-align : center;
     background-color: beige;
-    padding-top: 100px;
+    padding-top: 50px;
     margin: -10px;
 }
 
@@ -83,4 +83,9 @@ h5 {
 .guitar{
     width: 20%;
     height: 20%;
+}
+
+.cook {
+    width: 30%;
+    height: 30%;
 }

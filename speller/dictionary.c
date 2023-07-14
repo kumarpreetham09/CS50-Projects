@@ -69,7 +69,6 @@ bool load(const char *dictionary)
         {
             return false;
         }
-        fscanf(file, "%s", n);
         strcpy(str->word, n);
         str->next = NULL;
         int index = hash(str->word);

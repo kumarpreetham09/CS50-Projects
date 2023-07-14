@@ -84,7 +84,6 @@ bool load(const char *dictionary)
             str->next = table[index];
             table[index] = str;
         }
-        size();
 
     }
     fclose(file);

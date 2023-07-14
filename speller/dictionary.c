@@ -61,7 +61,8 @@ bool load(const char *dictionary)
     char c;
     node *temp = NULL;
     char n[LENGTH + 1];
-    do
+
+    while (fscanf(file, "%s", n) != EOF)
     {
         node *str = malloc(sizeof(node));
 
@@ -83,7 +84,6 @@ bool load(const char *dictionary)
         }
 
     }
-    while (fscanf(file, "%s", n) != EOF);
     fclose(file);
 
 

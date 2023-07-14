@@ -60,7 +60,6 @@ bool load(const char *dictionary)
 
     if (file == NULL)
     {
-        printf("Could not open %s\n", dictionary);
         return false;
     }
     char c;
@@ -113,7 +112,7 @@ bool unload(void)
         node *cursor = head;
         node *tmp = head;
 
-    
+
         while(cursor != NULL)
         {
             cursor = cursor->next;

@@ -91,8 +91,6 @@ bool load(const char *dictionary)
 
     }
     fclose(file);
-
-
     return true;
 }
 
@@ -115,6 +113,7 @@ bool unload(void)
         node *cursor = head;
         node *tmp = head;
 
+    
         while(cursor != NULL)
         {
             cursor = cursor->next;

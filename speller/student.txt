@@ -958,11 +958,11 @@ Sebastian's
 L
 
 WORDS MISSPELLED:     955
-WORDS IN DICTIONARY:  1
+WORDS IN DICTIONARY:  143092
 WORDS IN TEXT:        17756
 TIME IN load:         0.03
 TIME IN check:        0.04
 TIME IN size:         0.00
 TIME IN unload:       0.01
-TIME IN TOTAL:        0.08
+TIME IN TOTAL:        0.07
 

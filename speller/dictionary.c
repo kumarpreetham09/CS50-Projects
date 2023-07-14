@@ -5,9 +5,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <strings.h>
-
 #include "dictionary.h"
 
+int counter = 0;
 // Represents a node in a hash table
 typedef struct node
 {
@@ -94,9 +94,9 @@ bool load(const char *dictionary)
 unsigned int size(void)
 {
     // TODO
-    int i = 0;
-    i++;
-    return i;
+
+    counter++;
+    return counter;
 }
 
 // Unloads dictionary from memory, returning true if successful, else false

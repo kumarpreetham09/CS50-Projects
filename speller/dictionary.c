@@ -84,6 +84,7 @@ bool load(const char *dictionary)
             str->next = table[index];
             table[index] = str;
         }
+        counter++;
 
     }
     fclose(file);
@@ -94,7 +95,6 @@ bool load(const char *dictionary)
 unsigned int size(void)
 {
     // TODO
-    counter++;
     return counter;
 }
 

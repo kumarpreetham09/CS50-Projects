@@ -16,7 +16,7 @@ typedef struct node
 } node;
 
 // TODO: Choose number of buckets in hash table
-const unsigned int N = (LENGTH)*'z';
+const unsigned int N = 26;
 
 // Hash table
 int counter = 0;

@@ -67,7 +67,6 @@ bool load(const char *dictionary)
 
         if (str == NULL)
         {
-            printf("Could not allocate memory for each word");
             return false;
         }
         fscanf(file, "%s", n);

@@ -19,6 +19,7 @@ typedef struct node
 const unsigned int N = (LENGTH)*'z';
 
 // Hash table
+int counter = 0;
 node *table[N];
 
 // Returns true if word is in dictionary, else false
@@ -94,9 +95,8 @@ bool load(const char *dictionary)
 unsigned int size(void)
 {
     // TODO
-    int i = 0;
-    i++;
-    return i;
+    counter++;
+    return counter;
 }
 
 // Unloads dictionary from memory, returning true if successful, else false

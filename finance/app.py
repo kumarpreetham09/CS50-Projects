@@ -112,7 +112,7 @@ def quote():
         else:
             return apology("invalid symbol", 403)
     else:
-        return redirect("quote.html")
+        return render_template("quote.html")
 
 
 @app.route("/register", methods=["GET", "POST"])

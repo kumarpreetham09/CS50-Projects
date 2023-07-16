@@ -45,7 +45,7 @@ def buy():
     """Buy shares of stock"""
     if request.method == "POST":
         symbol = request.form.get("symbol")
-        shares = int(request.form.get("shares"))
+        shares = request.form.get("shares")
         symbol_dict = lookup(symbol)
         user_id = session["user_id"]
         username = db.execute("SELECT username FROM users WHERE id = ?", user_id)

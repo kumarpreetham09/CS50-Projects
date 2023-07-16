@@ -123,8 +123,10 @@ def register():
                 if confirmation == password:
                     hash = generate_password_hash(password)
                     db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", username, hash)
+                    rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
+                    session["user_id"] = rows[0]["id"]
                     return redirect("/")
-                
+
                 else:
                     return apology("Password and Confirmation did not match",403)
             else:

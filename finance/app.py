@@ -123,7 +123,7 @@ def register():
                 if confirmation == password:
                     hash = generate_password_hash(password)
                     db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", username, hash)
-                    rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
+                    rows = db.execute("SELECT * FROM users WHERE username = ?", username)
                     session["user_id"] = rows[0]["id"]
                     return redirect("/")
 

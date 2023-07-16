@@ -57,7 +57,7 @@ def buy():
                 if shares > 0:
                     if cash >= total_price:
 
-                        db.execute("INSERT INTO history (user_id, username, symbol, price, time)")
+                        db.execute("INSERT INTO history (user_id, username, symbol, price, time) VALUES(?,?,?,?)")
                         db.execute("UPDATE cash FROM users WHERE id = ?", user_id)
 
 

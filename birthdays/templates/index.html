@@ -37,11 +37,17 @@
                     </thead>
                     <tbody>
                         <!-- TODO: Loop through the database entries to display them in this table -->
-                        <ul>
-                        {% for birthday in birthdays %}
-                            <li>{{ birthday["name"] }}</li>
-                        {& endfor %}
-                        </ul>
+                        <td>
+                            {% for birthday in birthdays %}
+                                <ul>{{ birthday["name"] }}</ul>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for birthday in birthdays %}
+                                <ul>{{ birthday["month"] }} / {{ birthday["day"] }}</ul
+                                    >
+                            {% endfor %}
+                        </td>
 
                     </tbody>
                 </table>

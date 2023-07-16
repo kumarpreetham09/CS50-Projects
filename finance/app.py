@@ -113,11 +113,15 @@ def register():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
-        if username and password:
+        confirmation = request.form.get("confirmation")
+        if username and password and confirmation:
             all_users = db.execute("SELECT username FROM users")
             if username not in all_users:
-                db.execute("INSERT INTO users (username, hash) VALUES(?, ?)")
-                return redirect("/")
+                if confirmation == password:
+                    db.execute("INSERT INTO users (username, hash) VALUES(?, ?)")
+                    return redirect("/")
+                else:
+                    return apology("Password and Confirmation did not match",403)
             else:
                 return apology("This username has been taken",403)
         else:

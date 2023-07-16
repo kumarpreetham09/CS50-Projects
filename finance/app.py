@@ -114,7 +114,7 @@ def register():
         username = request.form.get("username")
         password = request.form.get("password")
         if not username or not password:
-            db.execute("")
+            db.execute("SELECT username FROM ")
             return redirect("/")
 
         else:

@@ -116,12 +116,12 @@ def register():
         if username and password:
             all_users = db.execute("SELECT username FROM users")
             if username not in all_users:
-                return apology(f"{all_users}",403)
+                db.execute("INSERT INTO users (username, hash) VALUES(?, ?)")
                 return redirect("/")
             else:
                 return apology("This username has been taken",403)
         else:
-            return apology(f"U need to fill in all details{username} and {password}", 403)
+            return apology(f"U need to fill in all details", 403)
     else:
         return render_template("register.html")
 

@@ -39,13 +39,12 @@
                         <!-- TODO: Loop through the database entries to display them in this table -->
                         <td>
                             {% for birthday in birthdays %}
-                                <ul>{{ birthday["name"] }}</ul>
+                                <tr>{{ birthday["name"] }}</tr>
                             {% endfor %}
                         </td>
                         <td>
                             {% for birthday in birthdays %}
-                                <ul>{{ birthday["month"] }} / {{ birthday["day"] }}</ul
-                                    >
+                                <tr>{{ birthday["month"] }} / {{ birthday["day"] }}</tr>
                             {% endfor %}
                         </td>
 

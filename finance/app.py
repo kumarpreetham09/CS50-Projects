@@ -107,7 +107,10 @@ def quote():
     if request.method == "POST":
         symbol = request.form.get("symbol")
         symbol_dict = lookup(symbol)
-    return apology("TODO")
+        if symbol_dict:
+            return render_template("quoted.html", symbol_dict=symbol_dict)
+        else:
+            return apology("invalid symbol", 403)
 
 
 @app.route("/register", methods=["GET", "POST"])

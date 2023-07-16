@@ -114,7 +114,9 @@ def register():
         username = request.form.get("username")
         password = request.form.get("password")
         if not username or not password:
+            db.execute("")
             return redirect("/")
+
         else:
             return apology("U need to fill in all details", 403)
     else:

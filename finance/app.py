@@ -45,22 +45,23 @@ def buy():
     """Buy shares of stock"""
     if request.method == "POST":
         symbol = request.form.get("symbol")
-        shares = int(request.form.get("shares"))
+        shares = request.form.get("shares")
         symbol_dict = lookup(symbol)
         user_id = session["user_id"]
         username = db.execute("SELECT username FROM users WHERE id = ?", user_id)
-        cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id))
-        price = int(symbol_dict["price"])
-        total_price = int(price * shares)
+        cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"])
+
 
         if symbol and shares:
             if symbol_dict:
-                if shares > 0:
+                price = int(symbol_dict["price"])
+                if type(shares) == 'int' or int(shares) > 0:
+                    total_price = int(price * shares)
                     if cash >= total_price:
-
+                        return apology("bought", 403)
                         db.execute("INSERT INTO history (user_id, username, symbol, price, shares) VALUES(?, ?, ?, ?)")
                         db.execute("UPDATE cash FROM users WHERE id = ?", user_id)
-                        return apology("bought", 403)
+
 
                     else:
                         return apology("not enough balance", 403)

@@ -60,7 +60,7 @@ def buy():
 
                         db.execute("INSERT INTO history (user_id, username, symbol, price, shares) VALUES(?, ?, ?, ?)")
                         db.execute("UPDATE cash FROM users WHERE id = ?", user_id)
-
+                        return apology("bought", 403)
 
                     else:
                         return apology("not enough balance", 403)

@@ -113,9 +113,10 @@ def register():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
-        if not username or not password:
+        if username and password:
             all_users = db.execute("SELECT username FROM users")
             if username not in all_users:
+                return apology(f"{all_users}",403)
                 return redirect("/")
             else:
                 return apology("This username has been taken",403)

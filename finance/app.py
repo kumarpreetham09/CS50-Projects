@@ -45,7 +45,7 @@ def buy():
     """Buy shares of stock"""
     if request.method == "POST":
         symbol = request.form.get("symbol")
-        shares = request.form.get("shares")
+        shares = int(request.form.get("shares"))
         symbol_dict = lookup(symbol)
         user_id = session["user_id"]
         username = db.execute("SELECT username FROM users WHERE id = ?", user_id)
@@ -55,21 +55,16 @@ def buy():
         if symbol and shares:
             if symbol_dict:
                 price = int(symbol_dict["price"])
-                if type(shares) != 'str':
-                    if int(shares) > 0:
-                        total_price = int(price * shares)
-                        if cash >= total_price:
-                            return apology("bought", 403)
-                            db.execute("INSERT INTO history (user_id, username, symbol, price, shares) VALUES(?, ?, ?, ?)")
-                            db.execute("UPDATE cash FROM users WHERE id = ?", user_id)
-
-
-                        else:
-                            return apology(f"not enough balance {cash} and {price} and {shares} ", 403)
+                if shares > 0:
+                    total_price = (price * shares)
+                    if cash >= int(total_price):
+                        return apology("bought", 403)
+                        db.execute("INSERT INTO history (user_id, username, symbol, price, shares) VALUES(?, ?, ?, ?)")
+                        db.execute("UPDATE cash FROM users WHERE id = ?", user_id)
                     else:
-                        return apology("invalid number of shares", 403)
+                        return apology("not enough balance", 403)
                 else:
-                    return apology("invalid number of shares", 403)
+                        return apology("invalid number of shares", 403)
             else:
                 return apology("invalid symbol", 403)
         else:

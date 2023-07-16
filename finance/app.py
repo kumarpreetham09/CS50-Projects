@@ -114,9 +114,11 @@ def register():
         username = request.form.get("username")
         password = request.form.get("password")
         if not username or not password:
-            db.execute("SELECT username FROM ")
-            return redirect("/")
-
+            all_users = db.execute("SELECT username FROM users")
+            if username not in all_users:
+                return redirect("/")
+            else:
+                return apology("This username has been taken",403)
         else:
             return apology("U need to fill in all details", 403)
     else:

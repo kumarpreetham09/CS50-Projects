@@ -55,16 +55,19 @@ def buy():
         if symbol and shares:
             if symbol_dict:
                 price = int(symbol_dict["price"])
-                if type(shares) == 'int' or int(shares) > 0:
-                    total_price = int(price * shares)
-                    if cash >= total_price:
-                        return apology("bought", 403)
-                        db.execute("INSERT INTO history (user_id, username, symbol, price, shares) VALUES(?, ?, ?, ?)")
-                        db.execute("UPDATE cash FROM users WHERE id = ?", user_id)
+                if type(shares) == 'int':
+                    if int(shares) > 0:
+                        total_price = int(price * shares)
+                        if cash >= total_price:
+                            return apology("bought", 403)
+                            db.execute("INSERT INTO history (user_id, username, symbol, price, shares) VALUES(?, ?, ?, ?)")
+                            db.execute("UPDATE cash FROM users WHERE id = ?", user_id)
 
 
+                        else:
+                            return apology("not enough balance", 403)
                     else:
-                        return apology("not enough balance", 403)
+                        return apology("invalid number of shares", 403)
                 else:
                     return apology("invalid number of shares", 403)
             else:

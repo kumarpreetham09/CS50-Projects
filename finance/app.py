@@ -48,6 +48,7 @@ def buy():
         shares = request.form.get("shares")
         symbol_dict = lookup(symbol)
         user_id = session["user_id"]
+        username = db.execute("SELECT username FROM users WHERE id = ?", user_id)
         cash = db.execute("SELECT cash FROM users WHERE id = ?", user_id)
         price = symbol_dict["price"]
         total_price = price * shares
@@ -57,7 +58,7 @@ def buy():
                 if shares > 0:
                     if cash >= total_price:
 
-                        db.execute("INSERT INTO history (user_id, username, symbol, price, shares, time) VALUES(?,?,?,?)")
+                        db.execute("INSERT INTO history (user_id, username, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)")
                         db.execute("UPDATE cash FROM users WHERE id = ?", user_id)
 
 

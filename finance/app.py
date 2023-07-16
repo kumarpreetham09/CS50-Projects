@@ -104,6 +104,9 @@ def logout():
 @login_required
 def quote():
     """Get stock quote."""
+    if request.method == "POST":
+        symbol = request.form.get("symbol")
+        symbol_dict = lookup(symbol)
     return apology("TODO")
 
 

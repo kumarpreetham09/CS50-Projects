@@ -141,7 +141,7 @@ def quote():
         if symbol_dict:
             return render_template("quoted.html", symbol_dict=symbol_dict)
         else:
-            return apology("invalid symbol", 403)
+            return apology("invalid symbol", 400)
     else:
         return render_template("quote.html")
 

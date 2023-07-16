@@ -167,11 +167,11 @@ def register():
                     return redirect("/")
 
                 else:
-                    return apology("password and Confirmation did not match",403)
+                    return apology("password and Confirmation did not match", 400)
             else:
-                return apology("this username has been taken",403)
+                return apology("this username has been taken", 403)
         else:
-            return apology(f"you need to fill in all details", 403)
+            return apology(f"you need to fill in all details", 400)
     else:
         return render_template("register.html")
 

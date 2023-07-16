@@ -120,7 +120,7 @@ def register():
             else:
                 return apology("This username has been taken",403)
         else:
-            return apology("U need to fill in all details", 403)
+            return apology(f"U need to fill in all details{username} and {password}", 403)
     else:
         return render_template("register.html")
 

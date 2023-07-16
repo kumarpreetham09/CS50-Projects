@@ -55,7 +55,7 @@ def buy():
         if symbol and shares:
             if symbol_dict:
                 price = int(symbol_dict["price"])
-                if type(shares) == 'int':
+                if type(shares) != 'str':
                     if int(shares) > 0:
                         total_price = int(price * shares)
                         if cash >= total_price:
@@ -65,11 +65,11 @@ def buy():
 
 
                         else:
-                            return apology("not enough balance", 403)
+                            return apology(f"not enough balance {cash} and {price} and {shares} ", 403)
                     else:
                         return apology("invalid number of shares", 403)
                 else:
-                    return apology("word", 403)
+                    return apology("invalid number of shares", 403)
             else:
                 return apology("invalid symbol", 403)
         else:

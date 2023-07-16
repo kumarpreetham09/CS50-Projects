@@ -36,7 +36,7 @@ def after_request(response):
 @login_required
 def index():
     """Show portfolio of stocks"""
-    return apology("TODO")
+    return apology("successful login", 200)
 
 
 @app.route("/buy", methods=["GET", "POST"])
@@ -111,6 +111,8 @@ def quote():
             return render_template("quoted.html", symbol_dict=symbol_dict)
         else:
             return apology("invalid symbol", 403)
+    else:
+        return redirect("quote.html")
 
 
 @app.route("/register", methods=["GET", "POST"])

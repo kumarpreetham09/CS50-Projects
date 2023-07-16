@@ -122,7 +122,7 @@ def register():
         else:
             return apology("U need to fill in all details", 403)
     else:
-        return render_template("/register")
+        return render_template("register.html")
 
 
 

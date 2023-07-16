@@ -6,14 +6,14 @@
 
 {% block main %}
     <table>
-
-            <p>Information</p>
-
-
-            <p>{{  symbol_dict["name"]  }}</p>
-
-
-            <p>"{{  symbol_dict["price"]  }}"</p>
-
+        <tr>
+            <th>Information</th>
+        </tr>
+        <tr>
+            <td>{{  symbol_dict["name"]  }}</td>
+        </tr>
+        <tr>
+            <td>{{  symbol_dict["price"]  }}</td>
+        </tr>
     </table>
 {% endblock %}

@@ -69,7 +69,7 @@ def buy():
                     else:
                         return apology("invalid number of shares", 403)
                 else:
-                    return apology("invalid number of shares", 403)
+                    return apology("word", 403)
             else:
                 return apology("invalid symbol", 403)
         else:

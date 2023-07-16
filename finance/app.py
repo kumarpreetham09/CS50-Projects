@@ -58,17 +58,17 @@ def buy():
                 if shares > 0:
                     total_price = (price * shares)
                     if cash >= int(total_price):
-                        return apology("bought", 403)
+                        return apology("bought", 400)
                         db.execute("INSERT INTO history (user_id, username, symbol, price, shares) VALUES(?, ?, ?, ?)")
                         db.execute("UPDATE cash FROM users WHERE id = ?", user_id)
                     else:
-                        return apology("not enough balance", 403)
+                        return apology("not enough balance", 400)
                 else:
-                        return apology("invalid number of shares", 403)
+                        return apology("invalid number of shares", 400)
             else:
-                return apology("invalid symbol", 403)
+                return apology("invalid symbol", 400)
         else:
-            return apology("you need to fill in all details", 403)
+            return apology("you need to fill in all details", 400)
     else:
         return render_template("buy.html")
 

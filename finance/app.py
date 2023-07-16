@@ -47,12 +47,18 @@ def buy():
         symbol = request.form.get("symbol")
         shares = request.form.get("shares")
         symbol_dict = lookup(symbol)
-        cash = db.execute("SELECT ")
+        user_id = session["user_id"]
+        cash = db.execute("SELECT cash FROM users WHERE id = ?", user_id)
         price = symbol_dict["price"]
+        total_price = price * shares
         if symbol and shares:
             if symbol_dict:
                 if shares > 0:
+                    if cash >= total_price:
+                        
 
+                    else:
+                        return apology("not enough balance", 403)
                 else:
                     return apology("invalid number of shares", 403)
             else:

@@ -44,7 +44,21 @@ def index():
 def buy():
     """Buy shares of stock"""
     if request.method == "POST":
-        return apology("TODO")
+        symbol = request.form.get("symbol")
+        shares = request.form.get("shares")
+        symbol_dict = lookup(symbol)
+        cash = db.execute("SELECT ")
+        price = symbol_dict["price"]
+        if symbol and shares:
+            if symbol_dict:
+                if shares > 0:
+
+                else:
+                    return apology("invalid number of shares", 403)
+            else:
+                return apology("invalid symbol", 403)
+        else:
+            return apology("you need to fill in all details", 403)
     else:
         return render_template("buy.html")
 

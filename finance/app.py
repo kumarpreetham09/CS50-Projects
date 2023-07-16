@@ -51,12 +51,13 @@ def buy():
         cash = db.execute("SELECT cash FROM users WHERE id = ?", user_id)
         price = symbol_dict["price"]
         total_price = price * shares
-        
+
         if symbol and shares:
             if symbol_dict:
                 if shares > 0:
                     if cash >= total_price:
 
+                        db.execute("INSERT INTO history (user_id, username, symbol, price, time)")
                         db.execute("UPDATE cash FROM users WHERE id = ?", user_id)
 
 

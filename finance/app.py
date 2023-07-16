@@ -56,6 +56,8 @@ def buy():
                 if shares > 0:
                     if cash >= total_price:
                         
+                        db.execute("UPDATE cash FROM users WHERE id = ?", user_id)
+
 
                     else:
                         return apology("not enough balance", 403)

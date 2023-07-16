@@ -114,12 +114,17 @@ def register():
         username = request.form.get("username")
         password = request.form.get("password")
         confirmation = request.form.get("confirmation")
+
         if username and password and confirmation:
             all_users = db.execute("SELECT username FROM users")
+
             if username not in all_users:
+
                 if confirmation == password:
+                    hash = generate_password_hash(password)
                     db.execute("INSERT INTO users (username, hash) VALUES(?, ?)")
                     return redirect("/")
+
                 else:
                     return apology("Password and Confirmation did not match",403)
             else:

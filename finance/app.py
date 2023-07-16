@@ -55,7 +55,7 @@ def buy():
         if symbol and shares:
             if symbol_dict:
                 price = int(symbol_dict["price"])
-                if shares > 0:
+                if isinstance(shares, int):
                     total_price = (price * shares)
                     if cash >= int(total_price):
                         return apology("bought", 400)

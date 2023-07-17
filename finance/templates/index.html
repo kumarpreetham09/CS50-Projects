@@ -13,9 +13,9 @@
             <th>Total</th>
         </tr>
 
-        {% for symbol in all_symbols %}
+        {% for i in all_symbols %}
         <tr>
-            <td>{{ symbol }}</td>
+            <td>{{ all_symbols[i] }}</td>
             <td>{{ shares }}</td>
             <td>{{ price }}</td>
             <td>{{ total }}</td>

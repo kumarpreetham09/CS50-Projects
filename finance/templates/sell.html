@@ -6,10 +6,12 @@
 
 {% block main %}
     <form action="/sell" method="post">
+        <label>Choose a Stock to Sell</label>
         <select name ="symbol">
             {% for symbol in symbols %}
                 <option>{{  symbol  }}</option>
             {% endfor %}
         </select>
+        <button class="btn btn-primary" type="submit">Buy</button>
     </form>
 {% endblock %}

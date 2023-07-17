@@ -38,7 +38,7 @@ def index():
     """Show portfolio of stocks"""
     user_id = session["user_id"]
     all_symbols = []
-    data ={}
+    data = []
     for i in (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id)):
         all_symbols.append(i["symbol"])
     print(f"{all_symbols}")
@@ -48,18 +48,15 @@ def index():
         price = round(float(lookup(symbol)["price"]),4)
         shares = int(db.execute("SELECT SUM(shares) AS n FROM history  WHERE user_id = ? AND symbol = ?", user_id, symbol)[0]["n"])
         total = round(float(price * shares),2)
-        
-        print(total)
-
-
-    return apology("home", 400)
-
-    data_dict = {
-            "symbol": symbol,
-            "shares": shares,
-            "price": price,
-            "total": total
-        }
+        data.append(
+            {
+                "symbol": symbol.upper(),
+                "shares": shares,
+                "price": price,
+                "total": total
+            }
+        )
+    print(data)
 
     return render_template("index.html",all_symbols=all_symbols, data=data)
 

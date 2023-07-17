@@ -204,6 +204,11 @@ def register():
 def sell():
     """Sell shares of stock"""
     if request.method == "POST":
+        symbols = []
+        for i in (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id)):
+            symbols.append(i["symbol"])
+
+        return render_template("sell.html", symbols=symbols)
 
     else:
         return render_template("sell.html")

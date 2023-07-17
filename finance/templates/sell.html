@@ -5,9 +5,11 @@
 {% endblock %}
 
 {% block main %}
-    <select>
-        {% for symbol in symbols %}
-            <option>{{  symbol  }}</option>
-        {% endfor %}
-    </select>
+    <form action="/sell" method="post">
+        <select name ="symbol">
+            {% for symbol in symbols %}
+                <option>{{  symbol  }}</option>
+            {% endfor %}
+        </select>
+    </form>
 {% endblock %}

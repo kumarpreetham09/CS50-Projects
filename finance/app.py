@@ -208,7 +208,7 @@ def sell():
         user_id = session["user_id"]
         for i in (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id)):
             symbols.append(i["symbol"])
-            print()
+            print(i)
 
         return render_template("sell.html", symbols=symbols)
 

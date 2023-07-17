@@ -206,11 +206,13 @@ def sell():
     symbols = []
     user_id = session["user_id"]
     for i in (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id)):
-        symbols.append((i["symbol"]).upper())
+        symbols.append((i["symbol"]))
     if request.method == "POST":
         symbol = request.form.get("symbol")
         amount_input = int(request.form.get("amount"))
+        print(symbol)
         amount_real = int(db.execute("SELECT SUM(shares) AS n FROM history  WHERE user_id = ? AND symbol = ?", user_id, symbol)[0]["n"])
+        print(amount_real)
         if amount_input < amount_real:
             symbol_dict = lookup(symbol)
             user_id = session["user_id"]

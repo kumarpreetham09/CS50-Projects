@@ -62,7 +62,7 @@ def buy():
                     total_price = (price * int(shares))
                     if cash >= int(total_price):
                         cash -= int(total_price)
-                        db.execute("INSERT INTO history (user_id, symbol, price, time) VALUES(?, ?, ?, ?, ?)", user_id, symbol, price, shares, time)
+                        db.execute("INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)", user_id, symbol, price, shares, time)
                         db.execute("UPDATE users SET cash = ? WHERE id = ?", cash, user_id)
                         return apology("bought", 400)
                     else:

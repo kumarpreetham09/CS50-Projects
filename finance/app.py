@@ -48,7 +48,7 @@ def buy():
         shares = request.form.get("shares")
         symbol_dict = lookup(symbol)
         user_id = session["user_id"]
-        username = db.execute("SELECT username FROM users WHERE id = ?", user_id)
+        time = symbol_dict["time"]
         cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"])
 
 
@@ -58,7 +58,7 @@ def buy():
                 if shares.isnumeric():
                     total_price = (price * int(shares))
                     if cash >= int(total_price):
-                        db.execute("INSERT INTO history (user_id, symbol, price, time) VALUES(?, ?, ?, ?)")
+                        db.execute("INSERT INTO history (user_id, symbol, price, time) VALUES(?, ?, ?, ?)", user_id, symbol, price, time)
                         db.execute("UPDATE cash FROM users WHERE id = ?", user_id)
                         return apology("bought", 400)
                     else:

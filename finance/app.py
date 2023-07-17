@@ -70,12 +70,13 @@ def buy():
         shares = request.form.get("shares")
         symbol_dict = lookup(symbol)
         user_id = session["user_id"]
-        time = symbol_dict["time"]
+
         cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"])
 
 
         if symbol and shares:
-            if symbol_dict:
+            if symbol_dict:        
+                time = symbol_dict["time"]
                 price = int(symbol_dict["price"])
                 if shares.isnumeric():
                     total_price = (price * int(shares))

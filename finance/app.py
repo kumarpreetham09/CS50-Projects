@@ -58,8 +58,9 @@ def buy():
                 if shares.isnumeric():
                     total_price = (price * int(shares))
                     if cash >= int(total_price):
+                        cash -= int(total_price)
                         db.execute("INSERT INTO history (user_id, symbol, price, time) VALUES(?, ?, ?, ?)", user_id, symbol, price, time)
-                        db.execute("UPDATE cash FROM users WHERE id = ?", user_id)
+                        db.execute("UPDATE users SET cash = ? WHERE id = ?", cash, user_id)
                         return apology("bought", 400)
                     else:
                         return apology("not enough balance", 400)

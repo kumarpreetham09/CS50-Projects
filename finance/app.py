@@ -203,14 +203,13 @@ def register():
 @login_required
 def sell():
     """Sell shares of stock"""
+    symbols = []
+    user_id = session["user_id"]
+    for i in (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id)):
+        symbols.append((i["symbol"]).upper())
     if request.method == "POST":
-        symbols = []
-        user_id = session["user_id"]
-        for i in (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id)):
-            symbols.append(i["symbol"])
-            print(i)
-
+        
         return render_template("sell.html", symbols=symbols)
 
     else:
-        return render_template("sell.html")
+        return render_template("sell.html", symbols=symbols)

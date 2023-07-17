@@ -37,8 +37,8 @@ def after_request(response):
 def index():
     """Show portfolio of stocks"""
     user_id = session["user_id"]
-    all_symbols = (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id))[0]
-    data = (db.execute("SELECT * FROM history WHERE user_id = ?", user_id))[0]
+    all_symbols = (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id))
+    data = (db.execute("SELECT * FROM history WHERE user_id = ?", user_id))
 
     return render_template("index.html",all_symbols=all_symbols, data=data)
 

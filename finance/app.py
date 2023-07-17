@@ -36,9 +36,12 @@ def after_request(response):
 @login_required
 def index():
     """Show portfolio of stocks"""
-
+    user_id = session["user_id"]
     all_symbols = (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id))[0]
-
+    data = db.execute("SELECT * FROM history WHERE user_id = ?", user_id)
+    price = float(data["price"])
+    shares = int(data["shares"])
+    total = shares * price
     return render_template("index.html",all_symbols=all_symbols, price=price, shares=shares, total=total)
 
 

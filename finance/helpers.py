@@ -68,6 +68,7 @@ def lookup(symbol):
             "name": symbol,
             "price": price,
             "symbol": symbol
+            "time": 
         }
     except (requests.RequestException, ValueError, KeyError, IndexError):
         return None

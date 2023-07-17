@@ -39,6 +39,12 @@ def index():
     user_id = session["user_id"]
     all_symbols = (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id))
     data = (db.execute("SELECT * FROM history WHERE user_id = ?", user_id))
+    data {
+            "name": symbol,
+            "price": price,
+            "symbol": symbol,
+            "time": time
+        }
 
     return render_template("index.html",all_symbols=all_symbols, data=data)
 

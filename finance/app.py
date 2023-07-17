@@ -209,22 +209,25 @@ def sell():
         symbols.append((i["symbol"]))
     if request.method == "POST":
         symbol = request.form.get("symbol")
-        amount_input = int(request.form.get("amount"))
-        print(symbol)
-        amount_real = int(db.execute("SELECT SUM(shares) AS n FROM history  WHERE user_id = ? AND symbol = ?", user_id, symbol)[0]["n"])
-        print(amount_real)
-        if amount_input < amount_real:
-            symbol_dict = lookup(symbol)
-            user_id = session["user_id"]
-            time = symbol_dict["time"]
-            price = int(symbol_dict["price"])
-            shares = -amount_input
+        if request.form.get("amount").isnumeric():
+            amount_input = int(request.form.get("amount"))
+            print(symbol)
+            amount_real = int(db.execute("SELECT SUM(shares) AS n FROM history  WHERE user_id = ? AND symbol = ?", user_id, symbol)[0]["n"])
+            print(amount_real)
+            if amount_input < amount_real:
+                symbol_dict = lookup(symbol)
+                user_id = session["user_id"]
+                time = symbol_dict["time"]
+                price = int(symbol_dict["price"])
+                shares = -amount_input
 
-            db.execute("INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)", user_id, symbol, price, shares, time)
-            return apology(f"sold", 400)
+                db.execute("INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)", user_id, symbol, price, shares, time)
+                return apology(f"sold", 400)
 
+            else:
+                return apology(f"you do not have enough shares", 400)
         else:
-            return apology(f"you do not have enough shares", 400)
+            return apology(f"enter a valid amount of shares", 400)
 
 
 

@@ -208,6 +208,8 @@ def sell():
     for i in (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id)):
         symbols.append((i["symbol"]).upper())
     if request.method == "POST":
+        symbol = request.form.get("symbol")
+        amount = request.form.get("amount")
         
         return render_template("sell.html", symbols=symbols)
 

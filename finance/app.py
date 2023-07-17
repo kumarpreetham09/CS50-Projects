@@ -209,8 +209,9 @@ def sell():
         symbols.append((i["symbol"]).upper())
     if request.method == "POST":
         symbol = request.form.get("symbol")
-        amount = request.form.get("amount")
-        
+        amount_input = int(request.form.get("amount"))
+        amount_real = int(db.execute("SELECT SUM(shares) AS n FROM history  WHERE user_id = ? AND symbol = ?", user_id, symbol)[0]["n"])
+
         return render_template("sell.html", symbols=symbols)
 
     else:

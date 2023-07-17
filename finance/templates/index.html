@@ -16,6 +16,9 @@
         {% for symbol in {{  symbols  }} %}
         <tr>
             <td>{{ symbol }}</td>
+            <td>{{ shares }}</td>
+            <td>{{ price }}</td>
+            <td>{{ shares * price }}</td>
         </tr>
         {% endfor %}
 

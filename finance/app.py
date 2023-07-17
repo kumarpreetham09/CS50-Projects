@@ -39,7 +39,7 @@ def index():
     user_id = session["user_id"]
     all_symbols = (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id))
     data = db.execute("SELECT * FROM history WHERE user_id = ?", user_id)
-    print(f"{data}")
+    print(f"{all_symbols}")
     return apology("home", 400)
 
     data_dict = {

@@ -212,7 +212,7 @@ def sell():
         amount_input = int(request.form.get("amount"))
         amount_real = int(db.execute("SELECT SUM(shares) AS n FROM history  WHERE user_id = ? AND symbol = ?", user_id, symbol)[0]["n"])
         if amount_input < amount_real:
-            db.execute("UPDATE users SET cash = ? WHERE id = ?", cash, user_id)
+            db.execute("INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)", user_id, symbol, price, shares, time)
             return apology(f"sold", 400)
 
         else:

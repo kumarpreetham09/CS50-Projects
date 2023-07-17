@@ -36,7 +36,8 @@ def after_request(response):
 @login_required
 def index():
     """Show portfolio of stocks"""
-    db.execute
+    
+    db.execute("SELECT symbol FROM history WHERE user_id = ?", user_id)
 
     return render_template("index.html",all_symbols=all_symbols, price=price, shares=shares, total=total)
 

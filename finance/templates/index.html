@@ -12,8 +12,12 @@
             <th>Price</th>
             <th>Total Value</th>
         </tr>
-        <tr>
 
+        {% for symbol in {{  symbols  }} %}
+        <tr>
+            <td>{{ symbol }}</td>
         </tr>
+        {% endfor %}
+
     </table>
 {% endblock %}

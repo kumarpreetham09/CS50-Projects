@@ -75,7 +75,7 @@ def buy():
 
 
         if symbol and shares:
-            if symbol_dict:        
+            if symbol_dict:
                 time = symbol_dict["time"]
                 price = int(symbol_dict["price"])
                 if shares.isnumeric():
@@ -229,9 +229,6 @@ def sell():
                 return apology(f"you do not have enough shares", 400)
         else:
             return apology(f"enter a valid amount of shares", 400)
-
-
-
 
     else:
         return render_template("sell.html", symbols=symbols)

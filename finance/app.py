@@ -203,7 +203,7 @@ def sell():
         shares = request.form.get("shares")
         if shares and shares.isdigit() and int(shares) > 0:
             print(symbol)
-            avail_shares = int(db.execute("SELECT SUM(shares) AS n FROM history  WHERE user_id = ? AND symbol = ?", user_id, symbol)[0]["n"])
+            avail_shares = int(db.execute("SELECT SUM(shares) AS n FROM history WHERE user_id = ? AND symbol = ?", user_id, symbol)[0]["n"])
             print(avail_shares)
             if int(shares) < avail_shares:
                 symbol_dict = lookup(symbol)

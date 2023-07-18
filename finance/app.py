@@ -83,7 +83,7 @@ def buy():
                         cash -= int(total_price)
                         db.execute("INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)", user_id, symbol, price, shares, time)
                         db.execute("UPDATE users SET cash = ? WHERE id = ?", cash, user_id)
-                        flash(f"Bought {shares} shares of {symbol} at {price}")
+                        flash(f"Bought {shares} shares of {symbol} at {usd(price)}")
                         return redirect("/")
                     else:
                             return apology("not enough balance", 400)

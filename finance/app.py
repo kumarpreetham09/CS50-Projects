@@ -39,6 +39,7 @@ def index():
     user_id = session["user_id"]
     all_symbols = []
     data = []
+    cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"])
     for i in (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id)):
         all_symbols.append(i["symbol"])
 
@@ -56,7 +57,7 @@ def index():
             }
         )
 
-    return render_template("index.html",all_symbols=all_symbols, data=data)
+    return render_template("index.html",all_symbols=all_symbols, data=data, cash=cash)
 
 
 @app.route("/buy", methods=["GET", "POST"])

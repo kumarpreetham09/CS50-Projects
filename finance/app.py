@@ -41,24 +41,26 @@ def index():
     all_symbols = []
     data = []
     cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"])
-    for i in (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id)):
+    for i in db.execute(
+        "SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id
+    ):
         all_symbols.append(i["symbol"])
 
     for symbol in all_symbols:
-
-        price = round(float(lookup(symbol)["price"]),4)
-        shares = int(db.execute("SELECT SUM(shares) AS n FROM history  WHERE user_id = ? AND symbol = ?", user_id, symbol)[0]["n"])
-        total = round(float(price * shares),2)
+        price = round(float(lookup(symbol)["price"]), 4)
+        shares = int(
+            db.execute(
+                "SELECT SUM(shares) AS n FROM history  WHERE user_id = ? AND symbol = ?",
+                user_id,
+                symbol,
+            )[0]["n"]
+        )
+        total = round(float(price * shares), 2)
         data.append(
-            {
-                "symbol": symbol.upper(),
-                "shares": shares,
-                "price": price,
-                "total": total
-            }
+            {"symbol": symbol.upper(), "shares": shares, "price": price, "total": total}
         )
 
-    return render_template("index.html",all_symbols=all_symbols, data=data, cash=cash)
+    return render_template("index.html", all_symbols=all_symbols, data=data, cash=cash)
 
 
 @app.route("/buy", methods=["GET", "POST"])
@@ -76,14 +78,29 @@ def buy():
                     time = str(datetime.now())
                     price = int(symbol_dict["price"])
                     total_price = price * int(shares)
-                    cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"])
+                    cash = int(
+                        db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0][
+                            "cash"
+                        ]
+                    )
                     if cash < total_price:
-                        return apology("not enough balance",400)
+                        return apology("not enough balance", 400)
                     else:
                         cash = cash - total_price
-                        db.execute("INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)", user_id, symbol, price, shares, time)
-                        db.execute("UPDATE users SET cash = ? WHERE id = ?", cash, user_id)
-                        flash(f"Bought {shares} shares of {symbol} at {usd(total_price)}")
+                        db.execute(
+                            "INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)",
+                            user_id,
+                            symbol,
+                            price,
+                            shares,
+                            time,
+                        )
+                        db.execute(
+                            "UPDATE users SET cash = ? WHERE id = ?", cash, user_id
+                        )
+                        flash(
+                            f"Bought {shares} shares of {symbol} at {usd(total_price)}"
+                        )
                         return redirect("/")
                 else:
                     return apology("invalid symbol", 400)
@@ -93,6 +110,7 @@ def buy():
             return apology("you need to provide symbol", 400)
     else:
         return render_template("buy.html")
+
 
 @app.route("/history")
 @login_required
@@ -111,7 +129,15 @@ def history():
         else:
             nature_list.append("SOLD")
 
-    return render_template("history.html", length=length, symbols=symbols, prices=prices, shares=shares, nature_list=nature_list, times=times)
+    return render_template(
+        "history.html",
+        length=length,
+        symbols=symbols,
+        prices=prices,
+        shares=shares,
+        nature_list=nature_list,
+        times=times,
+    )
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -122,7 +148,6 @@ def login():
 
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
-
         # Ensure username was submitted
         if not request.form.get("username"):
             return apology("must provide username", 403)
@@ -132,10 +157,14 @@ def login():
             return apology("must provide password", 403)
 
         # Query database for username
-        rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
+        rows = db.execute(
+            "SELECT * FROM users WHERE username = ?", request.form.get("username")
+        )
 
         # Ensure username exists and password is correct
-        if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
+        if len(rows) != 1 or not check_password_hash(
+            rows[0]["hash"], request.form.get("password")
+        ):
             return apology("invalid username and/or password", 403)
 
         # Remember which user has logged in
@@ -183,12 +212,20 @@ def register():
         password = request.form.get("password")
         confirmation = request.form.get("confirmation")
         if username and password and confirmation:
-            username_validity = db.execute("SELECT * FROM users WHERE username = ?", username)
+            username_validity = db.execute(
+                "SELECT * FROM users WHERE username = ?", username
+            )
             if len(username_validity) == 0:
                 if confirmation == password:
                     hash = generate_password_hash(password)
-                    db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", username, hash)
-                    rows = db.execute("SELECT * FROM users WHERE username = ?", username)
+                    db.execute(
+                        "INSERT INTO users (username, hash) VALUES(?, ?)",
+                        username,
+                        hash,
+                    )
+                    rows = db.execute(
+                        "SELECT * FROM users WHERE username = ?", username
+                    )
                     session["user_id"] = rows[0]["id"]
                     return redirect("/")
                 else:
@@ -201,20 +238,28 @@ def register():
         return render_template("register.html")
 
 
-
 @app.route("/sell", methods=["GET", "POST"])
 @login_required
 def sell():
     """Sell shares of stock"""
     symbols = []
     user_id = session["user_id"]
-    for i in (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id)):
+    cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"])
+    for i in db.execute(
+        "SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id
+    ):
         symbols.append((i["symbol"]))
     if request.method == "POST":
         symbol = request.form.get("symbol")
         shares = request.form.get("shares")
         if shares and shares.isdigit() and int(shares) > 0:
-            avail_shares = int(db.execute("SELECT SUM(shares) AS n FROM history WHERE user_id = ? AND symbol = ?", user_id, symbol)[0]["n"])
+            avail_shares = int(
+                db.execute(
+                    "SELECT SUM(shares) AS n FROM history WHERE user_id = ? AND symbol = ?",
+                    user_id,
+                    symbol,
+                )[0]["n"]
+            )
             if int(shares) < avail_shares:
                 symbol_dict = lookup(symbol)
                 user_id = session["user_id"]
@@ -222,7 +267,15 @@ def sell():
                 price = int(symbol_dict["price"])
                 total_price = price * int(shares)
                 new_shares = -int(shares)
-                db.execute("INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)", user_id, symbol, price, new_shares, time)
+                cash += total_price
+                db.execute(
+                    "INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)",
+                    user_id,
+                    symbol,
+                    price,
+                    new_shares,
+                    time,
+                )
                 db.execute("UPDATE users SET cash = ? WHERE id = ?", cash, user_id)
                 flash(f"Sold {shares} shares of {symbol} at {usd(total_price)}")
                 return redirect("/")
@@ -231,4 +284,4 @@ def sell():
         else:
             return apology(f"fill in all details", 400)
     else:
-        return render_template("sell.html",symbols=symbols)
+        return render_template("sell.html", symbols=symbols)

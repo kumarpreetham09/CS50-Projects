@@ -73,7 +73,7 @@ def buy():
             if shares and shares.isnumeric() and int(shares) > 0:
                 symbol_dict = lookup(symbol)
                 if symbol_dict:
-                    time = str(date.today()) + str(time.now())
+                    time = str(datetime.now())
                     price = int(symbol_dict["price"])
                     total_price = price * int(shares)
                     cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"])

@@ -7,7 +7,7 @@
 {% block main %}
 <table>
     <tr>
-        <th>Bought/Sold</th>
+        <th>Transaction</th>
         <th>Symbol</th>
         <th>Price</th>
         <th>Shares</th>
@@ -16,10 +16,10 @@
     {% for i in length %}
     <tr>
         <td>{{  nature_list[i]  }}</td>
-        <td>{{  symbols[i]  }}</td>
-        <td>{{  prices[i]  }}</td>
-        <td>{{  shares[i]  }}</td>
-        <td>{{  times[i]  }}</td>
+        <td>{{  symbols[i]["symbol"].upper()  }}</td>
+        <td>{{  prices[i]["price"]|usd  }}</td>
+        <td>{{  shares[i]["shares"]  }}</td>
+        <td>{{  times[i]["time"]  }}</td>
     </tr>
     {% endfor %}
 

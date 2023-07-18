@@ -74,7 +74,7 @@ def buy():
         cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"])
 
         if symbol:
-            if shares and shares.isdigit() and int(shares) <= 0:
+            if shares and shares.isnumeric():
                 if symbol_dict:
                     time = symbol_dict["time"]
                     price = int(symbol_dict["price"])

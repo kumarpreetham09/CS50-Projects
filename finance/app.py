@@ -222,6 +222,6 @@ def sell():
             else:
                 return apology(f"enter a valid amount of shares", 400)
         else:
-            return apology(f"enter a valid amount of shares", 400)
+            return apology(f"fill in all details", 400)
     else:
         return render_template("sell.html", symbols=symbols)

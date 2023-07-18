@@ -204,8 +204,8 @@ def sell():
         symbols.append((i["symbol"]))
     if request.method == "POST":
         symbol = request.form.get("symbol")
-        if request.form.get("shares").isnumeric():
-            shares = int(request.form.get("shares"))
+        shares = request.form.get("shares")
+        if shares and shares.isdigit() and int(shares) > 0:
             print(symbol)
             avail_shares = int(db.execute("SELECT SUM(shares) AS n FROM history  WHERE user_id = ? AND symbol = ?", user_id, symbol)[0]["n"])
             print(avail_shares)
@@ -220,7 +220,7 @@ def sell():
                 return redirect("/")
 
             else:
-                return apology(f"you do not have enough shares", 400)
+                return apology(f"enter a valid amount of shares", 400)
         else:
             return apology(f"enter a valid amount of shares", 400)
     else:

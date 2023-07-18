@@ -204,11 +204,12 @@ def register():
 @login_required
 def sell():
     """Sell shares of stock"""
+
+    if request.method == "POST":
     symbols = []
     user_id = session["user_id"]
     for i in (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id)):
         symbols.append((i["symbol"]))
-    if request.method == "POST":
         symbol = request.form.get("symbol")
         if request.form.get("shares").isnumeric():
             amount_input = int(request.form.get("shares"))
@@ -231,4 +232,8 @@ def sell():
             return apology(f"enter a valid amount of shares", 400)
 
     else:
+        symbols = []
+        user_id = session["user_id"]
+        for i in (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id)):
+            symbols.append((i["symbol"]))
         return render_template("sell.html", symbols=symbols)

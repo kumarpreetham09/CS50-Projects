@@ -73,12 +73,11 @@ def buy():
 
         cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"])
 
-
-        if symbol and shares:
-            if symbol_dict:
-                time = symbol_dict["time"]
-                price = int(symbol_dict["price"])
-                if shares.isnumeric():
+        if symbol:
+            if shares and shares.isdigit() and int(shares) <= 0:
+                if symbol_dict:
+                    time = symbol_dict["time"]
+                    price = int(symbol_dict["price"])
                     total_price = (price * int(shares))
                     if cash >= int(total_price):
                         cash -= int(total_price)
@@ -86,13 +85,13 @@ def buy():
                         db.execute("UPDATE users SET cash = ? WHERE id = ?", cash, user_id)
                         return render_template("bought.html")
                     else:
-                        return apology("not enough balance", 400)
+                            return apology("not enough balance", 400)
                 else:
-                        return apology("invalid number of shares", 400)
+                    return apology("invalid symbol", 400)
             else:
-                return apology("invalid symbol", 400)
+                return apology("invalid number of shares", 400)
         else:
-            return apology("you need to fill in all details", 400)
+            return apology("you need to provide symbol", 400)
     else:
         return render_template("buy.html")
 

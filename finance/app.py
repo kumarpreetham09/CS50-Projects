@@ -77,7 +77,7 @@ def buy():
                     time = "18-07-2023"
                     price = int(symbol_dict["price"])
                     total_price = price * int(shares)
-                    if cash < total_price:
+                    if cash <= total_price:
                         return apology("not enough balance",400)
                     else:
                         print(cash)
@@ -85,7 +85,7 @@ def buy():
                         print(cash)
                         db.execute("INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)", user_id, symbol, price, shares, time)
                         db.execute("UPDATE users SET cash = ? WHERE id = ?", cash, user_id)
-                        flash(f"Bought {shares} shares of {symbol} at {total_price}")
+                        flash(f"Bought {shares} shares of {symbol} at {usd(total_price)}")
                         return redirect("/")
                 else:
                     return apology("invalid symbol", 400)

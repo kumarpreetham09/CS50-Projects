@@ -78,7 +78,7 @@ def buy():
                 if symbol_dict:
                     time = symbol_dict["time"]
                     price = int(symbol_dict["price"])
-                    total_price = (price * int(shares))
+                    total_price = price * int(shares)
                     if cash >= int(total_price):
                         cash -= int(total_price)
                         db.execute("INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)", user_id, symbol, price, shares, time)

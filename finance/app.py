@@ -225,4 +225,4 @@ def sell():
         else:
             return apology(f"fill in all details", 400)
     else:
-        return render_template("sell.html", symbols=symbols)
+        return render_template("sell.html",symbols=symbols)

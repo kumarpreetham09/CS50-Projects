@@ -80,9 +80,7 @@ def buy():
                     if cash < total_price:
                         return apology("not enough balance",400)
                     else:
-                        print(cash)
                         cash = cash - total_price
-                        print(cash)
                         db.execute("INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)", user_id, symbol, price, shares, time)
                         db.execute("UPDATE users SET cash = ? WHERE id = ?", cash, user_id)
                         flash(f"Bought {shares} shares of {symbol} at {usd(total_price)}")
@@ -106,7 +104,6 @@ def history():
     prices = db.execute("SELECT price FROM history WHERE user_id = ?", user_id)
     shares = db.execute("SELECT shares FROM history WHERE user_id = ?", user_id)
     times = db.execute("SELECT time FROM history WHERE user_id = ?", user_id)
-    print(shares)
     length = range(len(symbols))
     for share in shares:
         if int(share["shares"]) > 0:
@@ -217,9 +214,7 @@ def sell():
         symbol = request.form.get("symbol")
         shares = request.form.get("shares")
         if shares and shares.isdigit() and int(shares) > 0:
-            print(symbol)
             avail_shares = int(db.execute("SELECT SUM(shares) AS n FROM history WHERE user_id = ? AND symbol = ?", user_id, symbol)[0]["n"])
-            print(avail_shares)
             if int(shares) < avail_shares:
                 symbol_dict = lookup(symbol)
                 user_id = session["user_id"]

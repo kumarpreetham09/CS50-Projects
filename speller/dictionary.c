@@ -16,7 +16,7 @@ typedef struct node
 } node;
 
 // TODO: Choose number of buckets in hash table
-const unsigned int N = (LENGTH)*'z';
+const unsigned int N = (LENGTH) * 'z';
 
 // Hash table
 int counter = 0;
@@ -43,12 +43,11 @@ bool check(const char *word)
 // Hashes word to a number
 unsigned int hash(const char *word)
 {
-// Groups based on ASCII Values
+    // Groups based on ASCII Values
     int value = 0;
     for (int i = 0; i < strlen(word); i++)
     {
         value += tolower(word[i]);
-
     }
     return (value % N);
 }
@@ -85,7 +84,6 @@ bool load(const char *dictionary)
             table[index] = str;
         }
         counter++;
-
     }
     fclose(file);
     return true;
@@ -103,14 +101,13 @@ unsigned int size(void)
 bool unload(void)
 {
     // TODO
-    for(int i = 0; i < N; i++)
+    for (int i = 0; i < N; i++)
     {
         node *head = table[i];
         node *cursor = head;
         node *tmp = head;
 
-
-        while(cursor != NULL)
+        while (cursor != NULL)
         {
             cursor = cursor->next;
             free(tmp);

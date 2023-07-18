@@ -176,7 +176,7 @@ def register():
         if username and password and confirmation:
             all_users = db.execute("SELECT username FROM users")
 
-            if username not in all_users:
+            if username in all_users:
 
                 if confirmation == password:
                     hash = generate_password_hash(password)

@@ -66,17 +66,18 @@ def buy():
     if request.method == "POST":
         symbol = request.form.get("symbol")
         shares = request.form.get("shares")
-        symbol_dict = lookup(symbol)
         user_id = session["user_id"]
 
-        cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"])
+
 
         if symbol:
             if shares and shares.isnumeric() and int(shares) > 0:
+                symbol_dict = lookup(symbol)
                 if symbol_dict:
                     time = "18-07-2023"
                     price = int(symbol_dict["price"])
                     total_price = price * int(shares)
+                    # cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"])
                     if cash < total_price:
                         return apology("not enough balance",400)
                     else:

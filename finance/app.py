@@ -198,35 +198,30 @@ def register():
 @login_required
 def sell():
     """Sell shares of stock"""
+    symbols = []
+    user_id = session["user_id"]
+    for i in (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id)):
+        symbols.append((i["symbol"]))
     if request.method == "POST":
-        symbols = []
-        user_id = session["user_id"]
-        for i in (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id)):
-            symbols.append((i["symbol"]))
-            symbol = request.form.get("symbol")
-            if request.form.get("shares").isnumeric():
-                amount_input = int(request.form.get("shares"))
-                print(symbol)
-                amount_real = int(db.execute("SELECT SUM(shares) AS n FROM history  WHERE user_id = ? AND symbol = ?", user_id, symbol)[0]["n"])
-                print(amount_real)
-                if amount_input < amount_real:
-                    symbol_dict = lookup(symbol)
-                    user_id = session["user_id"]
-                    time = symbol_dict["time"]
-                    price = int(symbol_dict["price"])
-                    shares = -amount_input
+        symbol = request.form.get("symbol")
+        if request.form.get("shares").isnumeric():
+            amount_input = int(request.form.get("shares"))
+            print(symbol)
+            amount_real = int(db.execute("SELECT SUM(shares) AS n FROM history  WHERE user_id = ? AND symbol = ?", user_id, symbol)[0]["n"])
+            print(amount_real)
+            if amount_input < amount_real:
+                symbol_dict = lookup(symbol)
+                user_id = session["user_id"]
+                time = symbol_dict["time"]
+                price = int(symbol_dict["price"])
+                shares = -amount_input
 
-                    db.execute("INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)", user_id, symbol, price, shares, time)
-                    return redirect("/")
+                db.execute("INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)", user_id, symbol, price, shares, time)
+                return redirect("/")
 
             else:
                 return apology(f"you do not have enough shares", 400)
         else:
             return apology(f"enter a valid amount of shares", 400)
-
     else:
-        symbols = []
-        user_id = session["user_id"]
-        for i in (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id)):
-            symbols.append((i["symbol"]))
         return render_template("sell.html", symbols=symbols)

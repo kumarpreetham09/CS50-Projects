@@ -6,21 +6,29 @@
 
 {% block main %}
     <table>
-        <tr>
-            <th>Stock</th>
-            <th>Shares</th>
-            <th>Price</th>
-            <th>Total</th>
-        </tr>
-
-        {% for dataset in data %}
-        <tr>
-            <td>{{ dataset["symbol"] }}</td>
-            <td>{{ dataset["shares"] }}</td>
-            <td>{{ dataset["price"] }}</td>
-            <td>{{ dataset["total"] }}</td>
-        </tr>
-        {% endfor %}
-
+        <thead>
+            <tr>
+                <th>Stock</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dataset in data %}
+                <tr>
+                    <td>{{ dataset["symbol"] }}</td>
+                    <td>{{ dataset["shares"] }}</td>
+                    <td>{{ dataset["price"] }}</td>
+                    <td>{{ dataset["total"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Remaining Balance:</td>
+                <td>{{ cash|usd  }}</td>
+            </tr>
+        </tfoot>
     </table>
 {% endblock %}

@@ -223,7 +223,7 @@ def sell():
                 shares = -amount_input
 
                 db.execute("INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)", user_id, symbol, price, shares, time)
-                return render_template("sell.html", symbols=symbols)
+                return redirect("/")
 
             else:
                 return apology(f"you do not have enough shares", 400)

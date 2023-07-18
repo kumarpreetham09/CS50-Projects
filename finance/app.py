@@ -106,7 +106,9 @@ def history():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """Log user in"""
-    data = db.execute("SELECT * FROM history;")
+    symbol = db.execute("SELECT symbol FROM history")
+    price = db.execute("SELECT symbol FROM history")
+    shares = db.execute("SELECT symbol FROM history")
     # Forget any user_id
     session.clear()
 

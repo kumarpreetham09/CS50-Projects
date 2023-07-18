@@ -7,7 +7,7 @@
 {% block main %}
     <form action="/sell" method="post">
         <label>Choose a Stock to Sell</label>
-        <input type="symbol" placeholder="Amount" name="shares" autofocus>
+        <input type="text" placeholder="Amount" name="shares" autofocus>
         <select name ="symbol">
             {% for symbol in symbols %}
                 <option>{{  symbol  }}</option>

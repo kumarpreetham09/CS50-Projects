@@ -41,7 +41,6 @@ def index():
     data = []
     for i in (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id)):
         all_symbols.append(i["symbol"])
-    print(f"{all_symbols}")
 
     for symbol in all_symbols:
 
@@ -56,7 +55,6 @@ def index():
                 "total": total
             }
         )
-    print(data)
 
     return render_template("index.html",all_symbols=all_symbols, data=data)
 
@@ -76,8 +74,7 @@ def buy():
         if symbol:
             if shares and shares.isnumeric() and int(shares) > 0:
                 if symbol_dict:
-                    time = symbol_dict["time"]
-                    print(time)
+                    time = str(symbol_dict["time"])
                     price = int(symbol_dict["price"])
                     total_price = price * int(shares)
                     if cash >= int(total_price):

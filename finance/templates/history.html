@@ -7,13 +7,21 @@
 {% block main %}
 <table>
     <tr>
-        <td>Bought/Sold</td>
-        <td>Symbol</td>
-        <td>Price</td>
-        <td>Shares</td>
-        <td>Time</td>
+        <th>Bought/Sold</th>
+        <th>Symbol</th>
+        <th>Price</th>
+        <th>Shares</th>
+        <th>Time</th>
     </tr>
-
+    {% for dataset in data %}
+    <tr>
+        <td>{{  dataset[""]  }}</td>
+        <td>{{  dataset[""]  }}</td>
+        <td>{{  dataset[""]  }}</td>
+        <td>{{  dataset[""]  }}</td>
+        <td>{{  dataset[""]  }}</td>
+    </tr>
+    {% endfor %}
 
 </table>
 {% endblock %}

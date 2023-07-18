@@ -99,16 +99,23 @@ def buy():
 @login_required
 def history():
     """Show history of transactions"""
+    nature_list =[]
+    user_id = session["user_id"]
+    symbols = db.execute("SELECT symbol FROM history WHERE user_id = ?", user_id)[0]
+    prices = db.execute("SELECT price FROM history WHERE user_id = ?", user_id)[0]
+    shares = db.execute("SELECT shares FROM history WHERE user_id = ?", user_id)[0]
+    for share in shares:
+        if share > 0:
+            nature_list.append("BOUGHT")
+        else:
+            nature_list.append("SOLD")
 
-    return apology("TODO")
+    return render_template("history.html", symbols=symbols, prices=prices, shares=shares, nature_list=nature_list)
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """Log user in"""
-    symbol = db.execute("SELECT symbol FROM history")
-    price = db.execute("SELECT symbol FROM history")
-    shares = db.execute("SELECT symbol FROM history")
     # Forget any user_id
     session.clear()
 

@@ -99,13 +99,14 @@ def buy():
 @login_required
 def history():
     """Show history of transactions"""
+
     return apology("TODO")
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """Log user in"""
-
+    data = db.execute("SELECT * FROM history;")
     # Forget any user_id
     session.clear()
 
@@ -209,7 +210,7 @@ def sell():
             if int(shares) < avail_shares:
                 symbol_dict = lookup(symbol)
                 user_id = session["user_id"]
-                time = symbol_dict["time"]
+                time = "18-07-2023"
                 price = int(symbol_dict["price"])
                 total_price = price * int(shares)
                 new_shares = -int(shares)

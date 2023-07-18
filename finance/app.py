@@ -209,13 +209,13 @@ def sell():
             print(symbol)
             avail_shares = int(db.execute("SELECT SUM(shares) AS n FROM history  WHERE user_id = ? AND symbol = ?", user_id, symbol)[0]["n"])
             print(avail_shares)
-            if shares < avail_shares:
+            if int(shares) < avail_shares:
                 symbol_dict = lookup(symbol)
                 user_id = session["user_id"]
                 time = symbol_dict["time"]
                 price = int(symbol_dict["price"])
                 total_price = price * int(shares)
-                new_shares = -shares
+                new_shares = -int(shares)
 
                 db.execute("INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)", user_id, symbol, price, new_shares, time)
                 flash(f"Sold {shares} shares of {symbol} at {usd(total_price)}")

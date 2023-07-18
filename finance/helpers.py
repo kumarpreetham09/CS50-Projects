@@ -64,7 +64,7 @@ def lookup(symbol):
         quotes = list(csv.DictReader(response.content.decode("utf-8").splitlines()))
         quotes.reverse()
         price = round(float(quotes[0]["Adj Close"]), 2)
-        time = quotes[0]["Date"]
+        time = str(quotes[0]["Date"])
         return {
             "name": symbol,
             "price": price,

@@ -67,9 +67,6 @@ def buy():
         symbol = request.form.get("symbol")
         shares = request.form.get("shares")
         user_id = session["user_id"]
-
-
-
         if symbol:
             if shares and shares.isnumeric() and int(shares) > 0:
                 symbol_dict = lookup(symbol)
@@ -78,9 +75,9 @@ def buy():
                     price = int(symbol_dict["price"])
                     total_price = price * int(shares)
                     # cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"])
-                    if cash < total_price:
-                        return apology("not enough balance",400)
-                    else:
+                    # if cash < total_price:
+                    #     return apology("not enough balance",400)
+                    # else:
                         print(cash)
                         cash = cash - total_price
                         print(cash)

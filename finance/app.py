@@ -212,7 +212,6 @@ def sell():
                 price = int(symbol_dict["price"])
                 total_price = price * int(shares)
                 new_shares = -int(shares)
-
                 db.execute("INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)", user_id, symbol, price, new_shares, time)
                 flash(f"Sold {shares} shares of {symbol} at {usd(total_price)}")
                 return redirect("/")

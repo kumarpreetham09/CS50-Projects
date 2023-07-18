@@ -36,7 +36,29 @@ def after_request(response):
 @login_required
 def index():
     """Show portfolio of stocks"""
-    return apology("TODO")
+    user_id = session["user_id"]
+    all_symbols = []
+    data = []
+    for i in (db.execute("SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id)):
+        all_symbols.append(i["symbol"])
+    print(f"{all_symbols}")
+
+    for symbol in all_symbols:
+
+        price = round(float(lookup(symbol)["price"]),4)
+        shares = int(db.execute("SELECT SUM(shares) AS n FROM history  WHERE user_id = ? AND symbol = ?", user_id, symbol)[0]["n"])
+        total = round(float(price * shares),2)
+        data.append(
+            {
+                "symbol": symbol.upper(),
+                "shares": shares,
+                "price": price,
+                "total": total
+            }
+        )
+    print(data)
+
+    return render_template("index.html",all_symbols=all_symbols, data=data)
 
 
 @app.route("/buy", methods=["GET", "POST"])

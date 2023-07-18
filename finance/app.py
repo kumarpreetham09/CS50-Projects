@@ -210,8 +210,8 @@ def sell():
         symbols.append((i["symbol"]))
     if request.method == "POST":
         symbol = request.form.get("symbol")
-        if request.form.get("amount").isnumeric():
-            amount_input = int(request.form.get("amount"))
+        if request.form.get("shares").isnumeric():
+            amount_input = int(request.form.get("shares"))
             print(symbol)
             amount_real = int(db.execute("SELECT SUM(shares) AS n FROM history  WHERE user_id = ? AND symbol = ?", user_id, symbol)[0]["n"])
             print(amount_real)

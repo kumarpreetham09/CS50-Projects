@@ -6,8 +6,8 @@
 
 {% block main %}
     <form action="/sell" method="post">
-        <input type="text" placeholder="Amount" name="shares" autofocus>
-        <select name ="symbol">
+        <input type="text" placeholder="Amount" name="shares" id="shares" autofocus>
+        <select name ="symbol" id="symbol">
             {% for symbol in symbols %}
                 <option>{{  symbol  }}</option>
             {% endfor %}

@@ -96,10 +96,6 @@ def buy():
     else:
         return render_template("buy.html")
 
-
-
-
-
 @app.route("/history")
 @login_required
 def history():

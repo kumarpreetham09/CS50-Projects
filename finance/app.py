@@ -5,7 +5,7 @@ from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
-from datetime import datetime
+from datetime import date
 
 from helpers import apology, login_required, lookup, usd
 
@@ -223,7 +223,7 @@ def sell():
             if int(shares) < avail_shares:
                 symbol_dict = lookup(symbol)
                 user_id = session["user_id"]
-                time = "18-07-2023"
+                time = date.today()
                 price = int(symbol_dict["price"])
                 total_price = price * int(shares)
                 new_shares = -int(shares)

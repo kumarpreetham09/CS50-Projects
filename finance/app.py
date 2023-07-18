@@ -80,9 +80,9 @@ def buy():
                     if cash < total_price:
                         return apology("not enough balance",400)
                     else:
-                        cash -= total_price
+                        cash = cash - total_price
                         db.execute("INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)", user_id, symbol, price, shares, time)
-                        # db.execute("UPDATE users SET cash = ? WHERE id = ?", cash, user_id)
+                        db.execute("UPDATE users SET cash = ? WHERE id = ?", cash, user_id)
                         flash(f"Bought {shares} shares of {symbol} at {usd(total_price)}")
                         return redirect("/")
                 else:

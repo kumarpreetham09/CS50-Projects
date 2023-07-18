@@ -65,8 +65,36 @@ def index():
 @login_required
 def buy():
     """Buy shares of stock"""
-    return apology("TODO")
+    if request.method == "POST":
+        symbol = request.form.get("symbol")
+        shares = request.form.get("shares")
+        symbol_dict = lookup(symbol)
+        user_id = session["user_id"]
 
+        cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"])
+
+
+        if symbol and shares:
+            if symbol_dict:
+                time = symbol_dict["time"]
+                price = int(symbol_dict["price"])
+                if shares.isnumeric():
+                    total_price = (price * int(shares))
+                    if cash >= int(total_price):
+                        cash -= int(total_price)
+                        db.execute("INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)", user_id, symbol, price, shares, time)
+                        db.execute("UPDATE users SET cash = ? WHERE id = ?", cash, user_id)
+                        return render_template("bought.html")
+                    else:
+                        return apology("not enough balance", 400)
+                else:
+                        return apology("invalid number of shares", 400)
+            else:
+                return apology("invalid symbol", 400)
+        else:
+            return apology("you need to fill in all details", 400)
+    else:
+        return render_template("buy.html")
 
 @app.route("/history")
 @login_required

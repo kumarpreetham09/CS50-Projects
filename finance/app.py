@@ -77,6 +77,7 @@ def buy():
             if shares and shares.isnumeric() and int(shares) > 0:
                 if symbol_dict:
                     time = symbol_dict["time"]
+                    print(time)
                     price = int(symbol_dict["price"])
                     total_price = price * int(shares)
                     if cash >= int(total_price):

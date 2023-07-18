@@ -174,9 +174,9 @@ def register():
         confirmation = request.form.get("confirmation")
 
         if username and password and confirmation:
-            all_users = db.execute("SELECT username FROM users")
+            username_validity = db.execute("SELECT * FROM users WHERE username = ?", username)
 
-            if username in all_users:
+            if len(username_validity) == 0:
 
                 if confirmation == password:
                     hash = generate_password_hash(password)

@@ -13,13 +13,13 @@
         <th>Shares</th>
         <th>Time</th>
     </tr>
-    {% for dataset in data %}
+    {% for i in length %}
     <tr>
-        <td>{{  dataset[""]  }}</td>
-        <td>{{  dataset[""]  }}</td>
-        <td>{{  dataset[""]  }}</td>
-        <td>{{  dataset[""]  }}</td>
-        <td>{{  dataset[""]  }}</td>
+        <td>{{  nature_list[i]  }}</td>
+        <td>{{  symbols[i]  }}</td>
+        <td>{{  prices[i]  }}</td>
+        <td>{{  shares[i]  }}</td>
+        <td>{{  times[i]  }}</td>
     </tr>
     {% endfor %}
 

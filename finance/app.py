@@ -104,13 +104,15 @@ def history():
     symbols = db.execute("SELECT symbol FROM history WHERE user_id = ?", user_id)[0]
     prices = db.execute("SELECT price FROM history WHERE user_id = ?", user_id)[0]
     shares = db.execute("SELECT shares FROM history WHERE user_id = ?", user_id)[0]
+    times = db.execute("SELECT time FROM history WHERE user_id = ?", user_id)[0]
+    length = len(symbols)
     for share in shares:
-        if share > 0:
+        if int(share) > 0:
             nature_list.append("BOUGHT")
         else:
             nature_list.append("SOLD")
 
-    return render_template("history.html", symbols=symbols, prices=prices, shares=shares, nature_list=nature_list)
+    return render_template("history.html", length=length, symbols=symbols, prices=prices, shares=shares, nature_list=nature_list, times=times)
 
 
 @app.route("/login", methods=["GET", "POST"])

@@ -65,6 +65,7 @@ def lookup(symbol):
         quotes.reverse()
         price = round(float(quotes[0]["Adj Close"]), 2)
         time = str(quotes[0]["Date"])
+        print(time)
         return {
             "name": symbol,
             "price": price,

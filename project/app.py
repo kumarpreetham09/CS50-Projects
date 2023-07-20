@@ -7,8 +7,6 @@ from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
 
-from helpers import apology, login_required, lookup, usd
-
 app = Flask(__name__)
 
 app.config["SESSION_PERMANENT"] = False
@@ -39,8 +37,9 @@ def buy():
     """Buy shares of stock"""
     if request.method == "POST":
         # TODO
+        return
 
-        
+
     else:
         return render_template("buy.html")
 
@@ -106,6 +105,7 @@ def quote():
     """Get stock quote."""
     if request.method == "POST":
         # TODO
+        return
 
 
     else:
@@ -117,6 +117,7 @@ def register():
     """Register user"""
     if request.method == "POST":
         # TODO
+        return
 
 
     else:
@@ -129,6 +130,7 @@ def sell():
     """Sell shares of stock"""
     if request.method == "POST":
         # TODO
+        return
 
 
     else:

@@ -5,42 +5,22 @@ from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
-from datetime import datetime
-from functools import wraps
 
+from helpers import apology, login_required, lookup, usd
+
+# Configure application
 app = Flask(__name__)
 
+# Custom filter
+app.jinja_env.filters["usd"] = usd
+
+# Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-def apology(message, code=400):
-    """Render message as an apology to user."""
-    def escape(s):
-        """
-        Escape special characters.
-
-        https://github.com/jacebrowning/memegen#special-characters
-        """
-        for old, new in [("-", "--"), (" ", "-"), ("_", "__"), ("?", "~q"),
-                         ("%", "~p"), ("#", "~h"), ("/", "~s"), ("\"", "''")]:
-            s = s.replace(old, new)
-        return s
-    return render_template("apology.html", top=code, bottom=escape(message)), code
-
-
-def login_required(f):
-    """
-    Decorate routes to require login.
-
-    http://flask.pocoo.org/docs/0.12/patterns/viewdecorators/
-    """
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        if session.get("user_id") is None:
-            return redirect("/login")
-        return f(*args, **kwargs)
-    return decorated_function
+# Configure CS50 Library to use SQLite database
+db = SQL("sqlite:///finance.db")
 
 
 @app.after_request
@@ -56,7 +36,6 @@ def after_request(response):
 @login_required
 def index():
     """Show portfolio of stocks"""
-
     return apology("TODO")
 
 
@@ -64,29 +43,26 @@ def index():
 @login_required
 def buy():
     """Buy shares of stock"""
-    if request.method == "POST":
-        return apology("TODO")
-
-    else:
-        return apology("TODO")
+    return apology("TODO")
 
 
 @app.route("/history")
 @login_required
 def history():
     """Show history of transactions"""
-
     return apology("TODO")
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """Log user in"""
+
     # Forget any user_id
     session.clear()
 
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
+
         # Ensure username was submitted
         if not request.form.get("username"):
             return apology("must provide username", 403)
@@ -96,14 +72,10 @@ def login():
             return apology("must provide password", 403)
 
         # Query database for username
-        rows = db.execute(
-            "SELECT * FROM users WHERE username = ?", request.form.get("username")
-        )
+        rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
 
         # Ensure username exists and password is correct
-        if len(rows) != 1 or not check_password_hash(
-            rows[0]["hash"], request.form.get("password")
-        ):
+        if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
             return apology("invalid username and/or password", 403)
 
         # Remember which user has logged in
@@ -114,15 +86,17 @@ def login():
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
-        return apology("TODO")
+        return render_template("login.html")
 
 
 @app.route("/logout")
 def logout():
     """Log user out"""
 
+    # Forget any user_id
     session.clear()
 
+    # Redirect user to login form
     return redirect("/")
 
 
@@ -130,42 +104,17 @@ def logout():
 @login_required
 def quote():
     """Get stock quote."""
-    if request.method == "POST":
-        return apology("TODO")
-
-    else:
-        return apology("TODO")
+    return apology("TODO")
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """Register user"""
-    if request.method == "POST":
-
-        return apology("TODO")
-
-
-    else:
-        return apology("TODO")
+    return apology("TODO")
 
 
 @app.route("/sell", methods=["GET", "POST"])
 @login_required
 def sell():
     """Sell shares of stock"""
-    if request.method == "POST":
-        return apology("TODO")
-
-
-    else:
-        return render_template("sell.html", symbols=symbols)
-
-
-
-
-
-
-
-
-
-
+    return apology("TODO")

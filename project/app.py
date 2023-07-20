@@ -28,7 +28,7 @@ def after_request(response):
 def index():
     """Show portfolio of stocks"""
 
-    return render_template("")
+    return apology("TODO")
 
 
 @app.route("/buy", methods=["GET", "POST"])
@@ -36,12 +36,10 @@ def index():
 def buy():
     """Buy shares of stock"""
     if request.method == "POST":
-        # TODO
-        return
-
+        return apology("TODO")
 
     else:
-        return render_template("buy.html")
+        return apology("TODO")
 
 
 @app.route("/history")
@@ -49,7 +47,7 @@ def buy():
 def history():
     """Show history of transactions"""
 
-    return render_template("history.html")
+    return apology("TODO")
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -87,7 +85,7 @@ def login():
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
-        return render_template("login.html")
+        return apology("TODO")
 
 
 @app.route("/logout")
@@ -104,20 +102,18 @@ def logout():
 def quote():
     """Get stock quote."""
     if request.method == "POST":
-        # TODO
-        return
-
+        return apology("TODO")
 
     else:
-        return render_template("")
+        return apology("TODO")
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """Register user"""
     if request.method == "POST":
-        # TODO
-        return
+
+        return apology("TODO")
 
 
     else:
@@ -129,9 +125,30 @@ def register():
 def sell():
     """Sell shares of stock"""
     if request.method == "POST":
-        # TODO
-        return
+        return apology("TODO")
 
 
     else:
         return render_template("sell.html", symbols=symbols)
+
+
+
+
+
+
+
+
+
+def apology(message, code=400):
+    """Render message as an apology to user."""
+    def escape(s):
+        """
+        Escape special characters.
+
+        https://github.com/jacebrowning/memegen#special-characters
+        """
+        for old, new in [("-", "--"), (" ", "-"), ("_", "__"), ("?", "~q"),
+                         ("%", "~p"), ("#", "~h"), ("/", "~s"), ("\"", "''")]:
+            s = s.replace(old, new)
+        return s
+    return render_template("apology.html", top=code, bottom=escape(message)), code

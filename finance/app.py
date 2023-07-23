@@ -64,7 +64,7 @@ def index():
 
 
 @app.route("/buy", methods=["GET", "POST"])
-@login_required
+@password_required
 def buy():
     """Buy shares of stock"""
     if request.method == "POST":
@@ -113,7 +113,7 @@ def buy():
 
 
 @app.route("/history")
-@login_required
+@password_required
 def history():
     """Show history of transactions"""
     nature_list = []

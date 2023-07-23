@@ -104,6 +104,8 @@ def quote():
     """Get stock quote."""
     return apology("TODO")
 
+
+
 @app.route("/sell", methods=["GET", "POST"])
 @password_required
 def sell():

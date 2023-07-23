@@ -7,7 +7,7 @@ from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
 
-from helpers import apology, login_required, lookup, usd
+from helpers import apology, password_required, lookup, usd
 
 # Configure application
 app = Flask(__name__)
@@ -34,7 +34,7 @@ def after_request(response):
 
 
 @app.route("/")
-@login_required
+@password_required
 def index():
     """Show portfolio of stocks"""
     user_id = session["user_id"]

@@ -44,13 +44,13 @@ def buy():
     return apology("TODO")
 
 
-@app.route("/upload")
+@app.route("/upload" , methods=["GET", "POST"])
 @password_required
 def upload():
     """Show history of transactions"""
     if request.method == "POST":
         file1 = request.form.get("fileList")
-        print(file1)
+        print("HELLO")
 
         # Redirect user to home page
         return redirect("/")

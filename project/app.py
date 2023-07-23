@@ -43,6 +43,7 @@ def buy():
     """Buy shares of stock"""
     return apology("TODO")
 
+<?php
 
 @app.route("/upload" , methods=["GET", "POST"])
 @password_required

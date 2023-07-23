@@ -12,10 +12,11 @@ Upload
             <th>Upload Songs</th>
         </thead>
         <tbody>
-            <td><input type="file" webkitdirectory multiple name="pictures"></td>
+            <td><input type="file" id="filepicker" name="pictures" webkitdirectory multiple /></td>
             <td><input type="file" name="songs"></td>
         </tbody>
     </table>
+    <ul id="listing"></ul>
     <button class="btn btn-primary" type="submit">Submit</button>
 </form>
 {% endblock %}

@@ -6,12 +6,18 @@
 
 {% block main %}
     <form action="/upload" method="post">
-        <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text">
-        </div>
-        <div class="mb-3">
-            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password">
-        </div>
-        <button class="btn btn-primary" type="submit">Upload</button>
+<table>
+    <thead>
+        <th>Upload Pictures</th>
+        <th>Upload Songs</th>
+
+    </thead>
+    <tbody>
+        <td><button class="btn btn-primary" type="submit">Upload</button></td>
+        <td><button class="btn btn-primary" type="submit">Upload</button></td>
+    </tbody>
+
+</table>
+
     </form>
 {% endblock %}

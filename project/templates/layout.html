@@ -15,10 +15,7 @@
 
             picker.addEventListener('change', e => {
             for (let file of Array.from(e.target.files)) {
-                let item = document.createElement('li');
-                item.textContent = file.webkitRelativePath;
-                listing.appendChild(item);
-            };
+                print("hello")
             });
         </script>
 

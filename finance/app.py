@@ -7,7 +7,7 @@ from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
 
-from helpers import apology, password_required, lookup, usd
+from helpers import apology, login_required, lookup, usd
 
 # Configure application
 app = Flask(__name__)
@@ -34,7 +34,7 @@ def after_request(response):
 
 
 @app.route("/")
-@password_required
+@login_required
 def index():
     """Show portfolio of stocks"""
     user_id = session["user_id"]
@@ -64,7 +64,7 @@ def index():
 
 
 @app.route("/buy", methods=["GET", "POST"])
-@password_required
+@login_required
 def buy():
     """Buy shares of stock"""
     if request.method == "POST":
@@ -113,7 +113,7 @@ def buy():
 
 
 @app.route("/history")
-@password_required
+@login_required
 def history():
     """Show history of transactions"""
     nature_list = []
@@ -203,6 +203,39 @@ def quote():
     else:
         return render_template("quote.html")
 
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    """Register user"""
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+        confirmation = request.form.get("confirmation")
+        if username and password and confirmation:
+            username_validity = db.execute(
+                "SELECT * FROM users WHERE username = ?", username
+            )
+            if len(username_validity) == 0:
+                if confirmation == password:
+                    hash = generate_password_hash(password)
+                    db.execute(
+                        "INSERT INTO users (username, hash) VALUES(?, ?)",
+                        username,
+                        hash,
+                    )
+                    rows = db.execute(
+                        "SELECT * FROM users WHERE username = ?", username
+                    )
+                    session["user_id"] = rows[0]["id"]
+                    return redirect("/")
+                else:
+                    return apology("password and Confirmation did not match", 400)
+            else:
+                return apology("this username has been taken", 400)
+        else:
+            return apology(f"you need to fill in all details", 400)
+    else:
+        return render_template("register.html")
 
 
 @app.route("/sell", methods=["GET", "POST"])

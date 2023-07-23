@@ -34,7 +34,7 @@ def after_request(response):
 @password_required
 def index():
     """Show portfolio of stocks"""
-    return apology("")
+    return apology("photos/songs")
 
 
 @app.route("/buy", methods=["GET", "POST"])

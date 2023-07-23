@@ -49,8 +49,9 @@ def buy():
 def upload():
     """Show history of transactions"""
     if request.method == "POST":
-        file1 = request.form.get("fileList")
-        print(file1)
+        files = request.form.get("fileList")
+        for file in files:
+            print(file)
 
         # Redirect user to home page
         return redirect("/")

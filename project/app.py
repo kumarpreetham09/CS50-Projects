@@ -32,8 +32,9 @@ def after_request(response):
 @app.route("/")
 @login_required
 def index():
-    
-    return render_template("index.html")
+    user_id = session["user_id"]
+    data = db.execute("SELECT * FROM history WHERE user_id = ?",user_id)
+    return render_template("index.html", data=data)
 
 
 @app.route("/searched", methods=["GET", "POST"])

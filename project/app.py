@@ -6,7 +6,9 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
-
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 from helpers import apology, login_required
 
 app = Flask(__name__)
@@ -167,4 +169,14 @@ def register():
 def price_checker(url):
     url_name = "Pot"
     url_price = "12.56"
+    chrome_options = Options()
+    chrome_options.add_argument("--disable-notifications")
+    browser = webdriver.Chrome(chrome_options=chrome_options)
+    browser.get("https://www.amazon.com/dp/B075CYMYK6?psc=1&ref_=cm_sw_r_cp_ud_ct_FM9M699VKHTT47YD50Q6")
+    url_price = browser.find_element(By.XPATH, '//div[contains(@class,"a-section a-spacing-micro")]//span[contains(@class, "a-offscreen")]').get_attribute("textContent")
     return {"name":str(url_name), "price":url_price, "url":str(url)}
+
+
+
+
+

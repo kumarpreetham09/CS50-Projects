@@ -33,6 +33,30 @@ def after_request(response):
 @app.route("/")
 @password_required
 def index():
+
+    user_id = session["user_id"]
+    all_urls = []
+    data = []
+    cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"])
+    for i in db.execute(
+        "SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id
+    ):
+        all_symbols.append(i["symbol"])
+
+    for symbol in all_symbols:
+        price = round(float(lookup(symbol)["price"]), 4)
+        shares = int(
+            db.execute(
+                "SELECT SUM(shares) AS n FROM history  WHERE user_id = ? AND symbol = ?",
+                user_id,
+                symbol,
+            )[0]["n"]
+        )
+        total = round(float(price * shares), 2)
+        data.append(
+            {"symbol": symbol.upper(), "shares": shares, "price": price, "total": total}
+        )
+
     return render_template("index.html", data=data)
 
 
@@ -40,10 +64,7 @@ def index():
 @password_required
 def search():
     if request.method == "POST":
-        user_id = session["user_id"]
-        url = str(request.form.get("url"))
-        price = price_checker(url)
-        db.execute("INSERT INTO history (url, price) VALUES(?, ?) WHERE username = ?",url, price, user_id)
+        return apology("hello")
 
     else:
         return render_template("search.html")
@@ -131,5 +152,3 @@ def logout():
     return redirect("/")
 
 
-def price_checker(url):
-    return url

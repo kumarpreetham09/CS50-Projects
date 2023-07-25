@@ -44,7 +44,7 @@ def buy():
     return apology("TODO")
 
 
-@app.route("/upload" , methods=["GET", "POST"])
+@app.route("/search" , methods=["GET", "POST"])
 @password_required
 def upload():
     """Show history of transactions"""

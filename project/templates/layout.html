@@ -16,7 +16,6 @@
             (event) => {
                 let output = document.getElementById("listing");
                 for (const file of event.target.files) {
-                printf("HI")
                 }
             },
             false,
@@ -28,7 +27,7 @@
 
         <link href="/static/styles.css" rel="stylesheet">
 
-        <title>My Song Journal: {% block title %}{% endblock %}</title>
+        <title>Amazon Price Journal: {% block title %}{% endblock %}</title>
 
     </head>
 
@@ -36,7 +35,7 @@
 
         <nav class="bg-light border navbar navbar-expand-md navbar-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/"><span class="purple">♫♫ My Song Journal ♫♫</span></a>
+                <a class="navbar-brand" href="/"><span class="yellow">Amazon Price Journal</span></a>
                 <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>

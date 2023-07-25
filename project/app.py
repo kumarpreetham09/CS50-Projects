@@ -40,11 +40,10 @@ def index():
 def searched():
     data = session["data"]
     if request.method == "POST":
-
         user_id = session["user_id"]
         price = float(data["price"])
+        url = data['url']
         db.execute("INSERT INTO history (user_id, url, price) VALUES(?,?,?)",user_id, url, price,)
-        session["data"].clear()
         return redirect("/")
 
     else:
@@ -150,4 +149,4 @@ def register():
 def price_checker(url):
     url_name = "Cooker"
     url_price = "24.50"
-    return {"name":url_name, "price":url_price}
+    return {"name":url_name, "price":url_price, "url":str(url)}

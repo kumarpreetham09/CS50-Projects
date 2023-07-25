@@ -146,4 +146,4 @@ def register():
 def price_checker(url):
     url_name = "Cooker"
     url_price = "24.50"
-    return {name:url_name, price:url_price}
+    return {"name":url_name, "price":url_price}

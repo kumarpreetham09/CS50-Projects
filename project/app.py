@@ -168,12 +168,11 @@ def register():
 
 def price_checker(url):
     url_name = "Pot"
-    url_price = "12.56"
     chrome_options = Options()
     chrome_options.add_argument("--disable-notifications")
     browser = webdriver.Chrome(chrome_options=chrome_options)
-    browser.get("https://www.amazon.com/dp/B075CYMYK6?psc=1&ref_=cm_sw_r_cp_ud_ct_FM9M699VKHTT47YD50Q6")
-    url_price = browser.find_element(By.XPATH, '//div[contains(@class,"a-section a-spacing-micro")]//span[contains(@class, "a-offscreen")]').get_attribute("textContent")
+    browser.get(url)
+    url_price = browser.find_element(By.XPATH, '//div[contains(@class,"a-section a-spacing-micro")]//span[contains(@class, "a-offscreen")]').get_attribute("textContent").split("$")[1]
     return {"name":str(url_name), "price":url_price, "url":str(url)}
 
 

@@ -39,7 +39,7 @@ def index():
         price = float(dataset["price"])
         url = dataset["url"]
         result = price_checker(url)
-        name = result['name']
+        name = result["name"]
         current_price = float(result["price"])
         change = float(current_price - price)
         information.append({"product":name, "price":price, "c_price":current_price, "change":change})
@@ -57,7 +57,10 @@ def searched():
         price = float(data["price"])
         url = data['url']
         name = data['name']
-        db.execute("INSERT INTO history (user_id, name, price, url) VALUES(?,?,?,?)",user_id, name, price, url)
+        check = db.execute("SELECT COUNT(*) FROM history WHERE url = ?",url)
+        print(check)
+        if check == 0:
+            db.execute("INSERT INTO history (user_id, name, price, url) VALUES(?,?,?,?)",user_id, name, price, url)
         return redirect("/")
 
     else:
@@ -164,4 +167,4 @@ def register():
 def price_checker(url):
     url_name = "Pot"
     url_price = "12.56"
-    return {"name":url_name, "price":url_price, "url":str(url)}
+    return {"name":str(url_name), "price":url_price, "url":str(url)}

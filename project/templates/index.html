@@ -16,12 +16,12 @@
             </tr>
         </thead>
         <tbody>
-            {% for dataset in data %}
+            {% for info in information %}
                 <tr>
-                    <td>{{ dataset["symbol"] }}</td>
-                    <td>{{ dataset["shares"] }}</td>
-                    <td>{{ dataset["price"] }}</td>
-                    <td>{{ dataset["total"] }}</td>
+                    <td>{{ info["name"] }}</td>
+                    <td>{{ info["price"] }}</td>
+                    <td>{{ info["c_price"] }}</td>
+                    <td>{{ info["change"] }}</td>
                 </tr>
             {% endfor %}
         </tbody>

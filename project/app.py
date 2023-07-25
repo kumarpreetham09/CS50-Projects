@@ -32,14 +32,19 @@ def after_request(response):
 @app.route("/")
 @login_required
 def index():
+    information = []
     user_id = session["user_id"]
-    information = db.execute("SELECT * FROM history WHERE user_id = ?",user_id)
-    url = information["url"]
-    result = price_checker(url)
-    name = result["name"]
-    c_price = result["price"]
-    price = db.execute("SELECT price FROM history WHERE user_id = ? AND WHERE url = ?",user_id,url)
-    return render_template("index.html")
+    data = db.execute("SELECT * FROM history WHERE user_id = ?",user_id)
+    for dataset in data:
+        price = int(dataset["price"])
+        url = dataset["url"]
+        result = price_checker(url)
+        name = result["name"]
+        current_price = int(result["price"])
+        change = int(current_price - price)
+        information.append({"product":name, "price":price, "c_price":current_price, "change":change})
+
+    return render_template("index.html", information=information)
 
 
 @app.route("/searched", methods=["GET", "POST"])
@@ -156,6 +161,6 @@ def register():
 
 
 def price_checker(url):
-    url_name = "Cooker"
-    url_price = "24.50"
+    url_name = "Pot"
+    url_price = "12.56"
     return {"name":url_name, "price":url_price, "url":str(url)}

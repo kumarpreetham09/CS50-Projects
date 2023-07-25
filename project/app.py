@@ -56,7 +56,8 @@ def searched():
         user_id = session["user_id"]
         price = float(data["price"])
         url = data['url']
-        db.execute("INSERT INTO history (user_id, url, price) VALUES(?,?,?)",user_id, url, price,)
+        name = data['name']
+        db.execute("INSERT INTO history (user_id, name, price, url) VALUES(?,?,?,?)",user_id, name, price, url)
         return redirect("/")
 
     else:

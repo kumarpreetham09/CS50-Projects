@@ -23,7 +23,7 @@ db = SQL("sqlite:///project.db")
 
 @app.after_request
 def after_request(response):
-    """Ensure responses aren't cached"""
+
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     response.headers["Expires"] = 0
     response.headers["Pragma"] = "no-cache"
@@ -33,7 +33,7 @@ def after_request(response):
 @app.route("/")
 @password_required
 def index():
-    """Show portfolio of stocks"""
+
     user_id = session["user_id"]
     all_urls = []
     data = []
@@ -60,33 +60,23 @@ def index():
     return render_template("index.html", data=data)
 
 
-@app.route("/buy", methods=["GET", "POST"])
+@app.route("/search", methods=["GET", "POST"])
 @password_required
-def buy():
-    """Buy shares of stock"""
-    return apology("TODO")
-
-
-@app.route("/search" , methods=["GET", "POST"])
-@password_required
-def upload():
-    """Show history of transactions"""
+def search():
     if request.method == "POST":
-        files = request.form.get("fileList")
-        for file in files:
-            print(file)
+        user_id = session["user_id"]
+        url = str(request.form.get("url"))
+        price = price_checker(url)
+        db.execute("INSERT INTO history (url, price) VALUES(?, ?) WHERE username = ?",url, price, user_id)
 
-        # Redirect user to home page
-        return redirect("/")
-
-    # User reached route via GET (as by clicking a link or via redirect)
     else:
-        return render_template("upload.html")
+        return render_template("search.html")
+
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    """Log user in"""
+
 
     # Forget any user_id
     session.clear()
@@ -122,7 +112,7 @@ def login():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    """Register user"""
+
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
@@ -156,7 +146,7 @@ def register():
 
 @app.route("/logout")
 def logout():
-    """Log user out"""
+
 
     # Forget any user_id
     session.clear()
@@ -165,16 +155,5 @@ def logout():
     return redirect("/")
 
 
-@app.route("/quote", methods=["GET", "POST"])
-@password_required
-def quote():
-    """Get stock quote."""
-    return apology("TODO")
-
-
-
-@app.route("/sell", methods=["GET", "POST"])
-@password_required
-def sell():
-    """Sell shares of stock"""
-    return apology("TODO")
+def price_checker():
+    continue

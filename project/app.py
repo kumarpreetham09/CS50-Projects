@@ -155,5 +155,5 @@ def logout():
     return redirect("/")
 
 
-def price_checker():
-    continue
+def price_checker(url):
+    return url

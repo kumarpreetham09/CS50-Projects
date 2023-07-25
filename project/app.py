@@ -36,12 +36,12 @@ def index():
     user_id = session["user_id"]
     data = db.execute("SELECT * FROM history WHERE user_id = ?",user_id)
     for dataset in data:
-        price = int(dataset["price"])
+        price = float(dataset["price"])
         url = dataset["url"]
         result = price_checker(url)
-        name = result["name"]
-        current_price = int(result["price"])
-        change = int(current_price - price)
+        name = result['name']
+        current_price = float(result["price"])
+        change = float(current_price - price)
         information.append({"product":name, "price":price, "c_price":current_price, "change":change})
 
     return render_template("index.html", information=information)

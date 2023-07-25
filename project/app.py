@@ -38,7 +38,11 @@ def index():
 @app.route("/searched", methods=["GET", "POST"])
 @login_required
 def searched():
+    
     if request.method == "POST":
+        data = session["data"]
+        user_id = session["user_id"]
+        price = float(data["price"])
         db.execute("INSERT INTO history (user_id, url, price) VALUES(?,?,?)",user_id, url, price,)
         return redirect("/")
 
@@ -51,11 +55,10 @@ def searched():
 @login_required
 def search():
     if request.method == "POST":
-        user_id = session["user_id"]
         url = request.form.get("url")
         data = price_checker(url)
-        price = float(data["price"])
-        return redirect("/searched", data=data)
+        session["data"] = data
+        return redirect("/searched")
 
     else:
         return render_template("search.html")

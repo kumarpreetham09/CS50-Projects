@@ -180,8 +180,7 @@ def price_checker(url):
 
         return {"name":str(url_name), "price":url_price, "url":str(url)}
     except:
-        flash("INVALID URL")
-        return redirect("/")
+        flash("Invalid URL")
 
 
 

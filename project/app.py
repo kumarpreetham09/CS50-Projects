@@ -72,7 +72,7 @@ def searched():
 @app.route("/search", methods=["GET", "POST"])
 @login_required
 def search():
-    session["data"].clear()
+    session["data"] = ""
     if request.method == "POST":
         url = request.form.get("url")
         data = price_checker(url)

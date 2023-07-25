@@ -169,7 +169,12 @@ def price_checker(url):
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
     url_price = str(soup.find(class_='wt-text-title-03 wt-mr-xs-1').get_text()).split("SGD ")[1].split("+")[0]
-    url_name = 
+    name_list = soup.find(class_='wt-text-body-01 wt-line-height-tight wt-break-word wt-mt-xs-1').get_text().split(" ")
+    list = []
+    for i in range(len(name_list)):
+        if i >= 4:
+            list.append(name_list[i])
+    url_name = " ".join(list)
 
     return {"name":str(url_name), "price":url_price, "url":str(url)}
 

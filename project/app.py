@@ -35,19 +35,15 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/search", methods=["GET", "POST"])
+@app.route("/searched", methods=["GET", "POST"])
 @login_required
-def search():
+def searched():
     if request.method == "POST":
-        user_id = session["user_id"]
-        url = request.form.get("url")
-        data = price_checker(url)
-        price = float(data["price"])
         db.execute("INSERT INTO history (user_id, url, price) VALUES(?,?,?)",user_id, url, price,)
-        return render_template("searched.html", data=data)
+        return redirect("/")
 
     else:
-        return render_template("search.html")
+        return render_template("searched.html")
 
 
 
@@ -59,8 +55,7 @@ def search():
         url = request.form.get("url")
         data = price_checker(url)
         price = float(data["price"])
-        db.execute("INSERT INTO history (user_id, url, price) VALUES(?,?,?)",user_id, url, price,)
-        return render_template("searched.html", data=data)
+        return redirect("/searched", data=data)
 
     else:
         return render_template("search.html")

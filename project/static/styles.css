@@ -5,14 +5,23 @@ nav .navbar-brand
 }
 
 /* Colors for brand */
+nav .navbar-brand .orange
+{
+    color: #eb6d20;
+}
+
 nav .navbar-brand .blue
 {
     color: #537fbe;
 }
+
 nav .navbar-brand .red
 {
     color: #ea433b;
 }
+
+
+
 nav .navbar-brand .yellow
 {
     color: #f5b82e;

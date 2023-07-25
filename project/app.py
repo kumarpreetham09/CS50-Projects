@@ -6,9 +6,8 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
+import requests
+from bs4 import BeautifulSoup
 from helpers import apology, login_required
 
 app = Flask(__name__)
@@ -167,12 +166,11 @@ def register():
 
 
 def price_checker(url):
-    url_name = "Pot"
-    chrome_options = Options()
-    chrome_options.add_argument("--disable-notifications")
-    browser = webdriver.Chrome(chrome_options=chrome_options)
-    browser.get(url)
-    url_price = browser.find_element(By.XPATH, '//div[contains(@class,"a-section a-spacing-micro")]//span[contains(@class, "a-offscreen")]').get_attribute("textContent").split("$")[1]
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, "html.parser")
+    url_price = str(soup.find(class_='wt-text-title-03 wt-mr-xs-1').get_text()).split("SGD ")[1].split("+")[0]
+    url_name = 
+
     return {"name":str(url_name), "price":url_price, "url":str(url)}
 
 

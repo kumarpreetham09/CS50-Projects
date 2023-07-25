@@ -33,8 +33,13 @@ def after_request(response):
 @login_required
 def index():
     user_id = session["user_id"]
-    data = db.execute("SELECT * FROM history WHERE user_id = ?",user_id)
-    return render_template("index.html", data=data)
+    information = db.execute("SELECT * FROM history WHERE user_id = ?",user_id)
+    url = information["url"]
+    result = price_checker(url)
+    name = result["name"]
+    c_price = result["price"]
+    price = db.execute("SELECT price FROM history WHERE user_id = ? AND WHERE url = ?",user_id,url)
+    return render_template("index.html")
 
 
 @app.route("/searched", methods=["GET", "POST"])

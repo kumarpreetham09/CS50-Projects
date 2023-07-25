@@ -35,79 +35,15 @@ def after_request(response):
 @login_required
 def index():
     """Show portfolio of stocks"""
-    user_id = session["user_id"]
-    all_symbols = []
-    data = []
-    cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"])
-    for i in db.execute(
-        "SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id
-    ):
-        all_symbols.append(i["symbol"])
 
-    for symbol in all_symbols:
-        price = round(float(lookup(symbol)["price"]), 4)
-        shares = int(
-            db.execute(
-                "SELECT SUM(shares) AS n FROM history  WHERE user_id = ? AND symbol = ?",
-                user_id,
-                symbol,
-            )[0]["n"]
-        )
-        total = round(float(price * shares), 2)
-        data.append(
-            {"symbol": symbol.upper(), "shares": shares, "price": price, "total": total}
-        )
-
-    return render_template("index.html", all_symbols=all_symbols, data=data, cash=cash)
+    return render_template("index.html")
 
 
-@app.route("/buy", methods=["GET", "POST"])
+@app.route("/search", methods=["GET", "POST"])
 @login_required
-def buy():
+def search():
     """Buy shares of stock"""
-    if request.method == "POST":
-        symbol = request.form.get("symbol")
-        shares = request.form.get("shares")
-        user_id = session["user_id"]
-        if symbol:
-            if shares and shares.isnumeric() and int(shares) > 0:
-                symbol_dict = lookup(symbol)
-                if symbol_dict:
-                    time = str(datetime.now())
-                    price = int(symbol_dict["price"])
-                    total_price = price * int(shares)
-                    cash = int(
-                        db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0][
-                            "cash"
-                        ]
-                    )
-                    if cash < total_price:
-                        return apology("not enough balance", 400)
-                    else:
-                        cash = cash - total_price
-                        db.execute(
-                            "INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)",
-                            user_id,
-                            symbol,
-                            price,
-                            shares,
-                            time,
-                        )
-                        db.execute(
-                            "UPDATE users SET cash = ? WHERE id = ?", cash, user_id
-                        )
-                        flash(
-                            f"Bought {shares} shares of {symbol} at {usd(total_price)}"
-                        )
-                        return redirect("/")
-                else:
-                    return apology("invalid symbol", 400)
-            else:
-                return apology("invalid number of shares", 400)
-        else:
-            return apology("you need to provide symbol", 400)
-    else:
-        return render_template("buy.html")
+    return render_template("search.html")
 
 
 @app.route("/history")
@@ -235,51 +171,3 @@ def register():
     else:
         return render_template("register.html")
 
-
-@app.route("/sell", methods=["GET", "POST"])
-@login_required
-def sell():
-    """Sell shares of stock"""
-    symbols = []
-    user_id = session["user_id"]
-    cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"])
-    for i in db.execute(
-        "SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id
-    ):
-        symbols.append((i["symbol"]))
-    if request.method == "POST":
-        symbol = request.form.get("symbol")
-        shares = request.form.get("shares")
-        if shares and shares.isdigit() and int(shares) > 0:
-            avail_shares = int(
-                db.execute(
-                    "SELECT SUM(shares) AS n FROM history WHERE user_id = ? AND symbol = ?",
-                    user_id,
-                    symbol,
-                )[0]["n"]
-            )
-            if int(shares) < avail_shares:
-                symbol_dict = lookup(symbol)
-                user_id = session["user_id"]
-                time = str(datetime.now())
-                price = int(symbol_dict["price"])
-                total_price = price * int(shares)
-                new_shares = -int(shares)
-                cash += total_price
-                db.execute(
-                    "INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)",
-                    user_id,
-                    symbol,
-                    price,
-                    new_shares,
-                    time,
-                )
-                db.execute("UPDATE users SET cash = ? WHERE id = ?", cash, user_id)
-                flash(f"Sold {shares} shares of {symbol} at {usd(total_price)}")
-                return redirect("/")
-            else:
-                return apology(f"enter a valid amount of shares", 400)
-        else:
-            return apology(f"fill in all details", 400)
-    else:
-        return render_template("sell.html", symbols=symbols)

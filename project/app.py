@@ -35,15 +35,20 @@ def index():
     return render_template("index.html")
 
 
+
+
+
+
 @app.route("/search", methods=["GET", "POST"])
 @login_required
 def search():
     if request.method == "POST":
         user_id = session["user_id"]
         url = request.form.get("url")
-        price = float(price_checker(url))
+        data = price_checker(url)
+        price = float(data["price"])
         db.execute("INSERT INTO history (user_id, url, price) VALUES(?,?,?)",user_id, url, price,)
-        return render_template("searched.html")
+        return render_template("searched.html", data=data)
 
     else:
         return render_template("search.html")
@@ -132,4 +137,6 @@ def register():
 
 
 def price_checker(url):
-    return 20.50
+    url_name = "Cooker"
+    url_price = "24.50"
+    return {name:url_name, price:url_price}

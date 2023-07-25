@@ -46,34 +46,6 @@ def search():
     return render_template("search.html")
 
 
-@app.route("/history")
-@login_required
-def history():
-    """Show history of transactions"""
-    nature_list = []
-    user_id = session["user_id"]
-    symbols = db.execute("SELECT symbol FROM history WHERE user_id = ?", user_id)
-    prices = db.execute("SELECT price FROM history WHERE user_id = ?", user_id)
-    shares = db.execute("SELECT shares FROM history WHERE user_id = ?", user_id)
-    times = db.execute("SELECT time FROM history WHERE user_id = ?", user_id)
-    length = range(len(symbols))
-    for share in shares:
-        if int(share["shares"]) > 0:
-            nature_list.append("BOUGHT")
-        else:
-            nature_list.append("SOLD")
-
-    return render_template(
-        "history.html",
-        length=length,
-        symbols=symbols,
-        prices=prices,
-        shares=shares,
-        nature_list=nature_list,
-        times=times,
-    )
-
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """Log user in"""

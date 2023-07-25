@@ -6,15 +6,16 @@
 
 {% block main %}
     <div>
-        <a>SUCCESS</a>
         <table>
             <thead>
                 <th>Product Name</th>
                 <th>Price</th>
+                <th>Add to Watchlist?</th>
             </thead>
             <tbody>
                 <td>{{  data["name"]  }}</td>
                 <td>{{  data["price"]  }}</td>
+                <td><button name="button">Add</button></td>
             </tbody>
         </table>
     </div>

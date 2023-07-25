@@ -38,16 +38,17 @@ def index():
 @app.route("/searched", methods=["GET", "POST"])
 @login_required
 def searched():
-    
+    data = session["data"]
     if request.method == "POST":
-        data = session["data"]
+
         user_id = session["user_id"]
         price = float(data["price"])
         db.execute("INSERT INTO history (user_id, url, price) VALUES(?,?,?)",user_id, url, price,)
+        session["data"].clear()
         return redirect("/")
 
     else:
-        return render_template("searched.html")
+        return render_template("searched.html",data=data)
 
 
 

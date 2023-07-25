@@ -5,8 +5,9 @@ from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
+from datetime import datetime
 
-from helpers import apology, password_required
+from helpers import apology, login_required
 
 # Configure application
 app = Flask(__name__)
@@ -23,7 +24,7 @@ db = SQL("sqlite:///project.db")
 
 @app.after_request
 def after_request(response):
-
+    """Ensure responses aren't cached"""
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     response.headers["Expires"] = 0
     response.headers["Pragma"] = "no-cache"
@@ -31,32 +32,120 @@ def after_request(response):
 
 
 @app.route("/")
-@password_required
+@login_required
 def index():
-    return apology("index.html")
+    """Show portfolio of stocks"""
+    user_id = session["user_id"]
+    all_symbols = []
+    data = []
+    cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"])
+    for i in db.execute(
+        "SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id
+    ):
+        all_symbols.append(i["symbol"])
+
+    for symbol in all_symbols:
+        price = round(float(lookup(symbol)["price"]), 4)
+        shares = int(
+            db.execute(
+                "SELECT SUM(shares) AS n FROM history  WHERE user_id = ? AND symbol = ?",
+                user_id,
+                symbol,
+            )[0]["n"]
+        )
+        total = round(float(price * shares), 2)
+        data.append(
+            {"symbol": symbol.upper(), "shares": shares, "price": price, "total": total}
+        )
+
+    return render_template("index.html", all_symbols=all_symbols, data=data, cash=cash)
 
 
-@app.route("/search", methods=["GET", "POST"])
-@password_required
-def search():
+@app.route("/buy", methods=["GET", "POST"])
+@login_required
+def buy():
+    """Buy shares of stock"""
     if request.method == "POST":
-        return apology("hello")
-
+        symbol = request.form.get("symbol")
+        shares = request.form.get("shares")
+        user_id = session["user_id"]
+        if symbol:
+            if shares and shares.isnumeric() and int(shares) > 0:
+                symbol_dict = lookup(symbol)
+                if symbol_dict:
+                    time = str(datetime.now())
+                    price = int(symbol_dict["price"])
+                    total_price = price * int(shares)
+                    cash = int(
+                        db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0][
+                            "cash"
+                        ]
+                    )
+                    if cash < total_price:
+                        return apology("not enough balance", 400)
+                    else:
+                        cash = cash - total_price
+                        db.execute(
+                            "INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)",
+                            user_id,
+                            symbol,
+                            price,
+                            shares,
+                            time,
+                        )
+                        db.execute(
+                            "UPDATE users SET cash = ? WHERE id = ?", cash, user_id
+                        )
+                        flash(
+                            f"Bought {shares} shares of {symbol} at {usd(total_price)}"
+                        )
+                        return redirect("/")
+                else:
+                    return apology("invalid symbol", 400)
+            else:
+                return apology("invalid number of shares", 400)
+        else:
+            return apology("you need to provide symbol", 400)
     else:
-        return render_template("search.html")
+        return render_template("buy.html")
 
+
+@app.route("/history")
+@login_required
+def history():
+    """Show history of transactions"""
+    nature_list = []
+    user_id = session["user_id"]
+    symbols = db.execute("SELECT symbol FROM history WHERE user_id = ?", user_id)
+    prices = db.execute("SELECT price FROM history WHERE user_id = ?", user_id)
+    shares = db.execute("SELECT shares FROM history WHERE user_id = ?", user_id)
+    times = db.execute("SELECT time FROM history WHERE user_id = ?", user_id)
+    length = range(len(symbols))
+    for share in shares:
+        if int(share["shares"]) > 0:
+            nature_list.append("BOUGHT")
+        else:
+            nature_list.append("SOLD")
+
+    return render_template(
+        "history.html",
+        length=length,
+        symbols=symbols,
+        prices=prices,
+        shares=shares,
+        nature_list=nature_list,
+        times=times,
+    )
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-
-
+    """Log user in"""
     # Forget any user_id
     session.clear()
 
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
-
         # Ensure username was submitted
         if not request.form.get("username"):
             return apology("must provide username", 403)
@@ -66,10 +155,14 @@ def login():
             return apology("must provide password", 403)
 
         # Query database for username
-        rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
+        rows = db.execute(
+            "SELECT * FROM users WHERE username = ?", request.form.get("username")
+        )
 
         # Ensure username exists and password is correct
-        if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
+        if len(rows) != 1 or not check_password_hash(
+            rows[0]["hash"], request.form.get("password")
+        ):
             return apology("invalid username and/or password", 403)
 
         # Remember which user has logged in
@@ -83,9 +176,35 @@ def login():
         return render_template("login.html")
 
 
+@app.route("/logout")
+def logout():
+    """Log user out"""
+
+    # Forget any user_id
+    session.clear()
+
+    # Redirect user to login form
+    return redirect("/")
+
+
+@app.route("/quote", methods=["GET", "POST"])
+@login_required
+def quote():
+    """Get stock quote."""
+    if request.method == "POST":
+        symbol = request.form.get("symbol")
+        symbol_dict = lookup(symbol)
+        if symbol_dict:
+            return render_template("quoted.html", symbol_dict=symbol_dict)
+        else:
+            return apology("invalid symbol", 400)
+    else:
+        return render_template("quote.html")
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
-
+    """Register user"""
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
@@ -117,14 +236,50 @@ def register():
         return render_template("register.html")
 
 
-@app.route("/logout")
-def logout():
-
-
-    # Forget any user_id
-    session.clear()
-
-    # Redirect user to login form
-    return redirect("/")
-
-
+@app.route("/sell", methods=["GET", "POST"])
+@login_required
+def sell():
+    """Sell shares of stock"""
+    symbols = []
+    user_id = session["user_id"]
+    cash = int(db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"])
+    for i in db.execute(
+        "SELECT DISTINCT symbol FROM history WHERE user_id = ?", user_id
+    ):
+        symbols.append((i["symbol"]))
+    if request.method == "POST":
+        symbol = request.form.get("symbol")
+        shares = request.form.get("shares")
+        if shares and shares.isdigit() and int(shares) > 0:
+            avail_shares = int(
+                db.execute(
+                    "SELECT SUM(shares) AS n FROM history WHERE user_id = ? AND symbol = ?",
+                    user_id,
+                    symbol,
+                )[0]["n"]
+            )
+            if int(shares) < avail_shares:
+                symbol_dict = lookup(symbol)
+                user_id = session["user_id"]
+                time = str(datetime.now())
+                price = int(symbol_dict["price"])
+                total_price = price * int(shares)
+                new_shares = -int(shares)
+                cash += total_price
+                db.execute(
+                    "INSERT INTO history (user_id, symbol, price, shares, time) VALUES(?, ?, ?, ?, ?)",
+                    user_id,
+                    symbol,
+                    price,
+                    new_shares,
+                    time,
+                )
+                db.execute("UPDATE users SET cash = ? WHERE id = ?", cash, user_id)
+                flash(f"Sold {shares} shares of {symbol} at {usd(total_price)}")
+                return redirect("/")
+            else:
+                return apology(f"enter a valid amount of shares", 400)
+        else:
+            return apology(f"fill in all details", 400)
+    else:
+        return render_template("sell.html", symbols=symbols)

@@ -17,7 +17,7 @@ def apology(message, code=400):
     return render_template("apology.html", top=code, bottom=escape(message)), code
 
 
-def password_required(f):
+def login_required(f):
     """
     Decorate routes to require login.
 
@@ -29,3 +29,5 @@ def password_required(f):
             return redirect("/login")
         return f(*args, **kwargs)
     return decorated_function
+
+

@@ -43,7 +43,7 @@ def index():
         name = result["name"]
         current_price = float(result["price"])
         change = float(current_price - price)
-        information.append({"product":name, "price":price, "c_price":current_price, "change":change})
+        information.append({"product":name, "price":price, "c_price":current_price, "change":change, "url":url})
 
     return render_template("index.html", information=information)
 

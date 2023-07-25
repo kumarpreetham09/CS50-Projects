@@ -32,12 +32,14 @@ def after_request(response):
 @app.route("/")
 @login_required
 def index():
+    
     return render_template("index.html")
 
 
 @app.route("/searched", methods=["GET", "POST"])
 @login_required
 def searched():
+
     data = session["data"]
     if request.method == "POST":
         user_id = session["user_id"]
@@ -54,6 +56,7 @@ def searched():
 @app.route("/search", methods=["GET", "POST"])
 @login_required
 def search():
+    session["data"].clear()
     if request.method == "POST":
         url = request.form.get("url")
         data = price_checker(url)

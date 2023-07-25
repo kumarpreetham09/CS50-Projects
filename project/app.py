@@ -33,7 +33,6 @@ def after_request(response):
 @app.route("/")
 @password_required
 def index():
-    
     return render_template("index.html", data=data)
 
 

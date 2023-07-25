@@ -1,9 +1,34 @@
 {% extends "layout.html" %}
 
 {% block title %}
-Homepage
+    Index
 {% endblock %}
 
 {% block main %}
-
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Original Price</th>
+                <th>Current Price</th>
+                <th>Change</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dataset in data %}
+                <tr>
+                    <td>{{ dataset["symbol"] }}</td>
+                    <td>{{ dataset["shares"] }}</td>
+                    <td>{{ dataset["price"] }}</td>
+                    <td>{{ dataset["total"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Remaining Balance:</td>
+                <td>{{ cash|usd  }}</td>
+            </tr>
+        </tfoot>
+    </table>
 {% endblock %}

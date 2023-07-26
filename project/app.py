@@ -35,9 +35,9 @@ def after_request(response):
 def index():
     user_id = session["user_id"]
     if request.method == "POST":
-        name = request.form.get("button")
-        print(name)
-        data = db.execute("DELETE FROM history WHERE user_id = ? AND name = ?",user_id, name)
+        price = request.form.get("button")
+        print(price)
+        data = db.execute("DELETE FROM history WHERE user_id = ? AND price = ?",user_id, price)
         return redirect("/")
 
 

@@ -36,7 +36,7 @@ def index():
     if request.method == "POST":
         price = request.form.get("button")
         print(price)
-        data = db.execute("DELETE FROM history WHERE user_id = ? AND price = ?",user_id, price)
+        data = db.execute("DELETE FROM history WHERE user_id = ? AND date = ?",user_id, price)
         return redirect("/")
 
 

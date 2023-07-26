@@ -50,7 +50,7 @@ def index():
         name = result["name"]
         current_price = float(result["price"])
         change = round(float(current_price - price),2)
-        information.append({"product":name, "price":price, "c_price":current_price, "change":change, "url":url})
+        information.append({"product":name, "price":price, "c_price":current_price, "change":change, "url":url, "date":date})
 
     return render_template("index.html", information=information)
 
@@ -65,11 +65,12 @@ def searched():
         price = float(data["price"])
         url = data['url']
         name = data['name']
+        date = datetime.now()
         check = db.execute("SELECT COUNT(*) AS n FROM history WHERE url = ?",url)[0]["n"]
         print(check)
         if check == 0:
             print("EXECUTED")
-            db.execute("INSERT INTO history (user_id, name, price, url) VALUES(?,?,?,?)",user_id, name, price, url)
+            db.execute("INSERT INTO history (user_id, name, price, url, date) VALUES(?,?,?,?,?)",user_id, name, price, url, date)
         return redirect("/")
 
     else:

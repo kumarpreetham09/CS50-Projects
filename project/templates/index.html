@@ -16,16 +16,18 @@
                 <th>Delete</th>
             </tr>
         </thead>
-        <tbody>
-            {% for info in information %}
-                <tr>
-                    <td><a class="nav-link"; href="{{ info['url'] }}">{{ info["product"] }}</a></td>
-                    <td>{{ info["price"] }}</td>
-                    <td>{{ info["c_price"] }}</td>
-                    <td>{{ info["change"] }}</td>
-                    <td><button name="{{  info  }}">X</button></td>
-                </tr>
-            {% endfor %}
-        </tbody>
+        <form action="/"  method="post">
+            <tbody>
+                {% for info in information %}
+                    <tr>
+                        <td><a class="nav-link"; href="{{ info['url'] }}">{{ info["product"] }}</a></td>
+                        <td>{{ info["price"] }}</td>
+                        <td>{{ info["c_price"] }}</td>
+                        <td>{{ info["change"] }}</td>
+                        <td><button name="button"; value="{{  info['product']  }}">X</button></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </form>
     </table>
 {% endblock %}

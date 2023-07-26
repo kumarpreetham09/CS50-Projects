@@ -33,14 +33,16 @@ def after_request(response):
 @app.route("/", methods=["GET", "POST"])
 @login_required
 def index():
+    user_id = session["user_id"]
     if request.method == "POST":
-        name = request.form.get("url")
-
-        data = db.execute("DELETE FROM history WHERE user_id = ? AND WHERE name = ?",user_id, name)
+        name = request.form.get("button")
+        print(name)
+        data = db.execute("DELETE FROM history WHERE user_id = ? AND name = ?",user_id, name)
+        return redirect("/")
 
 
     information = []
-    user_id = session["user_id"]
+
     data = db.execute("SELECT * FROM history WHERE user_id = ?",user_id)
     for dataset in data:
         price = float(dataset["price"])

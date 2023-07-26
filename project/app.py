@@ -36,20 +36,20 @@ def index():
     if request.method == "POST":
         data = db.execute("DELETE FROM history WHERE user_id = ? AND WHERE name = ?",user_id, name)
 
-    else:
-        information = []
-        user_id = session["user_id"]
-        data = db.execute("SELECT * FROM history WHERE user_id = ?",user_id)
-        for dataset in data:
-            price = float(dataset["price"])
-            url = dataset["url"]
-            result = price_checker(url)
-            name = result["name"]
-            current_price = float(result["price"])
-            change = round(float(current_price - price),2)
-            information.append({"product":name, "price":price, "c_price":current_price, "change":change, "url":url})
 
-        return render_template("index.html", information=information)
+    information = []
+    user_id = session["user_id"]
+    data = db.execute("SELECT * FROM history WHERE user_id = ?",user_id)
+    for dataset in data:
+        price = float(dataset["price"])
+        url = dataset["url"]
+        result = price_checker(url)
+        name = result["name"]
+        current_price = float(result["price"])
+        change = round(float(current_price - price),2)
+        information.append({"product":name, "price":price, "c_price":current_price, "change":change, "url":url})
+
+    return render_template("index.html", information=information)
 
 
 @app.route("/searched", methods=["GET", "POST"])

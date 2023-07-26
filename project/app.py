@@ -3,6 +3,7 @@ import os
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
+from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
 import requests
@@ -36,7 +37,7 @@ def index():
     if request.method == "POST":
         price = request.form.get("button")
         print(price)
-        data = db.execute("DELETE FROM history WHERE user_id = ? AND date = ?",user_id, price)
+        data = db.execute("DELETE FROM history WHERE user_id = ? AND price = ?",user_id, price)
         return redirect("/")
 
 
@@ -48,10 +49,9 @@ def index():
         url = dataset["url"]
         result = price_checker(url)
         name = result["name"]
-        date = result["date"]
         current_price = float(result["price"])
         change = round(float(current_price - price),2)
-        information.append({"product":name, "price":price, "c_price":current_price, "change":change, "url":url, "date":date})
+        information.append({"product":name, "price":price, "c_price":current_price, "change":change, "url":url})
 
     return render_template("index.html", information=information)
 
@@ -66,12 +66,11 @@ def searched():
         price = float(data["price"])
         url = data['url']
         name = data['name']
-        date = data['date']
         check = db.execute("SELECT COUNT(*) AS n FROM history WHERE url = ?",url)[0]["n"]
         print(check)
         if check == 0:
             print("EXECUTED")
-            db.execute("INSERT INTO history (user_id, name, price, url, date) VALUES(?,?,?,?,?)",user_id, name, price, url, date)
+            db.execute("INSERT INTO history (user_id, name, price, url) VALUES(?,?,?,?)",user_id, name, price, url)
         return redirect("/")
 
     else:
@@ -181,14 +180,13 @@ def price_checker(url):
         soup = BeautifulSoup(response.text, "html.parser")
         url_price = str(soup.find(class_='wt-text-title-03 wt-mr-xs-1').get_text()).split("SGD ")[1].split("+")[0]
         name_list = soup.find(class_='wt-text-body-01 wt-line-height-tight wt-break-word wt-mt-xs-1').get_text().split(" ")
-        date = datetime.now()
         list = []
         for i in range(len(name_list)):
             if i >= 4:
                 list.append(name_list[i])
         url_name = " ".join(list)
 
-        return {"name":str(url_name), "price":url_price, "url":str(url), "date":date}
+        return {"name":str(url_name), "price":url_price, "url":str(url)}
     except:
         flash("Invalid URL: Please Enter a URL from ETSY")
 

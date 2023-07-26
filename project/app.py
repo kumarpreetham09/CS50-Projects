@@ -34,6 +34,8 @@ def after_request(response):
 @login_required
 def index():
     if request.method == "POST":
+        name = request.form.get("url")
+
         data = db.execute("DELETE FROM history WHERE user_id = ? AND WHERE name = ?",user_id, name)
 
 

@@ -42,7 +42,7 @@ def index():
         result = price_checker(url)
         name = result["name"]
         current_price = float(result["price"])
-        change = float(current_price - price)
+        change = round(float(current_price - price),2)
         information.append({"product":name, "price":price, "c_price":current_price, "change":change, "url":url})
 
     return render_template("index.html", information=information)

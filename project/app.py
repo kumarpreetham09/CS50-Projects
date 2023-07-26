@@ -48,6 +48,7 @@ def index():
         url = dataset["url"]
         result = price_checker(url)
         name = result["name"]
+        date = result["date"]
         current_price = float(result["price"])
         change = round(float(current_price - price),2)
         information.append({"product":name, "price":price, "c_price":current_price, "change":change, "url":url, "date":date})
@@ -65,7 +66,7 @@ def searched():
         price = float(data["price"])
         url = data['url']
         name = data['name']
-        date = datetime.now()
+        date = data['date']
         check = db.execute("SELECT COUNT(*) AS n FROM history WHERE url = ?",url)[0]["n"]
         print(check)
         if check == 0:
@@ -180,13 +181,14 @@ def price_checker(url):
         soup = BeautifulSoup(response.text, "html.parser")
         url_price = str(soup.find(class_='wt-text-title-03 wt-mr-xs-1').get_text()).split("SGD ")[1].split("+")[0]
         name_list = soup.find(class_='wt-text-body-01 wt-line-height-tight wt-break-word wt-mt-xs-1').get_text().split(" ")
+        date = datetime.now()
         list = []
         for i in range(len(name_list)):
             if i >= 4:
                 list.append(name_list[i])
         url_name = " ".join(list)
 
-        return {"name":str(url_name), "price":url_price, "url":str(url)}
+        return {"name":str(url_name), "price":url_price, "url":str(url), "date":date}
     except:
         flash("Invalid URL: Please Enter a URL from ETSY")
 

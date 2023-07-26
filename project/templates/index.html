@@ -13,6 +13,7 @@
                 <th>Original Price</th>
                 <th>Current Price</th>
                 <th>Change</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +23,7 @@
                     <td>{{ info["price"] }}</td>
                     <td>{{ info["c_price"] }}</td>
                     <td>{{ info["change"] }}</td>
+                    <td><button>X</button></td>
                 </tr>
             {% endfor %}
         </tbody>

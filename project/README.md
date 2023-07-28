@@ -1,9 +1,7 @@
 # Etsy Price Tracker
 
 ## Idea behind Web Scrapping
-For this project, I had to learn web scrapping, which I implemented in the price_checker function. I had to research on libraries such as BeautifulSoup and Selenium. These 
-
-
+For this project, I had to learn web scrapping, which I implemented in the price_checker function. I had to research on libraries such as BeautifulSoup and Selenium.
 
 
 

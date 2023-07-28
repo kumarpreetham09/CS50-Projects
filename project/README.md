@@ -13,3 +13,4 @@ This function calls the price_checker function to identify the current price of 
 This function gives the user the option of whether to add the product to the Watchlist, or not. If the product already exists in the Watchlist, it will not add it regardless if the user presses the "Add" button. This is to avoid the Watchlist being repeated with the same product. It finally redirects the user back to index.html which displays the updated Watchlist.
 
 ## price_checker
+This function takes in one argument which is the url of the product page. Using the library BeautifulSoup, I am able to get hold of the 

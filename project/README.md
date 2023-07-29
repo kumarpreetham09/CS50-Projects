@@ -2,8 +2,8 @@
 #### Video Demo:  <https://youtu.be/Tct7MkItTKE>
 #### Description:
 
-#### Idea behind Web Scrapping
-For this project, I had to learn web scrapping, which I implemented in the price_checker function. I had to research on libraries such as BeautifulSoup and Selenium. I decided that I could use this to my advantage, by improving my online shopping experience of a website I use frequently, Etsy. By experimenting on the html code in the Etsy product pages, I was able to identify the html tags the relevant information is located in and make use of them in my project.
+#### Idea behind Web Scraping
+For this project, I had to learn web scraping, which I implemented in the price_checker function. I had to research on libraries such as BeautifulSoup and Selenium. I decided that I could use this to my advantage, by improving my online shopping experience of a website I use frequently, Etsy. By experimenting on the html code in the Etsy product pages, I was able to identify the html tags the relevant information is located in and make use of them in my project.
 
 #### index
 This function displays the Watchlist. In this function, data is extracted from the SQL database called project.db and from the history TABLE, all of the user's existing products are displayed as a table. The Original Price is stored in the database, while the price_checker function is called for the Current Prices. For each product, there is the option of clicking a "Delete" button, which will delete the data from the database and therefore, only display the remaining products. It starts off with an empty page, but once the "Add Item" link is clicked, it directs you to a page where the user can start adding products to the table.

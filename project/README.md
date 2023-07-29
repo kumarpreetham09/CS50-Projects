@@ -1,5 +1,5 @@
 # Etsy Price Tracker
-#### Video Demo:  <URL HERE>
+#### Video Demo:  <https://youtu.be/Tct7MkItTKE>
 #### Description:
 
 #### Idea behind Web Scrapping

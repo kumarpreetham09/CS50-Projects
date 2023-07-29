@@ -62,7 +62,7 @@ def searched():
     data = session["data"]
     if request.method == "POST":
         user_id = session["user_id"]
-        price = round(float(data["price"]) * 1.13,2)
+        price = round(float(data["price"]) * 1.1,2)
         url = data['url']
         name = data['name']
         check = db.execute("SELECT COUNT(*) AS n FROM history WHERE url = ?",url)[0]["n"]

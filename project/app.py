@@ -36,7 +36,6 @@ def index():
     user_id = session["user_id"]
     if request.method == "POST":
         price = request.form.get("button")
-        print(price)
         data = db.execute("DELETE FROM history WHERE user_id = ? AND price = ?",user_id, price)
         return redirect("/")
 
@@ -67,9 +66,7 @@ def searched():
         url = data['url']
         name = data['name']
         check = db.execute("SELECT COUNT(*) AS n FROM history WHERE url = ?",url)[0]["n"]
-        print(check)
         if check == 0:
-            print("EXECUTED")
             db.execute("INSERT INTO history (user_id, name, price, url) VALUES(?,?,?,?)",user_id, name, price, url)
         return redirect("/")
 

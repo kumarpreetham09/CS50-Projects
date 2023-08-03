@@ -59,14 +59,14 @@ def main():
 
 
     # Load data from files into memory
-    # print("Loading data...")
+    print("Loading data...")
     load_data(directory)
-    print(names)
-    print("")
-    print(people)
-    print("")
-    print(movies)
-    # print("Data loaded.")
+    # print(names)
+    # print("")
+    # print(people)
+    # print("")
+    # print(movies)
+    print("Data loaded.")
 
     source = person_id_for_name(input("Name: "))
     if source is None:
@@ -100,8 +100,10 @@ def shortest_path(source, target):
     # TODO
     first_id = names[f"{source.lower()}"]
     second_id = names[f"{target.lower()}"]
+    print(first_id)
+    print(second_id)
 
-    raise NotImplementedError
+    return
 
 
 def person_id_for_name(name):

@@ -113,7 +113,9 @@ def shortest_path(source, target):
             raise Exception("no solution")
         node = queue.remove()
         num_explored += 1
-        
+
+        if node.state == self.goal
+
 
 
 

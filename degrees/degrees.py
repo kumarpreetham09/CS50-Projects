@@ -102,7 +102,11 @@ def shortest_path(source, target):
     # TODO
     print(source)
     print(target)
-    print(neighbors_for_person(source))
+    neighbors_dict = neighbors_for_person(source)
+    for i in neighbors_dict:
+        neighbor_id = neighbors_dict[i][1]
+        if neighbor_id == target:
+            return 
 
 
     return None

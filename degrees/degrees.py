@@ -99,7 +99,24 @@ def shortest_path(source, target):
     If no possible path, returns None.
     """
     # TODO
+
+    num_explored = 0
+
+    start = Node(state=source, parent=None, action=None)
     queue = QueueFrontier()
+    queue.add(start)
+
+    queue.explored = set()
+
+    while True:
+        if queue.empty():
+            raise Exception("no solution")
+        node = queue.remove()
+        num_explored += 1
+        
+
+
+
 
     return None
 

@@ -75,6 +75,8 @@ def main():
     if target is None:
         sys.exit("Person not found.")
 
+    return
+
     path = shortest_path(source, target)
 
     if path is None:
@@ -98,15 +100,10 @@ def shortest_path(source, target):
     If no possible path, returns None.
     """
     # TODO
-    print(source.lower())
-    print(target.lower())
-    for i in range(len(people))
-        if people[i] == source:
-            common = people[i]["movies"]
-            for j in range(len(movies)):
-                for k in range(len(common)):
-                    movie = common[k]
-                    
+    print(source)
+    print(target)
+    print(neighbors_for_person(source))
+
 
     return None
 

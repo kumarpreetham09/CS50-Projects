@@ -78,7 +78,6 @@ def main():
 
 
     path = shortest_path(source, target)
-    return
     if path is None:
         print("Not connected.")
     else:
@@ -100,13 +99,14 @@ def shortest_path(source, target):
     If no possible path, returns None.
     """
     # TODO
-    print(source)
-    print(target)
     neighbors_dict = neighbors_for_person(source)
     for i in neighbors_dict:
-        movie_id = neighbors_dict[i][1]
+        movie_id = neighbors_dict[i][0]
+        neighbor_id = neighbors_dict[i][1]
         if neighbor_id == target:
-            return
+            return (movie_id, neighbor_id)
+        else:
+            shortest_path()
 
 
     return None

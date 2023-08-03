@@ -100,7 +100,10 @@ def shortest_path(source, target):
     # TODO
     print(source.lower())
     print(target.lower())
-
+    for i in range(len(people))
+        if people[i] == source:
+            common = people[i]["movies"]
+        
     return None
 
 

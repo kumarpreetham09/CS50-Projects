@@ -131,8 +131,8 @@ def shortest_path(source, target):
         queue.explored.add(node.state)
 
         for neighbor in neighbors_for_person(source):
-            if not queue.contains_state(state) and state not in queue.explored:
-                child = Node(state=state, parent=neighbor[1], action=neighbor[0])
+            if not queue.contains_state(neighbor[1]) and state not in queue.explored:
+                child = Node(state=neighbor[1], parent=node, action=neighbor[0])
                 frontier.add(child)
 
 

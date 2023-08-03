@@ -57,13 +57,16 @@ def main():
         sys.exit("Usage: python degrees.py [directory]")
     directory = sys.argv[1] if len(sys.argv) == 2 else "large"
 
+
     # Load data from files into memory
-    print("Loading data...")
+    # print("Loading data...")
     load_data(directory)
-    # print(names)
-    # print(people)
+    print(names)
+    print("")
+    print(people)
+    print("")
     print(movies)
-    print("Data loaded.")
+    # print("Data loaded.")
 
     source = person_id_for_name(input("Name: "))
     if source is None:
@@ -71,8 +74,6 @@ def main():
     target = person_id_for_name(input("Name: "))
     if target is None:
         sys.exit("Person not found.")
-
-    return
 
     path = shortest_path(source, target)
 
@@ -97,6 +98,7 @@ def shortest_path(source, target):
     If no possible path, returns None.
     """
     # TODO
+    names[f"{source.lower()}"]
 
     raise NotImplementedError
 

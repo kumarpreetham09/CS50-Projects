@@ -104,9 +104,9 @@ def shortest_path(source, target):
     print(target)
     neighbors_dict = neighbors_for_person(source)
     for i in neighbors_dict:
-        neighbor_id = neighbors_dict[i][1]
+        movie_id = neighbors_dict[i][1]
         if neighbor_id == target:
-            return 
+            return
 
 
     return None

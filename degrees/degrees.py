@@ -114,9 +114,26 @@ def shortest_path(source, target):
         node = queue.remove()
         num_explored += 1
 
-        if node.state == self.goal:
+        if node.state == queue.goal:
             actions = []
-            person = []
+            cells = []
+
+            while node.parent is not None:
+                actions.append(node.action)
+                cells.append(node.state)
+                node = node.parent
+            actions.reverse()
+            cells.reverse()
+            queue.solution = (actions, cells)
+            print(queue.solution)
+            return
+
+        queue.explored.add(node.state)
+
+        for neighbor in neighbors_for_person(source)
+            if not queue.contains_state(state) and state not in queue.explored:
+                child = Node(state=state, parent=node, action=action)
+                frontier.add(child)
 
 
 

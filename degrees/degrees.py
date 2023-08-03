@@ -98,12 +98,10 @@ def shortest_path(source, target):
     If no possible path, returns None.
     """
     # TODO
-    first_id = names[f"{source.lower()}"]
-    second_id = names[f"{target.lower()}"]
-    print(first_id)
-    print(second_id)
+    print(source.lower())
+    print(target.lower())
 
-    return
+    return None
 
 
 def person_id_for_name(name):

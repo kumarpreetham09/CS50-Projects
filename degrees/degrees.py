@@ -99,15 +99,7 @@ def shortest_path(source, target):
     If no possible path, returns None.
     """
     # TODO
-    neighbors_dict = neighbors_for_person(source)
-    for i in neighbors_dict:
-        movie_id =i[0]
-        neighbor_id = i[1]
-        if neighbor_id == target:
-            return (movie_id, neighbor_id)
-        else:
-            shortest_path(neighbor_id, target)
-
+    
 
     return None
 

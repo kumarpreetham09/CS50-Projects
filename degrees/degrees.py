@@ -98,7 +98,8 @@ def shortest_path(source, target):
     If no possible path, returns None.
     """
     # TODO
-    names[f"{source.lower()}"]
+    first_id = names[f"{source.lower()}"]
+    second_id = names[f"{target.lower()}"]
 
     raise NotImplementedError
 

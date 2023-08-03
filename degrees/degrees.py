@@ -114,7 +114,9 @@ def shortest_path(source, target):
         node = queue.remove()
         num_explored += 1
 
-        if node.state == self.goal
+        if node.state == self.goal:
+            actions = []
+            person = []
 
 
 

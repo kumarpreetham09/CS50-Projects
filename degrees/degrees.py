@@ -60,6 +60,9 @@ def main():
     # Load data from files into memory
     print("Loading data...")
     load_data(directory)
+    # print(names)
+    # print(people)
+    print(movies)
     print("Data loaded.")
 
     source = person_id_for_name(input("Name: "))
@@ -68,7 +71,6 @@ def main():
     target = person_id_for_name(input("Name: "))
     if target is None:
         sys.exit("Person not found.")
-    print(names)
 
     return
 

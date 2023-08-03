@@ -68,6 +68,9 @@ def main():
     target = person_id_for_name(input("Name: "))
     if target is None:
         sys.exit("Person not found.")
+    print(names)
+
+    return
 
     path = shortest_path(source, target)
 
@@ -92,7 +95,7 @@ def shortest_path(source, target):
     If no possible path, returns None.
     """
     # TODO
-    
+
     raise NotImplementedError
 
 

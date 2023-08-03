@@ -114,32 +114,26 @@ def shortest_path(source, target):
         node = queue.remove()
         num_explored += 1
 
-        if node.state == target:
-            actions = []
-            cells = []
+        for movie_id, person_id in neighbors_for_person(node.state):
+            if not queue.contains_state(person_id) and person_id not in queue.explored:
+                child = Node(state=person_id, parent=node, action=movie_id)
 
-            while node.parent is not None:
-                actions.append(node.action)
-                cells.append(node.state)
-                node = node.parent
-            actions.reverse()
-            cells.reverse()
-            queue.solution = (actions, cells)
-            print(queue.solution)
-            return
+                if child.state == target:
+                    movies = []
+                    people = []
+                    solution = []
+                    while child.parent is not None:
+                        movies.append(child.action)
+                        people.append(child.state)
+                        child = child.parent
+                    movies.reverse()
+                    people.reverse()
+                    x = zip(movies,people)
+                    for movie, person in x:
+                        solution.append((movie,person))
+                    return solution
 
-        queue.explored.add(node.state)
-
-        for neighbor in neighbors_for_person(source):
-            if not queue.contains_state(neighbor[1]) and state not in queue.explored:
-                child = Node(state=neighbor[1], parent=node, action=neighbor[0])
-                frontier.add(child)
-
-
-
-
-
-    return None
+                queue.add(child)
 
 
 def person_id_for_name(name):

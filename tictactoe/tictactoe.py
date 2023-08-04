@@ -30,9 +30,9 @@ def player(board):
                 count += 1
 
     if count/2 == 0:
-        return 
-
-    raise NotImplementedError
+        return "O"
+    else:
+        return "X"
 
 
 def actions(board):

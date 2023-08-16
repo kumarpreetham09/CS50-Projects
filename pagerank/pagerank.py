@@ -110,7 +110,13 @@ def iterate_pagerank(corpus, damping_factor):
     """
 
     dictionary = {}
+    pages = list(corpus.keys())
+    pages_length = len(corpus)
+
+    for page in pages:
+        dictionary[page] = 1 / pages_length
     
+
 
 
 if __name__ == "__main__":

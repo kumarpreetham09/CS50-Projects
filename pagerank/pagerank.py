@@ -61,10 +61,12 @@ def transition_model(corpus, page, damping_factor):
     dictionary = {}
 
     for element in corpus:
-        dictionary[element] = 0
+        dictionary[element] = (1-damping_factor) / len(corpus)
 
     for element[page] in corpus:
         dictionary[element] += damping_factor / len(element[page])
+
+    print(dictionary)
 
 
     return dictionary

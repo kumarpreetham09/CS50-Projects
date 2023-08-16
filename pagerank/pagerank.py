@@ -81,8 +81,9 @@ def sample_pagerank(corpus, damping_factor, n):
     PageRank values should sum to 1.
     """
 
+    first_sample = random.choose(corpus)
 
-    
+
     return
 
 

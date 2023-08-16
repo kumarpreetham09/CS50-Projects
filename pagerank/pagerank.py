@@ -83,6 +83,7 @@ def sample_pagerank(corpus, damping_factor, n):
     """
     dictionary = {}
     previous_sample = random.choice(list(corpus.keys()))
+    print(previous_sample)
 
     for i in range(n):
         dictionary = transition_model(corpus, previous_sample, damping_factor)

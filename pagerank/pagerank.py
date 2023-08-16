@@ -4,7 +4,7 @@ import re
 import sys
 
 DAMPING = 0.85
-SAMPLES = 10000
+SAMPLES = 10
 
 
 def main():
@@ -86,6 +86,7 @@ def sample_pagerank(corpus, damping_factor, n):
     for i in range(n):
         dictionary = transition_model(corpus, previous_sample, damping_factor)
         previous_sample = random.choices(list(dictionary.keys()), weights=list(dictionary.values()), k=1)
+        print(dictionary)
         if i == (n-1):
             return dictionary
 
@@ -99,7 +100,7 @@ def iterate_pagerank(corpus, damping_factor):
     their estimated PageRank value (a value between 0 and 1). All
     PageRank values should sum to 1.
     """
-    
+
     raise NotImplementedError
 
 

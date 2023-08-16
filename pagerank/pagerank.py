@@ -80,7 +80,14 @@ def sample_pagerank(corpus, damping_factor, n):
     PageRank values should sum to 1.
     """
 
-    
+    dictionary = {}
+
+    first_sample = random.choice(corpus.keys())
+
+    for site in corpus.keys():
+        dictionary[site] = 0
+
+    dictionary[first_sample] = damping_effect
 
 
     return dictionary

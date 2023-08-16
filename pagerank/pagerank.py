@@ -81,10 +81,11 @@ def sample_pagerank(corpus, damping_factor, n):
     PageRank values should sum to 1.
     """
 
-    first_sample = random.choose(corpus)
+    previous_sample = random.choose(corpus)
 
     for i in range(n):
-        page = transition_model(corpus, page, damping_factor)
+        dictionary = transition_model(corpus, previous_sample, damping_factor)
+        previous_sample = dictionary
 
     return
 

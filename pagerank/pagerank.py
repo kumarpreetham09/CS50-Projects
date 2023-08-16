@@ -85,9 +85,9 @@ def sample_pagerank(corpus, damping_factor, n):
 
     for i in range(n):
         dictionary = transition_model(corpus, previous_sample, damping_factor)
-        previous_sample = random.choices(dictionary.keys(), dictionary.values(), k=1)
-
-    return
+        previous_sample = random.choices(dictionary.keys(), weights=dictionary.values(), k=1)
+        if i == (n-1):
+            return dictionary
 
 
 def iterate_pagerank(corpus, damping_factor):

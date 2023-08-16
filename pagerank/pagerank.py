@@ -120,8 +120,9 @@ def iterate_pagerank(corpus, damping_factor):
 
     while abs(old_value - new_value) < 0.001:
         for page in pages:
-            links_length = len(corpus[page])
-            probability = ((1 - damping_factor) /pages_length) + damping_factor( / links_length)
+            if value in corpus[page]:
+                links_length = len(corpus[page])
+                probability = ((1 - damping_factor) /pages_length) + damping_factor( / links_length)
 
 
 

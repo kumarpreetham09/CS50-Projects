@@ -65,7 +65,7 @@ def transition_model(corpus, page, damping_factor):
     inside_links = []
 
     for site in corpus:
-        dictionary[site] = 
+        dictionary[site] = 0
 
         (1-damping_factor) / len(corpus)
 

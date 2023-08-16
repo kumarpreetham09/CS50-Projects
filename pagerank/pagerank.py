@@ -115,7 +115,9 @@ def iterate_pagerank(corpus, damping_factor):
 
     for page in pages:
         dictionary[page] = 1 / pages_length
-    
+
+    while abs(old_value - new_value) < 0.001:
+        
 
 
 

@@ -58,17 +58,17 @@ def transition_model(corpus, page, damping_factor):
     a link at random chosen from all pages in the corpus.
     """
 
-    equal_remaining_probability = (1 - damping_factor) / (len(corpus))
-    equal_probability = damping_factor / (len(corpus) - 1)
-    print(equal_remaining_probability)
-    print(equal_probability)
+    indi_remaining_probability = (1 - damping_factor) / (len(corpus))
+    indi_probability = damping_factor / (len(corpus) - 1)
+    print(indi_remaining_probability)
+    print(indi_probability)
 
     dictionary = {}
     for element in corpus:
         if element == page:
-            dictionary.update({f"{element}": equal_remaining_probability})
+            dictionary.update({f"{element}": indi_remaining_probability})
         else:
-            dictionary.update({f"{element}": equal_probability + equal_remaining_probability})
+            dictionary.update({f"{element}": indi_probability + indi_remaining_probability})
 
     return dictionary
 

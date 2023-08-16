@@ -60,21 +60,14 @@ def transition_model(corpus, page, damping_factor):
 
     dictionary = {}
 
-
-    inside_links = []
-
     for site in corpus:
-        dictionary[site] = 0
+        dictionary[site] = (1 - damping_factor) / len(corpus)
 
-        (1-damping_factor) / len(corpus)
-
-    for element in corpus[page]:
-        dictionary[element] += damping_factor / len(corpus[page])
-
-    print(dictionary)
-
+    for site in corpus[page]:
+        dictionaru[site] += damping_factor/(len(corpus[page]))
 
     return dictionary
+
 
 
 def sample_pagerank(corpus, damping_factor, n):
@@ -86,7 +79,11 @@ def sample_pagerank(corpus, damping_factor, n):
     their estimated PageRank value (a value between 0 and 1). All
     PageRank values should sum to 1.
     """
-    return 1
+
+    
+
+
+    return dictionary
 
 
 def iterate_pagerank(corpus, damping_factor):

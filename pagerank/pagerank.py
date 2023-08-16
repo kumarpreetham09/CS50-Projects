@@ -63,8 +63,8 @@ def transition_model(corpus, page, damping_factor):
     for element in corpus:
         dictionary[element] = (1-damping_factor) / len(corpus)
 
-    for element[page] in corpus:
-        dictionary[element] += damping_factor / len(element[page])
+    for element in corpus[page]:
+        dictionary[element] += damping_factor / len(corpus[page])
 
     print(dictionary)
 
@@ -85,9 +85,8 @@ def sample_pagerank(corpus, damping_factor, n):
     previous_sample = random.choice(list(corpus.keys()))
 
     for i in range(n):
-        current_dictionary = transition_model(corpus, previous_sample, damping_factor)
+        dictionary = transition_model(corpus, previous_sample, damping_factor)
         previous_sample = random.choices(list(dictionary.keys()), weights=list(dictionary.values()), k=1)
-        print(dictionary)
         if i == (n-1):
             return dictionary
 

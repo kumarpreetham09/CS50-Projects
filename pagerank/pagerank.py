@@ -59,8 +59,11 @@ def transition_model(corpus, page, damping_factor):
     """
 
     equal_probability = 1 - damping_factor
-    l
-
+    individual_probability = equal_probability / (len(corpus) - 1)
+    dictionary = {}
+    for element in corpus:
+        if element == page:
+            dictionary.update({f"{element}": })
 
 
     raise NotImplementedError

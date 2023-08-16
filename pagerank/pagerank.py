@@ -58,7 +58,8 @@ def transition_model(corpus, page, damping_factor):
     a link at random chosen from all pages in the corpus.
     """
 
-    
+    equal_probability = 1 - damping_factor
+    l
 
 
 

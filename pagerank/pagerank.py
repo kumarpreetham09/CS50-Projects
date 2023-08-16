@@ -81,11 +81,11 @@ def sample_pagerank(corpus, damping_factor, n):
     their estimated PageRank value (a value between 0 and 1). All
     PageRank values should sum to 1.
     """
-
+    dictionary = {}
     previous_sample = random.choice(list(corpus.keys()))
 
     for i in range(n):
-        dictionary = transition_model(corpus, previous_sample, damping_factor)
+        current_dictionary = transition_model(corpus, previous_sample, damping_factor)
         previous_sample = random.choices(list(dictionary.keys()), weights=list(dictionary.values()), k=1)
         print(dictionary)
         if i == (n-1):

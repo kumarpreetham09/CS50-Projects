@@ -116,8 +116,11 @@ def iterate_pagerank(corpus, damping_factor):
     for page in pages:
         dictionary[page] = 1 / pages_length
 
+    old_value = 0
+
     while abs(old_value - new_value) < 0.001:
-        
+        probability = ((1 - damping_factor) /pages_length) + damping_factor()
+
 
 
 

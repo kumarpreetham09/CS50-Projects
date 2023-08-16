@@ -109,7 +109,8 @@ def iterate_pagerank(corpus, damping_factor):
     PageRank values should sum to 1.
     """
 
-    raise NotImplementedError
+    dictionary = {}
+    
 
 
 if __name__ == "__main__":

@@ -59,15 +59,14 @@ def transition_model(corpus, page, damping_factor):
     """
 
     dictionary = {}
+
     for element in corpus:
+        dictionary[element] = 0
 
-        indi_remaining_probability = (1 - damping_factor) / (len(corpus))
-        indi_probability = damping_factor / len(corpus[element])
+    for element[page] in corpus:
+        dictionary[element] +=
 
-        if element == page:
-            dictionary.update({f"{element}": indi_remaining_probability})
-        else:
-            dictionary.update({f"{element}": indi_probability + indi_remaining_probability})
+
 
     return dictionary
 

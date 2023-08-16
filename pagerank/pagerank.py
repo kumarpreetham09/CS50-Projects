@@ -4,7 +4,7 @@ import re
 import sys
 
 DAMPING = 0.85
-SAMPLES = 10
+SAMPLES = 10000
 
 
 def main():
@@ -64,7 +64,7 @@ def transition_model(corpus, page, damping_factor):
         dictionary[site] = (1 - damping_factor) / len(corpus)
 
     for site in corpus[page]:
-        dictionaru[site] += damping_factor/(len(corpus[page]))
+        dictionary[site] += damping_factor/(len(corpus[page]))
 
     return dictionary
 
@@ -82,17 +82,18 @@ def sample_pagerank(corpus, damping_factor, n):
 
     dictionary = {}
 
-    first_sample = random.choice(corpus.keys())
+    first_sample = random.choice(list(corpus.keys()))
 
-    for site in corpus.keys():
+    for site in list(corpus.keys()):
         dictionary[site] = 0
 
     dictionary[first_sample] = 1/n
 
-    for i in tange(1 ,n):
+    for i in range(1 ,n):
         current_sample = first_sample
         current_possibilities = transition_model(corpus, current_sample, damping_factor)
         new_site = random.choices(list(current_possibilities.keys()), list(current_possibilities.values()), k = 1)
+        dictionary[new_site[0]] += 1/n
         current_sample = new_site
 
     return dictionary

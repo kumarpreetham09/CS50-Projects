@@ -58,15 +58,17 @@ def transition_model(corpus, page, damping_factor):
     a link at random chosen from all pages in the corpus.
     """
 
-    equal_probability = 1 - damping_factor
-    individual_probability = equal_probability / (len(corpus) - 1)
+    equal_remaining_probability = (1 - damping_factor) / (len(corpus))
+    equal_probability = damping_factor / (len(corpus) - 1)
+
     dictionary = {}
     for element in corpus:
         if element == page:
-            dictionary.update({f"{element}": })
+            dictionary.update({f"{element}": equal_remaining_probability})
+        else:
+            dictionary.update({f"{element}": equal_probability + equal_remaining_probability})
 
-
-    raise NotImplementedError
+    return dictionary
 
 
 def sample_pagerank(corpus, damping_factor, n):
@@ -78,7 +80,7 @@ def sample_pagerank(corpus, damping_factor, n):
     their estimated PageRank value (a value between 0 and 1). All
     PageRank values should sum to 1.
     """
-    raise NotImplementedError
+    return
 
 
 def iterate_pagerank(corpus, damping_factor):
@@ -90,7 +92,7 @@ def iterate_pagerank(corpus, damping_factor):
     their estimated PageRank value (a value between 0 and 1). All
     PageRank values should sum to 1.
     """
-    raise NotImplementedError
+    return
 
 
 if __name__ == "__main__":

@@ -87,8 +87,13 @@ def sample_pagerank(corpus, damping_factor, n):
     for site in corpus.keys():
         dictionary[site] = 0
 
-    dictionary[first_sample] = damping_effect
+    dictionary[first_sample] = 1/n
 
+    for i in tange(1 ,n):
+        current_sample = first_sample
+        current_possibilities = transition_model(corpus, current_sample, damping_factor)
+        new_site = random.choices(list(current_possibilities.keys()), list(current_possibilities.values()), k = 1)
+        current_sample = new_site
 
     return dictionary
 

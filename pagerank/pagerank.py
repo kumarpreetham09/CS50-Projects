@@ -60,6 +60,8 @@ def transition_model(corpus, page, damping_factor):
 
     equal_remaining_probability = (1 - damping_factor) / (len(corpus))
     equal_probability = damping_factor / (len(corpus) - 1)
+    print(equal_remaining_probability)
+    print(equal_probability)
 
     dictionary = {}
     for element in corpus:
@@ -86,7 +88,6 @@ def sample_pagerank(corpus, damping_factor, n):
     for i in range(n):
         dictionary = transition_model(corpus, previous_sample, damping_factor)
         previous_sample = random.choices(list(dictionary.keys()), weights=list(dictionary.values()), k=1)
-        print(dictionary)
         if i == (n-1):
             return dictionary
 

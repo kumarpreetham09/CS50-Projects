@@ -121,19 +121,20 @@ def iterate_pagerank(corpus, damping_factor):
     prob_1 = (1-damping_factor) / pages_length
     prob_2 = 0
 
-    differences = []
+    differnces = []
 
     for page in pages:
         dictionary[page] = 1 / pages_length
 
     while iteration:
         all_ranks = []
-
         for page in pages:
             all_links = []
-            for site in pages:
-                if page in corpus[site] or len(corpus[site]) == 0:
-                    all_links.append(site)
+            prob_2 = 0
+            for p in pages:
+                if page in corpus[p] or len(corpus[p]) == 0:
+                    all_links.append(p)
+
 
             for link in all_links:
                 if len(corpus[link]) != 0:
@@ -145,10 +146,10 @@ def iterate_pagerank(corpus, damping_factor):
             prob_2 = damping_factor * prob_2
             total_rank = prob_1 + prob_2
             all_ranks.append(total_rank)
-            differences.append(abs(total_rank - dictionary[page]))
+            differnces.append(abs(total_rank - dictionary[page]))
 
-        if any(difference >= 0.001 for difference in differences):
-            differences = []
+        if any(difference >= 0.001 for difference in differnces):
+            differnces = []
             i = 0
             for page in corpus.keys():
                 dictionary[page] = all_ranks[i]
@@ -157,7 +158,6 @@ def iterate_pagerank(corpus, damping_factor):
             iteration = False
 
     return dictionary
-
 
 if __name__ == "__main__":
     main()

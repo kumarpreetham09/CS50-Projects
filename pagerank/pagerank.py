@@ -93,12 +93,13 @@ def sample_pagerank(corpus, damping_factor, n):
 
     dictionary[first_sample] = 1/n
 
+    current_possibilities = transition_model(corpus, first_sample, damping_factor)
+
     for i in range(1 ,n):
-        current_sample = first_sample
-        current_possibilities = transition_model(corpus, current_sample, damping_factor)
         new_site = random.choices(list(current_possibilities.keys()), list(current_possibilities.values()), k = 1)
         dictionary[new_site[0]] += 1/n
-        current_sample = new_site
+        current_possibilities = transition_model(corpus, new_site[0], damping_factor)
+
 
     return dictionary
 

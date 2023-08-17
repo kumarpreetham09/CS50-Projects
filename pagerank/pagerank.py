@@ -116,16 +116,15 @@ def iterate_pagerank(corpus, damping_factor):
 
     pages = list(corpus.keys())
     pages_length = len(corpus)
-    first_value = (1 - damping_factor) / pages_length
 
-    dictionary = recurse_pagerank(first_value, damping_factor, corpus)
+    dictionary = recurse_pagerank(dictionary, damping_factor, corpus)
 
     return dictionary
 
 
 
-def recurse_pagerank(old_value, d, corpus)
-    old_page = 
+def recurse_pagerank(dictionary, d, corpus)
+    old_dictionary = {}
     new_value = old_value + (d * (old_value / corpus[]))
 
 

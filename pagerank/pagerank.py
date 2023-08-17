@@ -113,19 +113,23 @@ def iterate_pagerank(corpus, damping_factor):
     their estimated PageRank value (a value between 0 and 1). All
     PageRank values should sum to 1.
     """
-
+    dictionary = {}
     pages = list(corpus.keys())
     pages_length = len(corpus)
 
-    dictionary = recurse_pagerank(dictionary, damping_factor, corpus)
+    for page in pages:
+        dictionary[page] = (1 - damping_factor) / pages_length
 
-    return dictionary
+    solution_dictionary = recurse_pagerank(dictionary, damping_factor, corpus)
+
+    return solution_dictionary
 
 
 
 def recurse_pagerank(dictionary, d, corpus)
     old_dictionary = {}
-    new_value = old_value + (d * (old_value / corpus[]))
+    for page in dictionary:
+        new_value = old_value + (d * (old_value / corpus[]))
 
 
 

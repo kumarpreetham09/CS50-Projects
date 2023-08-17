@@ -131,7 +131,7 @@ def recurse_pagerank(dictionary, d, corpus):
     for page in dictionary:
         sum_prob_i = 0
         for link in corpus[page]:
-            if page in corpus[page]:
+            if page in corpus[link]:
                 sum_prob_i += dictionary[page] / len(corpus[page])
             prob_p = ((1 - d) / len(corpus)) + d * sum_prob_i
             old_dictionary[page] = dictionary[page]

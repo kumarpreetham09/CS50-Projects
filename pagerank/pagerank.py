@@ -129,9 +129,13 @@ def iterate_pagerank(corpus, damping_factor):
 def recurse_pagerank(dictionary, d, corpus)
     old_dictionary = {}
     for page in dictionary:
-        
-        new_value = old_value + (d * (old_value / corpus[]))
+        sum_prob_i = 0
+        for link in corpus[page]:
+            prob_i += dictionary[page] / len(corpus(page))
+        prob_p = ((1 - damping_factor) / len(corpus)) + damping_factor * sum_prob_i
+        old_dicitonary[page] = dictionary[page]
 
+        
 
 
 if __name__ == "__main__":

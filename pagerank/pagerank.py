@@ -118,7 +118,10 @@ def iterate_pagerank(corpus, damping_factor):
     pages = list(corpus.keys())
     pages_length = len(corpus)
 
-    old_value = 
+    first_value = (1 - damping_factor) / pages_length
+    old_value = first_value
+    
+
 
     if
 

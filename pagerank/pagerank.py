@@ -117,31 +117,47 @@ def iterate_pagerank(corpus, damping_factor):
     pages = list(corpus.keys())
     pages_length = len(corpus)
 
+    iteration = True
+    prob_1 = (1-damping_factor) / pages_length
+    prob_2 = 0
+
+    differences = []
+
     for page in pages:
-        dictionary[page] = (1 - damping_factor) / pages_length
+        dictionary[page] = 1 / pages_length
 
-    solution_dictionary = recurse_pagerank(dictionary, damping_factor, corpus)
+    while iteration:
+        all_ranks = []
 
-    return solution_dictionary
+        for page in pages:
+            all_links = []
+            for site in pages:
+                if page in corpus[site] or len(corpus[site]) == 0:
+                    all_links.append(site)
 
+            for link in all_links:
+                if len(corpus[link]) != 0:
+                    links_length = len(corpus[link])
+                else:
+                    links_length = len(corpus.keys())
+                prob_2 += dictionary[link] / links_length
 
+            prob_2 = damping_factor * prob_2
+            total_rank = prob_1 + prob_2
+            all_ranks.append(total_rank)
+            differences.append(abs(total_rank - dictionary[page]))
 
-def recurse_pagerank(dictionary, d, corpus):
-    old_dictionary = {}
-    for page in dictionary:
-        sum_prob_i = 0
-        for link in corpus[page]:
-            if page in corpus[link]:
-                sum_prob_i += dictionary[page] / len(corpus[page])
-            prob_p = ((1 - d) / len(corpus)) + d * sum_prob_i
-            old_dictionary[page] = dictionary[page]
-            dictionary[page] = prob_p
-
-    for page in dictionary:
-        if abs(old_dictionary[page] - dictionary[page]) > 0.001:
-            return dictionary
+        if any(difference >= 0.001 for difference in differences):
+            differences = []
+            i = 0
+            for page in corpus.keys():
+                dictionary[page] = all_ranks[i]
+                i += 1
         else:
-            return recurse_pagerank(dictionary, d, corpus)
+            iteration = False
+
+    return dictionary
+
 
 if __name__ == "__main__":
     main()

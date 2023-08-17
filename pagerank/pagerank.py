@@ -118,18 +118,9 @@ def iterate_pagerank(corpus, damping_factor):
     pages = list(corpus.keys())
     pages_length = len(corpus)
 
-    for page in pages:
-        dictionary[page] = 1 / pages_length
+    old_value = 
 
-    old_value = 0
-    new_value = 1
-
-    while abs(old_value - new_value) < 0.001:
-        for page in pages:
-            if value in corpus[page]:
-                links_length = len(corpus[page])
-                old_value += dictionary[page]/links_length
-                new_value = ((1 - damping_factor) /pages_length) + damping_factor(old_value)
+    if
 
     return dictionary
 

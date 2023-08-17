@@ -148,7 +148,6 @@ def iterate_pagerank(corpus, damping_factor):
             differences.append(abs(total_rank - dictionary[page]))
 
         if any(difference >= 0.001 for difference in differences):
-            differences = []
             i = 0
             for page in corpus.keys():
                 dictionary[page] = all_ranks[i]
